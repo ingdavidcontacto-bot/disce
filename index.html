@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>disce · Crea tu primer videojuego</title>
+<meta name="description" content="disce, web estudiantil: aprende a crear videojuegos 2D y 3D desde cero. Proyectos reales de alumnos, clases gratis y ruta por niveles con David A. García G.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header__inner">
+    <a href="#inicio" class="brand" aria-label="disce, ir al inicio">
+      <svg class="brand__cube" viewBox="0 0 80 92" aria-hidden="true">
+        <polygon points="40,4 76,24 40,44 4,24" fill="#C6F432" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="4,24 40,44 40,88 4,68" fill="#16161A" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="40,44 76,24 76,68 40,88" fill="none" stroke="#16161A" stroke-width="6" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">d<span class="i">ı<span class="px"></span></span>sce</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#porque">¿Por qué disce?</a>
+      <a href="#quienes">Quiénes somos</a>
+      <a href="#ruta">Cursos</a>
+      <a href="#gratis">Clases gratis</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--lime btn--sm" href="#contacto">Inscríbete</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ================= INICIO ================= -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero__inner">
+      <span class="wordmark wordmark--xl" aria-hidden="true">d<span class="i">ı<span class="px"></span></span>sce</span>
+      <div class="hero__rule" aria-hidden="true"></div>
+
+      <div class="hero__split">
+        <figure class="cutout cutout--circle hero__person" id="heroPerson">
+          <svg viewBox="0 0 320 360" role="img" aria-label="Espacio para la foto de una persona señalando el título">
+            <!-- brazo de atrás -->
+            <path d="M92 200 C 70 250, 72 290, 84 330" fill="none" stroke="#16161A" stroke-width="30" stroke-linecap="round"/>
+            <!-- cuerpo -->
+            <path d="M58 360 C 58 250, 80 170, 130 170 C 180 170, 204 250, 204 360 Z" fill="#16161A"/>
+            <!-- cuello y cabeza -->
+            <rect x="116" y="138" width="28" height="40" rx="12" fill="#2B2B33"/>
+            <circle cx="130" cy="102" r="46" fill="#2B2B33"/>
+            <path d="M86 96 C 88 52, 172 46, 176 96 C 160 78, 110 76, 86 96 Z" fill="#16161A"/>
+            <!-- brazo que señala -->
+            <path d="M172 200 L 262 156" fill="none" stroke="#16161A" stroke-width="30" stroke-linecap="round"/>
+            <circle cx="268" cy="153" r="17" fill="#2B2B33"/>
+            <path d="M278 148 L 308 134" fill="none" stroke="#2B2B33" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+          <figcaption class="hero__tagphoto">Foto pendiente</figcaption>
+        </figure>
+
+        <div class="hero__copy">
+          <p class="tag">Web estudiantil</p>
+          <h1 class="hero__title">Crea tu primer videojuego, <span class="hl">aunque nunca hayas programado</span></h1>
+          <p class="hero__lead">Aprende Unity paso a paso, por niveles, y mira los juegos reales que han creado otros estudiantes.</p>
+          <div class="hero__cta">
+            <a href="#ruta" class="btn btn--lime">Ver la ruta de niveles</a>
+            <a href="#gratis" class="btn btn--ghost">Clases gratis</a>
+          </div>
+        </div>
+      </div>
+      <ul class="counters" id="counters" aria-label="disce en números" hidden></ul>
+    </div>
+
+    <!-- Carrusel -->
+    <div class="wrap">
+      <div class="carousel" id="carousel" aria-roledescription="carrusel" aria-label="Herramientas y proyectos">
+        <div class="carousel__track" id="carouselTrack"></div>
+        <div class="carousel__controls">
+          <button class="carousel__btn" type="button" id="prevSlide" aria-label="Imagen anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel__dots" id="carouselDots"></div>
+          <button class="carousel__btn" type="button" id="nextSlide" aria-label="Imagen siguiente">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ¿POR QUÉ DISCE? ================= -->
+  <section class="section sec" id="porque">
+    <div class="wrap">
+      <p class="eyebrow">01 · ¿Por qué disce?</p>
+      <h2>En internet sobra contenido, <span class="hl">pero falta conexión.</span></h2>
+
+      <div class="why">
+        <article class="why__block">
+          <span class="why__label">El problema</span>
+          <p>Hay miles de cursos y tutoriales para crear videojuegos, pero tener contenido a la mano no garantiza aprender. Muchos estudiantes abandonan porque no conectan con la forma de explicar del profesor, porque los temas no van al ritmo de sus clases o porque los cursos de calidad son difíciles de pagar.</p>
+        </article>
+        <article class="why__block why__block--accent">
+          <span class="why__label">Nuestra respuesta</span>
+          <p>disce es un espacio virtual y de bajo costo donde se aprende a crear videojuegos con un lenguaje cercano, de estudiante a estudiante. Lo enseña alguien que también está aprendiendo, que entiende tus dudas porque las vivió hace poco y explica con ejemplos reales de clase.</p>
+        </article>
+      </div>
+
+      <p class="why__for"><strong>¿Para quién es?</strong> Para estudiantes universitarios de cualquier semestre que quieran reforzar lo que ven en clase, adelantarse a temas nuevos o crear su primer juego desde cero.</p>
+
+      <div class="cards-3">
+        <article class="card"><span class="card__num">A</span><h3>Aprendes con alguien como tú</h3><p>El contenido se explica desde la experiencia de un estudiante, no desde la distancia.</p></article>
+        <article class="card"><span class="card__num">B</span><h3>Ves resultados reales</h3><p>Cada tema se respalda con los juegos y evidencias de alumnos que ya pasaron por ahí.</p></article>
+        <article class="card"><span class="card__num">C</span><h3>Accesible</h3><p>Virtual, a tu ritmo y a bajo costo, con clases gratis para que pruebes antes de decidir.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUIÉNES SOMOS ================= -->
+  <section class="section sec sec--tint" id="quienes">
+    <div class="wrap grid-2">
+      <div>
+        <p class="eyebrow">02 · Quiénes somos</p>
+        <h2>“Disce” significa <span class="hl">aprende</span> en latín.</h2>
+      </div>
+      <div class="prose">
+        <p>disce es un espacio de formación en desarrollo de videojuegos creado por <strong>David A. García G.</strong>, estudiante de Ingeniería Multimedia. Nace en el aula, de las clases de Unity 2D que dicta a estudiantes universitarios.</p>
+        <p>Aquí no solo se explican conceptos. Se muestra el proceso real: los primeros intentos, los errores, las soluciones y el juego terminado de cada alumno.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OBJETIVOS ================= -->
+  <section class="section sec" id="objetivos">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="eyebrow">03 · Objetivos</p>
+          <h2>Lo que buscamos</h2>
+          <p class="lead">Que cada estudiante termine con un juego propio y con las bases para seguir creando por su cuenta.</p>
+        </div>
+        <figure class="cutout cutout--square">
+          <img src="assets/img/persona-portatil.png" alt="Estudiante concentrado programando en su portátil" loading="lazy">
+        </figure>
+      </div>
+      <div class="cards-4">
+        <article class="card"><span class="card__num">01</span><h3>Aprender haciendo</h3><p>Cada tema se aprende construyendo una parte de un juego propio, no con ejercicios sueltos.</p></article>
+        <article class="card"><span class="card__num">02</span><h3>Mostrar el proceso</h3><p>Publicar evidencias de cada clase y de cada proyecto: capturas, videos y resultados.</p></article>
+        <article class="card"><span class="card__num">03</span><h3>Respetar ritmos</h3><p>Cada alumno avanza a su ritmo y con la idea de juego que más le motive.</p></article>
+        <article class="card"><span class="card__num">04</span><h3>Del 2D al 3D</h3><p>Empezar con bases sólidas en 2D y crecer hacia el desarrollo de juegos en 3D.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RUTA / CURSOS ================= -->
+  <section class="section sec sec--tint" id="ruta">
+    <div class="wrap">
+      <p class="eyebrow">04 · Cursos</p>
+      <h2>Tu ruta, nivel por nivel</h2>
+      <p class="lead">Como en un videojuego: cada nivel desbloquea una habilidad nueva para tu juego.</p>
+
+      <div class="course-layout">
+        <div class="levels-panel">
+          <div class="course__head">
+            <h3>Videojuegos 2D con Unity</h3>
+            <span class="badge badge--off">Sin cupos disponibles</span>
+          </div>
+          <div class="xp" id="xp" hidden>
+            <div class="xp__label"><span>Progreso de la clase actual</span><strong id="xpText"></strong></div>
+            <div class="xp__bar" role="progressbar" aria-label="Progreso de la clase actual" aria-valuemin="0" id="xpBar"><span id="xpFill"></span></div>
+          </div>
+          <ol class="levels" id="levels"></ol>
+        </div>
+
+        <aside class="spec" aria-labelledby="specTitle">
+          <h3 id="specTitle">Ficha técnica</h3>
+          <dl class="spec__list">
+            <div><dt>Modalidad</dt><dd>Virtual</dd></div>
+            <div><dt>Cupos</dt><dd class="off">No hay cupos disponibles</dd></div>
+            <div><dt>Duración</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Horario</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Inversión</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Nivel</dt><dd>Desde cero</dd></div>
+          </dl>
+          <a class="btn btn--dark btn--block" href="#contacto">Avísame cuando abran cupos</a>
+        </aside>
+      </div>
+
+      <article class="course-next">
+        <div>
+          <h3>Videojuegos 3D</h3>
+          <p>El siguiente mundo: modelos, cámaras y escenarios en tres dimensiones.</p>
+        </div>
+        <span class="badge">Próximamente</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= CLASES GRATIS ================= -->
+  <section class="section sec" id="gratis">
+    <div class="wrap">
+      <div class="split split--reverse">
+        <div>
+          <p class="eyebrow">05 · Clases gratis</p>
+          <h2>Empieza hoy, sin pagar nada</h2>
+          <p class="lead">Videos cortos con lo esencial de cada tema. Mira, practica y, si te gusta, únete al curso completo.</p>
+          <a class="btn btn--dark" id="linkTiktok" href="#" target="_blank" rel="noopener" hidden>Seguir en TikTok</a>
+        </div>
+        <figure class="cutout cutout--circle">
+          <img src="assets/img/estudiantes-celebrando.png" alt="Dos estudiantes celebrando frente a un portátil" loading="lazy">
+        </figure>
+      </div>
+      <div class="free" id="freeClasses"></div>
+    </div>
+  </section>
+
+  <!-- ================= PROYECTOS ================= -->
+  <section class="section sec sec--tint" id="proyectos">
+    <div class="wrap">
+      <p class="eyebrow">06 · Proyectos de alumnos</p>
+      <div class="section__head">
+        <h2>Lo que han creado</h2>
+        <div class="filters" id="filters" role="group" aria-label="Filtrar proyectos por género"></div>
+      </div>
+      <div class="projects" id="projects"></div>
+      <p class="empty" id="projectsEmpty" hidden>Todavía no hay proyectos publicados.</p>
+    </div>
+  </section>
+
+  <!-- ================= BITÁCORA ================= -->
+  <section class="section sec" id="bitacora">
+    <div class="wrap">
+      <p class="eyebrow">07 · Así son las clases</p>
+      <h2>Bitácora con evidencias</h2>
+      <p class="lead">El registro de lo que se trabajó en cada sesión, con sus fotos y constancias.</p>
+      <ol class="timeline" id="timeline"></ol>
+      <p class="empty" id="timelineEmpty" hidden>Todavía no hay clases registradas.</p>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIOS ================= -->
+  <section class="section sec sec--tint" id="testimonios">
+    <div class="wrap">
+      <p class="eyebrow">08 · Testimonios</p>
+      <div class="section__head">
+        <h2>Lo que dicen los estudiantes</h2>
+        <p class="rating-avg" id="ratingAvg" hidden></p>
+      </div>
+
+      <div class="testi-layout">
+        <div>
+          <div class="testimonials" id="testimonials"></div>
+          <p class="empty" id="testiEmpty">Aún no hay testimonios publicados. ¡Sé el primero en dejar el tuyo!</p>
+        </div>
+
+        <form class="testi-form" id="testiForm" novalidate>
+          <h3>Deja tu testimonio</h3>
+          <p class="muted small">Solo para estudiantes de disce. Se publica cuando el profe lo verifica.</p>
+
+          <label for="tNombre">Tu nombre</label>
+          <input id="tNombre" name="nombre" type="text" maxlength="60" required autocomplete="name">
+
+          <label for="tCurso">Curso</label>
+          <select id="tCurso" name="curso" required>
+            <option value="Videojuegos 2D con Unity">Videojuegos 2D con Unity</option>
+          </select>
+
+          <fieldset class="stars">
+            <legend>Calificación</legend>
+            <div class="stars__row">
+              <input type="radio" id="s5" name="calificacion" value="5" required><label for="s5" aria-label="5 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+              <input type="radio" id="s4" name="calificacion" value="4"><label for="s4" aria-label="4 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+              <input type="radio" id="s3" name="calificacion" value="3"><label for="s3" aria-label="3 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+              <input type="radio" id="s2" name="calificacion" value="2"><label for="s2" aria-label="2 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+              <input type="radio" id="s1" name="calificacion" value="1"><label for="s1" aria-label="1 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+            </div>
+          </fieldset>
+
+          <label for="tMensaje">Tu experiencia</label>
+          <textarea id="tMensaje" name="mensaje" rows="4" minlength="10" maxlength="600" required placeholder="¿Qué aprendiste? ¿Qué juego creaste?"></textarea>
+
+          <!-- Campo trampa contra spam: las personas no lo ven -->
+          <input class="hp" type="text" name="sitio" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button class="btn btn--lime btn--block" type="submit" id="tSubmit">Enviar testimonio</button>
+          <p class="form-msg" id="tMsg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EL PROFE ================= -->
+  <section class="section sec sec--glow" id="profe">
+    <div class="wrap profe">
+      <div class="profe__photo" id="profePhoto">
+        <svg viewBox="0 0 200 220" role="img" aria-label="Espacio para la foto del profe">
+          <rect width="200" height="220" fill="#EAF0F9"/>
+          <circle cx="100" cy="88" r="40" fill="#16161A"/>
+          <path d="M28 220c0-46 32-74 72-74s72 28 72 74z" fill="#16161A"/>
+          <rect x="62" y="44" width="16" height="16" fill="#5E86BF" stroke="#16161A" stroke-width="3"/>
+        </svg>
+        <span class="profe__tag">Foto pendiente</span>
+      </div>
+      <div>
+        <p class="eyebrow">09 · El profe</p>
+        <h2>David A. García G.</h2>
+        <div class="prose">
+          <p>Estudiante de Ingeniería Multimedia y desarrollador de videojuegos. Enseña lo que aprende: Unity 2D, pixel art para juegos y herramientas de inteligencia artificial.</p>
+          <p>Su forma de enseñar es simple: cada alumno sale con un juego propio que puede mostrar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section sec" id="faq">
+    <div class="wrap narrow">
+      <p class="eyebrow">10 · Preguntas frecuentes</p>
+      <h2>Antes de inscribirte</h2>
+      <div class="faq" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO ================= -->
+  <section class="section sec-cta" id="contacto">
+    <div class="wrap contact">
+      <div>
+        <h2>¿Listo para el nivel 1?</h2>
+        <p class="lead lead--dark">Escríbenos y te avisamos apenas se abran cupos para el próximo curso.</p>
+      </div>
+      <div class="contact__actions">
+        <a class="btn btn--dark" id="linkWhatsapp" href="#" target="_blank" rel="noopener" hidden>Escribir por WhatsApp</a>
+        <a class="btn btn--ghost" id="linkEmail" href="#" hidden>Enviar un correo</a>
+        <p class="contact__text" id="contactText"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span class="wordmark wordmark--sm">d<span class="i">ı<span class="px"></span></span>sce</span>
+    <p>© <span id="year"></span> disce · David A. García G.</p>
+  </div>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.6 19z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+</a>
+
+<!-- Modal de proyecto -->
+<dialog class="modal" id="projectModal" aria-labelledby="modalTitle">
+  <div class="modal__box">
+    <button class="modal__close" type="button" data-close aria-label="Cerrar">×</button>
+    <div id="modalBody"></div>
+  </div>
+</dialog>
+
+<script src="data/contenido.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
