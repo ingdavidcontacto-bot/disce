@@ -17,7 +17,7 @@ window.DISCE = {
 
   /* ---------- Contacto y redes ---------- */
   contacto: {
-    whatsapp: "",  // Solo números con código de país, ej: "573001234567"
+    whatsapp: "573123771399",  // Solo números con código de país, ej: "573001234567"
     email: "",     // ej: "tucorreo@gmail.com"
     tiktok: ""     // ej: "https://www.tiktok.com/@disce"
   },
