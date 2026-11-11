@@ -26,8 +26,8 @@ window.DISCE = {
      Pega aquí los datos de tu proyecto de Supabase
      (Project Settings → API). Ver README.md, paso a paso. */
   supabase: {
-    url: "",      // ej: "https://abcdxyz.supabase.co"
-    anonKey: ""   // la clave "anon public" (es pública, se puede poner aquí)
+    url: "https://nwhupyzdmgglagyibsjb.supabase.co",      // ej: "https://abcdxyz.supabase.co"
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53aHVweXpkbWdnbGFneWlic2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQzNjg2NjcsImV4cCI6MjEwOTk0NDY2N30.VQFU9sgV7Sl6SAi2xeySpWRjo1e3cCzoxEK_VTlK1oA"   // la clave "anon public" (es pública, se puede poner aquí)
   },
 
   /* ---------- Foto de la portada ----------
