@@ -468,3 +468,8 @@ a.free-card:hover { transform: translateY(-4px); box-shadow: var(--glow-fuerte);
 .hero::after { background: rgba(0,51,255,.22); }
 .counters strong, .entry__date, .eyebrow, .slide__kicker, .level__state { color: var(--azul); }
 .cutout::before { background: radial-gradient(70% 70% at 30% 25%, rgba(255,204,242,.45), transparent 60%), linear-gradient(135deg, #977DFF 0%, #0033FF 60%, #0600AB 100%); }
+/* ---------- v6: más aire bajo la portada y logos en el carrusel ---------- */
+.hero__split { margin-bottom: clamp(80px, 10vw, 130px); }
+.slide .slide__logo { width: clamp(200px, 30vw, 360px); height: auto; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 14px 22px rgba(0,3,61,.15)); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 640px) { .slide .slide__logo { width: 220px; } }
