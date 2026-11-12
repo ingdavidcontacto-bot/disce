@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Videojuegos 2D con Unity · disce</title>
+<meta name="description" content="Curso de videojuegos 2D con Unity de disce: video introductorio, ruta de 7 niveles, ficha técnica y testimonios de estudiantes.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="brand" aria-label="disce, ir al inicio">
+      <svg class="brand__cube" viewBox="0 0 80 92" aria-hidden="true">
+        <polygon points="40,4 76,24 40,44 4,24" fill="#C6F432" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="4,24 40,44 40,88 4,68" fill="#16161A" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="40,44 76,24 76,68 40,88" fill="none" stroke="#16161A" stroke-width="6" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">d<span class="i">ı<span class="px"></span></span>sce</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="index.html#porque">¿Por qué disce?</a>
+      <a href="index.html#quienes">Quiénes somos</a>
+      <a href="index.html#ruta">Cursos</a>
+      <a href="index.html#gratis">Clases gratis</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#testimonios">Testimonios</a>
+      <a href="index.html#faq">Preguntas</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--lime btn--sm" href="index.html#contacto">Inscríbete</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ================= PORTADA DEL CURSO ================= -->
+  <section class="section sec course-hero">
+    <div class="wrap">
+      <a class="back-link" href="index.html#ruta">← Volver a los cursos</a>
+      <p class="eyebrow">Curso 2D</p>
+      <h1>Videojuegos 2D con <span class="hl">Unity</span></h1>
+      <p class="lead">Tu ruta, nivel por nivel. Como en un videojuego: cada nivel desbloquea una habilidad nueva para tu juego.</p>
+      <div class="course-hero__tags">
+        <span class="badge badge--off">Sin cupos disponibles</span>
+        <span class="badge">Virtual</span>
+        <span class="badge">7 niveles</span>
+        <span class="badge">Desde cero</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIDEO INTRODUCTORIO ================= -->
+  <section class="section sec sec--tint" id="video">
+    <div class="wrap">
+      <p class="eyebrow">Video introductorio</p>
+      <h2>Antes de empezar</h2>
+      <div class="video-frame" id="introVideo">
+        <div class="video-frame__empty">
+          <span class="free-card__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="#16161A"/></svg></span>
+          <p>El video introductorio estará disponible muy pronto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RUTA Y FICHA TÉCNICA ================= -->
+  <section class="section sec" id="ruta-curso">
+    <div class="wrap">
+      <p class="eyebrow">Ruta del curso</p>
+      <h2>Nivel por nivel</h2>
+      <div class="course-layout">
+        <div class="levels-panel">
+          <div class="course__head">
+            <h3>Ruta del curso</h3>
+            <span class="badge badge--off">Sin cupos disponibles</span>
+          </div>
+          <div class="xp" id="xp" hidden>
+            <div class="xp__label"><span>Progreso de la clase actual</span><strong id="xpText"></strong></div>
+            <div class="xp__bar" role="progressbar" aria-label="Progreso de la clase actual" aria-valuemin="0" id="xpBar"><span id="xpFill"></span></div>
+          </div>
+          <ol class="levels" id="levels"></ol>
+        </div>
+        <aside class="spec" aria-labelledby="specTitle">
+          <h3 id="specTitle">Ficha técnica</h3>
+          <dl class="spec__list">
+            <div><dt>Modalidad</dt><dd>Virtual</dd></div>
+            <div><dt>Cupos</dt><dd class="off">No hay cupos disponibles</dd></div>
+            <div><dt>Duración</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Horario</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Inversión</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Nivel</dt><dd>Desde cero</dd></div>
+          </dl>
+          <a class="btn btn--dark btn--block" href="index.html#contacto">Avísame cuando abran cupos</a>
+        </aside>
+      </div>
+
+
+      <!-- Bitácora con evidencias: oculta por ahora (quitar "hidden" para mostrarla) -->
+      <section class="course-log" id="bitacora" aria-labelledby="bitacoraTitle" hidden>
+        <h3 id="bitacoraTitle">Bitácora con evidencias</h3>
+        <p class="lead">El registro de lo que se trabajó en cada sesión, con sus fotos y constancias.</p>
+        <ol class="timeline" id="timeline"></ol>
+        <p class="empty" id="timelineEmpty" hidden>Todavía no hay clases registradas.</p>
+      </section>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIO AL TERMINAR ================= -->
+  <section class="section sec sec--tint" id="testimonio">
+    <div class="wrap course-testi">
+      <div>
+        <p class="eyebrow">Al terminar el curso</p>
+        <h2>Deja tu <span class="hl">testimonio</span></h2>
+        <p class="lead">Tu opinión ayuda a otros estudiantes a decidirse. Se publicará en la página principal así:</p>
+        <div class="testi testi--preview" aria-hidden="true">
+          <p class="testi__line"><strong>Tu nombre</strong> · Videojuegos 2D con Unity</p>
+          <p>“Tu experiencia en el curso…”</p>
+          <p class="testi__rating">Valoración: <span class="testi__stars"><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg></span> <span class="testi__num">5 estrellas</span></p>
+        </div>
+      </div>
+        <form class="testi-form" id="testiForm" novalidate>
+          <h3>Deja tu testimonio</h3>
+          <p class="muted small">¿Terminaste el curso? Cuéntanos cómo te fue. Tu mensaje aparecerá en la página principal de disce cuando el profe lo verifique.</p>
+
+          <label for="tNombre">Tu nombre</label>
+          <input id="tNombre" name="nombre" type="text" maxlength="60" required autocomplete="name">
+
+          <input type="hidden" name="curso" value="Videojuegos 2D con Unity">
+
+          <fieldset class="stars">
+            <legend>Calificación</legend>
+            <div class="stars__row">
+              <input type="radio" id="s5" name="calificacion" value="5" required><label for="s5" aria-label="5 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+              <input type="radio" id="s4" name="calificacion" value="4"><label for="s4" aria-label="4 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+              <input type="radio" id="s3" name="calificacion" value="3"><label for="s3" aria-label="3 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+              <input type="radio" id="s2" name="calificacion" value="2"><label for="s2" aria-label="2 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+              <input type="radio" id="s1" name="calificacion" value="1"><label for="s1" aria-label="1 de 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+            </div>
+          </fieldset>
+
+          <label for="tMensaje">Tu experiencia</label>
+          <textarea id="tMensaje" name="mensaje" rows="4" minlength="10" maxlength="600" required placeholder="¿Qué aprendiste? ¿Qué juego creaste?"></textarea>
+
+          <!-- Campo trampa contra spam: las personas no lo ven -->
+          <input class="hp" type="text" name="sitio" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button class="btn btn--lime btn--block" type="submit" id="tSubmit">Enviar testimonio</button>
+          <p class="form-msg" id="tMsg" role="status" aria-live="polite"></p>
+        </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span class="wordmark wordmark--sm">d<span class="i">ı<span class="px"></span></span>sce</span>
+    <p>© <span id="year"></span> disce · David A. García G.</p>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.6 19z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+</a>
+
+<script src="data/contenido.js"></script>
+<script src="js/curso.js"></script>
+</body>
+</html>
