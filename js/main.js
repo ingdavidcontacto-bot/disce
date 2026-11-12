@@ -57,6 +57,16 @@
       <div class="slide" role="group" aria-roledescription="diapositiva" aria-label="${i + 1} de ${slides.length}: ${esc(s.titulo)}" ${i ? 'aria-hidden="true"' : ""}>
         ${s.imagen
           ? `<img src="${esc(s.imagen)}" alt="${esc(s.titulo)}" loading="lazy">${s.titulo ? `<span class="slide__caption">${esc(s.titulo)}</span>` : ""}`
+          : s.captura
+          ? `<div class="slide__art slide__art--shot" style="background:${COLORES[s.color] || COLORES.lavanda}">
+               <div class="slide__copy">
+                 ${s.logo ? `<img class="slide__logo" src="${esc(s.logo)}" alt="Logo de ${esc(s.titulo)}">` : ""}
+                 <p class="slide__kicker">${esc(s.kicker)}</p>
+                 <p class="slide__title${s.logo ? " sr-only" : ""}">${esc(s.titulo)}</p>
+                 <p class="slide__text">${esc(s.texto)}</p>
+               </div>
+               <figure class="slide__shot"><span class="slide__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="${esc(s.captura)}" alt="Captura de pantalla de ${esc(s.titulo)}" loading="lazy"></figure>
+             </div>`
           : `<div class="slide__art" style="background:${COLORES[s.color] || COLORES.lavanda}">
                ${s.logo ? `<img class="slide__logo" src="${esc(s.logo)}" alt="Logo de ${esc(s.titulo)}">` : (ICONOS[s.icono] || ICONOS.cubo)}
                <div>
