@@ -340,6 +340,10 @@
   }
   if (!wa && !contacto.email) $("#contactText").textContent = "Muy pronto publicaremos nuestros canales de contacto.";
 
+  document.querySelectorAll("[data-open]").forEach((b) => {
+    b.addEventListener("click", () => { const d = document.getElementById(b.dataset.open); if (d) d.showModal(); });
+  });
+
   document.querySelectorAll(".modal").forEach((m) => {
     m.addEventListener("click", (e) => { if (e.target === m || e.target.closest("[data-close]")) m.close(); });
   });
