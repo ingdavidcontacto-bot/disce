@@ -515,3 +515,26 @@ a.free-card:hover { transform: translateY(-4px); box-shadow: var(--glow-fuerte);
 .partner__uni small { color: var(--gris); font-size: 13px; }
 @media (max-width: 480px) { .partner { gap: 10px; padding: 12px 14px; } .partner__brand .wordmark { font-size: 18px; } }
 #gratis h2 { font-size: clamp(28px, 3.4vw, 44px); }
+.course-log { margin-top: 32px; }
+
+/* v10 — página del curso 2D y testimonios en la portada */
+.course-hero { padding-bottom: 40px; }
+.course-hero h1 { font-size: clamp(38px, 6vw, 68px); margin: 6px 0 14px; }
+.course-hero .lead { max-width: 640px; }
+.course-hero__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.back-link { display: table; margin-bottom: 22px; font-weight: 700; color: var(--azul); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.video-frame { position: relative; aspect-ratio: 16 / 9; max-width: 960px; margin-top: 24px; border-radius: 22px; overflow: hidden; background: var(--grad-hondo); box-shadow: 0 30px 60px -24px rgba(0,3,61,.5), 0 0 0 1px rgba(151,125,255,.35); }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-frame__empty { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; color: #fff; text-align: center; padding: 20px; }
+.video-frame__empty .free-card__play { width: 72px; height: 72px; background: rgba(255,255,255,.9); }
+.video-frame__empty p { margin: 0; font-size: 18px; opacity: .9; }
+.course-testi { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.testi--preview { margin-top: 18px; opacity: .85; }
+.testi__line { font-size: 15px !important; color: var(--gris); margin-bottom: 8px !important; }
+.testi__line strong { color: var(--azul-noche); }
+.testi__rating { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 14px !important; color: var(--gris); margin: 0 !important; }
+.testi__rating .testi__stars { margin: 0; }
+.testi__num { font-weight: 700; color: var(--azul-noche); }
+.testimonials { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 10px; }
+@media (max-width: 860px) { .course-testi { grid-template-columns: 1fr; } }
