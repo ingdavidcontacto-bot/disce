@@ -63,9 +63,9 @@ window.DISCE = {
   /* ---------- Clases gratis (TikTok) ----------
      Cuando publiques un video, pega su link en "url". */
   clasesGratis: [
-    { titulo: "Tu primera escena en Unity", descripcion: "Crea el proyecto y entiende la interfaz en pocos minutos.", url: "" },
-    { titulo: "Mover un personaje 2D",       descripcion: "El script básico para que tu personaje camine y salte.",    url: "" },
-    { titulo: "Pinta un nivel con Tilemaps", descripcion: "Arma un escenario completo en minutos.",                    url: "" }
+    { titulo: "Introducción básica al Unity 2D",  descripcion: "Conoce la interfaz, crea tu primer proyecto y arma tu primera escena.",        url: "" },
+    { titulo: "Creación de Sprites en 2D y 3D",   descripcion: "Diseña tus propios sprites y aprende a llevarlos a tus juegos en 2D y 3D.", url: "" },
+    { titulo: "Bienvenida al mundo 3D",           descripcion: "Tus primeros pasos en 3D: objetos, cámara y luz en una escena sencilla.",    url: "" }
   ],
 
   /* ---------- Proyectos de alumnos ---------- */
