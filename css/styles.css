@@ -503,3 +503,15 @@ a.free-card:hover { transform: translateY(-4px); box-shadow: var(--glow-fuerte);
 .modal .course-layout { margin-top: 22px; }
 .modal .lead { max-width: 640px; }
 @media (max-width: 700px) { .courses { grid-template-columns: 1fr; } }
+
+/* v9 — recuadro disce × Universidad Simón Bolívar */
+.partner { display: inline-flex; align-items: center; gap: 16px; margin: 6px 0 22px; padding: 14px 20px; border-radius: 16px; background: rgba(255,255,255,.75); border: 1px solid var(--linea); box-shadow: 0 14px 30px -18px rgba(0,51,255,.45); backdrop-filter: blur(6px); }
+.partner__brand { display: inline-flex; align-items: center; gap: 8px; }
+.partner__brand svg { width: 28px; height: auto; }
+.partner__brand .wordmark { font-size: 22px; }
+.partner__x { font-size: 20px; color: var(--lila); font-weight: 700; }
+.partner__uni { display: flex; flex-direction: column; line-height: 1.2; padding-left: 16px; border-left: 1px solid var(--linea); }
+.partner__uni strong { color: var(--azul-noche); font-size: 15px; }
+.partner__uni small { color: var(--gris); font-size: 13px; }
+@media (max-width: 480px) { .partner { gap: 10px; padding: 12px 14px; } .partner__brand .wordmark { font-size: 18px; } }
+#gratis h2 { font-size: clamp(28px, 3.4vw, 44px); }
