@@ -26,8 +26,8 @@ window.DISCE = {
      Pega aquí los datos de tu proyecto de Supabase
      (Project Settings → API). Ver README.md, paso a paso. */
   supabase: {
-    url: "https://nwhupyzdmgglagyibsjb.supabase.co",      // ej: "https://abcdxyz.supabase.co"
-    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53aHVweXpkbWdnbGFneWlic2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQzNjg2NjcsImV4cCI6MjEwOTk0NDY2N30.VQFU9sgV7Sl6SAi2xeySpWRjo1e3cCzoxEK_VTlK1oA"   // la clave "anon public" (es pública, se puede poner aquí)
+    url: "https://nwhupyzdmgglagyibsjb.supabase.co",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53aHVweXpkbWdnbGFneWlic2piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQzNjg2NjcsImV4cCI6MjEwOTk0NDY2N30.VQFU9sgV7Sl6SAi2xeySpWRjo1e3cCzoxEK_VTlK1oA"  // clave "anon public" (pública)
   },
 
   /* ---------- Foto de la portada ----------
@@ -38,11 +38,11 @@ window.DISCE = {
   fotoProfe: "",  // ej: "assets/img/david.jpg"
 
   /* ---------- Carrusel de la portada ----------
-     Cuando tengas imágenes reales, pon la ruta en "imagen"
-     y el diseño de muestra se reemplaza por tu foto. */
+     "imagen": foto que ocupa toda la diapositiva.
+     "logo":   logo que se muestra al lado del texto (en vez del ícono). */
   carrusel: [
-    { imagen: "", icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Donde se construyen los juegos 2D del curso: escenas, físicas, animaciones y más." },
-    { imagen: "", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para crear personajes y objetos en 3D cuando demos el salto al siguiente nivel." },
+    { imagen: "", logo: "assets/img/Unity-logo.png",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Donde se construyen los juegos 2D del curso: escenas, físicas, animaciones y más." },
+    { imagen: "", logo: "assets/img/blender_logo.png", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para crear personajes y objetos en 3D cuando demos el salto al siguiente nivel." },
     { imagen: "", icono: "pixel",  color: "celeste", kicker: "Arte para juegos", titulo: "Pixel art",       texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
     { imagen: "", icono: "mando",  color: "lavanda", kicker: "Hecho en clase",  titulo: "Juegos de alumnos", texto: "Muy pronto: capturas reales de los juegos creados por los estudiantes." }
   ],
