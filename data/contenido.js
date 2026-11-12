@@ -41,8 +41,8 @@ window.DISCE = {
      "imagen": foto que ocupa toda la diapositiva.
      "logo":   logo que se muestra al lado del texto (en vez del ícono). */
   carrusel: [
-    { imagen: "", logo: "assets/img/Unity-logo.png",   captura: "assets/img/unity-captura.webp",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Donde se construyen los juegos 2D del curso: escenas, físicas, animaciones y más." },
-    { imagen: "", logo: "assets/img/blender_logo.png", captura: "assets/img/blender-captura.webp", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para crear personajes y objetos en 3D cuando demos el salto al siguiente nivel." },
+    { imagen: "", logo: "assets/img/Unity-logo.png",   captura: "assets/img/unity.jpg",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Donde se construyen los juegos 2D del curso: escenas, físicas, animaciones y más." },
+    { imagen: "", logo: "assets/img/blender_logo.png", captura: "assets/img/blender.jpg", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para crear personajes y objetos en 3D cuando demos el salto al siguiente nivel." },
     { imagen: "", icono: "pixel",  color: "celeste", kicker: "Arte para juegos", titulo: "Pixel art",       texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
     { imagen: "", icono: "mando",  color: "lavanda", kicker: "Hecho en clase",  titulo: "Juegos de alumnos", texto: "Muy pronto: capturas reales de los juegos creados por los estudiantes." }
   ],
