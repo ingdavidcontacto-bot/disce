@@ -58,10 +58,10 @@
         ${s.imagen
           ? `<img src="${esc(s.imagen)}" alt="${esc(s.titulo)}" loading="lazy">${s.titulo ? `<span class="slide__caption">${esc(s.titulo)}</span>` : ""}`
           : `<div class="slide__art" style="background:${COLORES[s.color] || COLORES.lavanda}">
-               ${ICONOS[s.icono] || ICONOS.cubo}
+               ${s.logo ? `<img class="slide__logo" src="${esc(s.logo)}" alt="Logo de ${esc(s.titulo)}">` : (ICONOS[s.icono] || ICONOS.cubo)}
                <div>
                  <p class="slide__kicker">${esc(s.kicker)}</p>
-                 <p class="slide__title">${esc(s.titulo)}</p>
+                 <p class="slide__title${s.logo ? " sr-only" : ""}">${esc(s.titulo)}</p>
                  <p class="slide__text">${esc(s.texto)}</p>
                </div>
              </div>`}
