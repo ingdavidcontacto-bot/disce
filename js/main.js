@@ -262,9 +262,9 @@
       $("#testiEmpty").hidden = rows.length > 0;
       $("#testimonials").innerHTML = rows.map((t) => `
         <article class="testi">
-          <div class="testi__stars" role="img" aria-label="${t.calificacion} de 5 estrellas">${stars(t.calificacion)}</div>
+          <p class="testi__line"><strong>${esc(t.nombre)}</strong> · ${esc(t.curso)}</p>
           <p>“${esc(t.mensaje)}”</p>
-          <footer><strong>${esc(t.nombre)}</strong> · ${esc(t.curso)} · ${formatDate(t.creado)}</footer>
+          <p class="testi__rating">Valoración: <span class="testi__stars" role="img" aria-label="${t.calificacion} de 5 estrellas">${stars(t.calificacion)}</span> <span class="testi__num">${t.calificacion} ${t.calificacion === 1 ? "estrella" : "estrellas"}</span></p>
         </article>`).join("");
       stats.testimonios = rows.length;
       if (rows.length) {
@@ -279,43 +279,7 @@
     }
   }
 
-  const form = $("#testiForm");
-  const msg = $("#tMsg");
-  const say = (text, type) => { msg.textContent = text; msg.className = "form-msg " + (type || ""); };
-
-  if (!sbReady) say("El envío de testimonios se activará muy pronto.", "");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const f = new FormData(form);
-    if (f.get("sitio")) return; // spam
-    const nombre = String(f.get("nombre") || "").trim();
-    const mensaje = String(f.get("mensaje") || "").trim();
-    const calificacion = Number(f.get("calificacion"));
-    const curso = String(f.get("curso") || "");
-
-    if (nombre.length < 2) return say("Escribe tu nombre.", "err");
-    if (!calificacion) return say("Elige una calificación de 1 a 5 estrellas.", "err");
-    if (mensaje.length < 10) return say("Cuéntanos un poco más (mínimo 10 caracteres).", "err");
-    if (!sbReady) return say("Aún no está conectada la base de datos. Inténtalo más tarde.", "err");
-
-    const btn = $("#tSubmit");
-    btn.disabled = true; say("Enviando…", "");
-    try {
-      const res = await fetch(`${sb.url}/rest/v1/testimonios`, {
-        method: "POST",
-        headers: { ...sbHeaders, Prefer: "return=minimal" },
-        body: JSON.stringify({ nombre, curso, calificacion, mensaje })
-      });
-      if (!res.ok) throw new Error(res.status);
-      form.reset();
-      say("¡Gracias! Tu testimonio se publicará cuando el profe lo verifique.", "ok");
-    } catch (err) {
-      say("No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", "err");
-    } finally {
-      btn.disabled = false;
-    }
-  });
+  // El formulario de testimonios vive en curso-2d.html (js/curso.js)
 
   /* =======================================================
      PROFE, FAQ, CONTACTO, MENÚ
@@ -360,11 +324,11 @@
 
   initCarousel();
   renderCounters();
-  renderLevels();
+  if ($("#levels")) renderLevels();
   renderFree();
   renderFilters();
   renderProjects();
-  renderTimeline();
+  if ($("#timeline")) renderTimeline();
   loadTestimonials();
 
   /* ---------- Animación suave al hacer scroll ---------- */
