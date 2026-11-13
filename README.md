@@ -7,9 +7,14 @@ Los testimonios se guardan en **Supabase** (base de datos gratuita).
 ## Estructura
 
 ```
-index.html             → la página
+index.html             → la página principal
+curso-2d.html          → página del curso 2D (formulario de testimonio)
+cuenta.html            → ingresar / crear cuenta / recuperar contraseña
 css/styles.css         → colores y diseño
-js/main.js             → lógica (no hace falta tocarlo)
+js/main.js             → lógica de la página principal
+js/curso.js            → lógica del curso 2D
+js/auth.js             → sesión de usuario (Supabase Auth), en todas las páginas
+js/cuenta.js           → lógica de cuenta.html
 data/contenido.js      → AQUÍ editas todo el contenido
 supabase/setup.sql     → crea la tabla de testimonios
 assets/favicon.svg     → ícono de la pestaña
@@ -38,6 +43,25 @@ assets/docs/           → constancias en PDF (créala)
 Los testimonios llegan **sin publicar** para evitar spam y mensajes falsos.
 En Supabase → **Table Editor → testimonios**, cambia `aprobado` a `true` en los que sean de tus alumnos.
 Aparecen en la página al recargarla.
+
+## Cuentas con correo (Supabase Auth)
+
+Solo las personas con cuenta en disce pueden enviar testimonios.
+Las cuentas se crean en `cuenta.html` con nombre, correo y contraseña.
+
+Configuración en Supabase (una sola vez):
+1. **Authentication → Sign In / Providers → Email**: activado, con *Confirm email* activado.
+2. **Authentication → URL Configuration**:
+   - *Site URL*: `https://disce-two.vercel.app`
+   - *Redirect URLs*: `https://disce-two.vercel.app/**` (y `http://127.0.0.1:5500/**` para probar con Live Server)
+3. **Authentication → Emails → SMTP Settings**: activa *custom SMTP* (por ejemplo Gmail con
+   contraseña de aplicación: host `smtp.gmail.com`, puerto `587`). Sin esto, Supabase solo envía
+   correos a los miembros de tu equipo y máximo 2 por hora.
+4. **Authentication → Emails → Templates**: traduce al español *Confirm signup* y *Reset password*.
+5. Ejecuta de nuevo `supabase/setup.sql` en el SQL Editor (agrega `user_id` y cambia los permisos).
+
+Las cuentas creadas se ven en **Authentication → Users**. Cada testimonio guarda el `user_id`
+de quien lo escribió (nunca se muestra en la página). Máximo un testimonio por cuenta y por curso.
 
 ## Agregar un proyecto o una clase
 

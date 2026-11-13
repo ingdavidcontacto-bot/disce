@@ -1,6 +1,10 @@
 -- =========================================================
 -- disce · base de datos de testimonios (Supabase)
 -- Pega TODO este archivo en Supabase → SQL Editor → Run
+-- Se puede volver a ejecutar sin perder los testimonios que ya existen.
+--
+-- Desde la versión con cuentas: SOLO las personas registradas en disce
+-- (Supabase Auth, con correo) pueden enviar testimonios.
 -- =========================================================
 
 create table if not exists public.testimonios (
@@ -13,6 +17,16 @@ create table if not exists public.testimonios (
   creado       timestamptz not null default now()
 );
 
+-- Cuenta que escribió el testimonio (se llena sola con el usuario que ingresó)
+alter table public.testimonios
+  add column if not exists user_id uuid default auth.uid()
+  references auth.users (id) on delete set null;
+
+-- Un testimonio por cuenta y por curso (los antiguos, sin cuenta, no cuentan)
+create unique index if not exists testimonios_uno_por_cuenta
+  on public.testimonios (user_id, curso)
+  where user_id is not null;
+
 -- Seguridad: activar reglas por fila
 alter table public.testimonios enable row level security;
 
@@ -23,13 +37,18 @@ create policy "leer aprobados"
   to anon, authenticated
   using (aprobado = true);
 
--- Cualquier visitante puede ENVIAR un testimonio, pero siempre llega sin aprobar
+-- Regla antigua (cualquier visitante podía enviar): se elimina
 drop policy if exists "enviar sin aprobar" on public.testimonios;
-create policy "enviar sin aprobar"
-  on public.testimonios for insert
-  to anon, authenticated
-  with check (aprobado = false);
 
--- Permisos mínimos: leer y crear. Nadie desde la página puede editar ni borrar.
+-- Solo personas con cuenta pueden ENVIAR, a su nombre y siempre sin aprobar
+drop policy if exists "registrados envian sin aprobar" on public.testimonios;
+create policy "registrados envian sin aprobar"
+  on public.testimonios for insert
+  to authenticated
+  with check (aprobado = false and user_id = (select auth.uid()));
+
+-- Permisos mínimos. Nadie desde la página puede editar ni borrar,
+-- y la columna user_id nunca se muestra al público.
 revoke all on public.testimonios from anon, authenticated;
-grant select, insert (nombre, curso, calificacion, mensaje) on public.testimonios to anon, authenticated;
+grant select (id, nombre, curso, calificacion, mensaje, creado) on public.testimonios to anon, authenticated;
+grant insert (nombre, curso, calificacion, mensaje) on public.testimonios to authenticated;

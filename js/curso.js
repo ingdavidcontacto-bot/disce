@@ -64,14 +64,27 @@
       </div></li>`).join("");
   }
 
-  /* ---------- Formulario de testimonio (Supabase) ---------- */
-  const sb = D.supabase || {};
-  const sbReady = Boolean(sb.url && sb.anonKey);
-  const sbHeaders = { apikey: sb.anonKey, Authorization: "Bearer " + sb.anonKey, "Content-Type": "application/json" };
+  /* ---------- Formulario de testimonio (solo con cuenta) ---------- */
+  const A = window.disceAuth;
   const form = $("#testiForm");
+  const gate = $("#testiGate");
   const msg = $("#tMsg");
   const say = (text, type) => { msg.textContent = text; msg.className = "form-msg " + (type || ""); };
-  if (!sbReady) say("El envío de testimonios se activará muy pronto.", "");
+
+  if (!A || !A.disponible) {
+    $("#gateMsg").textContent = "Las cuentas no están disponibles en este momento. Inténtalo más tarde.";
+    gate.querySelectorAll(".btn").forEach((b) => b.setAttribute("aria-disabled", "true"));
+  } else {
+    A.onChange((user) => {
+      gate.hidden = Boolean(user);
+      form.hidden = !user;
+      if (user) {
+        $("#tQuien").textContent = A.nombre();
+        if (!$("#tNombre").value) $("#tNombre").value = A.nombre();
+      }
+    });
+    $("#tSalir").addEventListener("click", () => A.salir());
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -82,23 +95,25 @@
     const calificacion = Number(f.get("calificacion"));
     const cursoNombre = String(f.get("curso") || "");
 
+    if (!A || !A.user) { form.hidden = true; gate.hidden = false; return; }
     if (nombre.length < 2) return say("Escribe tu nombre.", "err");
     if (!calificacion) return say("Elige una calificación de 1 a 5 estrellas.", "err");
     if (mensaje.length < 10) return say("Cuéntanos un poco más (mínimo 10 caracteres).", "err");
-    if (!sbReady) return say("Aún no está conectada la base de datos. Inténtalo más tarde.", "err");
 
     const btn = $("#tSubmit");
     btn.disabled = true; say("Enviando…", "");
     try {
-      const res = await fetch(`${sb.url}/rest/v1/testimonios`, {
-        method: "POST",
-        headers: { ...sbHeaders, Prefer: "return=minimal" },
-        body: JSON.stringify({ nombre, curso: cursoNombre, calificacion, mensaje })
-      });
-      if (!res.ok) throw new Error(res.status);
+      const { error } = await A.client.from("testimonios").insert({ nombre, curso: cursoNombre, calificacion, mensaje });
+      if (error) {
+        if (error.code === "23505") return say("Ya enviaste un testimonio para este curso. Si quieres cambiarlo, escríbenos por WhatsApp.", "err");
+        if (error.code === "42501") return say("Tu sesión venció. Cierra sesión, vuelve a ingresar e inténtalo de nuevo.", "err");
+        throw error;
+      }
       form.reset();
+      $("#tNombre").value = A.nombre();
       say("¡Gracias! Tu testimonio aparecerá en la página principal cuando el profe lo verifique.", "ok");
     } catch (err) {
+      console.warn("No se pudo enviar el testimonio:", err);
       say("No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", "err");
     } finally {
       btn.disabled = false;

@@ -38,7 +38,8 @@
     </nav>
 
     <div class="header__actions">
-      <a class="btn btn--lime btn--sm" href="index.html#contacto">Inscríbete</a>
+      <a class="btn btn--ghost btn--sm auth-link" href="cuenta.html" data-auth-link>Ingresar</a>
+      <a class="btn btn--lime btn--sm header__cta" href="index.html#contacto">Inscríbete</a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span></span>
       </button>
@@ -133,8 +134,20 @@
           <p class="testi__rating">Valoración: <span class="testi__stars"><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="#977DFF"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" stroke="#0600AB" stroke-width="1.8" stroke-linejoin="round"/></svg></span> <span class="testi__num">5 estrellas</span></p>
         </div>
       </div>
-        <form class="testi-form" id="testiForm" novalidate>
+      <div class="testi-side">
+        <!-- Sin sesión: invitación a ingresar o crear cuenta -->
+        <div class="testi-form auth-gate" id="testiGate">
           <h3>Deja tu testimonio</h3>
+          <p class="muted">Para escribir un testimonio necesitas una cuenta de disce. Así sabemos que el mensaje viene de un estudiante real.</p>
+          <a class="btn btn--lime btn--block" href="cuenta.html?next=curso-2d.html%23testimonio">Ingresar</a>
+          <a class="btn btn--ghost btn--block" href="cuenta.html?modo=registro&amp;next=curso-2d.html%23testimonio">Crear cuenta gratis</a>
+          <p class="form-msg" id="gateMsg" role="status" aria-live="polite"></p>
+        </div>
+
+        <!-- Con sesión: formulario -->
+        <form class="testi-form" id="testiForm" novalidate hidden>
+          <h3>Deja tu testimonio</h3>
+          <p class="auth-who">Escribes como <strong id="tQuien"></strong> · <button type="button" class="link-btn" id="tSalir">Cerrar sesión</button></p>
           <p class="muted small">¿Terminaste el curso? Cuéntanos cómo te fue. Tu mensaje aparecerá en la página principal de disce cuando el profe lo verifique.</p>
 
           <label for="tNombre">Tu nombre</label>
@@ -162,6 +175,7 @@
           <button class="btn btn--lime btn--block" type="submit" id="tSubmit">Enviar testimonio</button>
           <p class="form-msg" id="tMsg" role="status" aria-live="polite"></p>
         </form>
+      </div>
     </div>
   </section>
 
@@ -179,6 +193,8 @@
 </a>
 
 <script src="data/contenido.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
 <script src="js/curso.js"></script>
 </body>
 </html>

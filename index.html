@@ -38,7 +38,8 @@
     </nav>
 
     <div class="header__actions">
-      <a class="btn btn--lime btn--sm" href="#contacto">Inscríbete</a>
+      <a class="btn btn--ghost btn--sm auth-link" href="cuenta.html" data-auth-link>Ingresar</a>
+      <a class="btn btn--lime btn--sm header__cta" href="#contacto">Inscríbete</a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span></span>
       </button>
@@ -333,6 +334,8 @@
 </dialog>
 
 <script src="data/contenido.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
