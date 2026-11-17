@@ -32,10 +32,10 @@ window.DISCE = {
 
   /* ---------- Foto de la portada ----------
      Persona señalando hacia la derecha (hacia el título), SIN fondo (PNG). */
-  fotoPortada: "",  // ej: "assets/img/portada-senalando.png"
+  fotoPortada: "assets/img/portada-senalando.webp",
 
   /* ---------- Foto del profe ---------- */
-  fotoProfe: "",  // ej: "assets/img/david.jpg"
+  fotoProfe: "assets/img/profe-david.webp",
 
   /* ---------- Carrusel de la portada ----------
      "imagen": foto que ocupa toda la diapositiva.
