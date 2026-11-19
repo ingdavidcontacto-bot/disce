@@ -581,3 +581,105 @@ a.free-card:hover { transform: translateY(-4px); box-shadow: var(--glow-fuerte);
 .cutout--baked img { filter: none; -webkit-mask-image: none; mask-image: none; }
 .profe__photo:has(img) { border: none; padding-top: 28px; background: radial-gradient(70% 60% at 30% 20%, rgba(255,204,242,.45), transparent 60%), linear-gradient(160deg, #977DFF 0%, #0033FF 60%, #0600AB 100%); }
 @media (max-width: 900px) { .hero__person:has(img) { max-width: 380px; } }
+
+/* ---------- Ajustes móviles (revisión) ----------
+   Revisión responsive nov 2026 (360 · 390 · 414 · 768 · 1024 px).
+   Todo lo de este bloque está acotado con media queries para no cambiar
+   el escritorio (≥ 1121 px), salvo los arreglos globales marcados [global].
+   -------------------------------------------------------------------- */
+
+/* [global] Las tarjetas de curso que son <a> heredaban el subrayado del enlace
+   (título, badges y "Entrar al curso →" salían subrayados). */
+a.project { text-decoration: none; }
+
+/* [global] Botones con texto de 2 líneas ("Avísame cuando abran cupos"):
+   el texto quedaba alineado a la izquierda dentro de la píldora. */
+.btn { text-align: center; }
+
+/* [global] Objetivos táctiles: enlaces/botones de texto quedaban en 26–36 px de alto. */
+.back-link { display: flex; width: fit-content; align-items: center; min-height: 44px; margin-top: -9px; margin-bottom: 13px; } /* mismo sitio visual, área táctil de 44 px */
+.link-btn { min-height: 44px; display: inline-flex; align-items: center; vertical-align: middle; }
+.pass__ver { min-height: 40px; min-width: 52px; font-size: 14px; }
+.carousel__btn { flex: none; }          /* a 360 px se encogía a 42 px de ancho */
+
+/* Menú desplegable: fondo opaco y sombra (antes se transparentaba el contenido de detrás) */
+@media (max-width: 1120px) {
+  .nav { background: var(--blanco); box-shadow: 0 24px 40px -24px rgba(0,3,61,.35); }
+}
+
+/* Fila de 4 objetivos: entre 1021 y 1120 px quedaban 4 columnas de ~175 px de texto */
+@media (max-width: 1120px) {
+  .cards-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Modal "Próximamente": el eyebrow largo se metía debajo del botón de cerrar */
+.modal__box > .eyebrow:first-of-type { padding-right: 52px; }
+
+/* ---- Tablet (641–900 px): aprovechar el ancho en vez de apilar todo ---- */
+@media (min-width: 641px) and (max-width: 860px) {
+  /* Portada en dos columnas como en escritorio: el chico sigue señalando al título */
+  .hero__split { grid-template-columns: .8fr 1.2fr; text-align: left; }
+  .hero__copy { text-align: left; }
+  .hero__copy .hero__cta { justify-content: flex-start; }
+  .hero__copy .hero__lead { margin-inline: 0; }
+  .hero__person, .hero__person:has(img) { order: 0; max-width: none; }
+}
+@media (min-width: 641px) and (max-width: 900px) {
+  /* Profe: foto al lado del texto (antes la foto quedaba sola con medio ancho vacío) */
+  .profe { grid-template-columns: 240px 1fr; }
+  .profe__photo { max-width: none; }
+}
+@media (min-width: 700px) and (max-width: 1020px) {
+  /* Clases gratis: 3 en fila (antes 2 + 1 huérfana) */
+  .free { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 641px) and (max-width: 1020px) {
+  /* Formularios de cuenta: no estirar los campos a 700 px */
+  .auth__panel { width: 100%; max-width: 560px; }
+}
+
+/* ---- Celular (≤ 640 px) ---- */
+@media (max-width: 640px) {
+  /* Ritmo vertical: menos aire entre secciones (antes ~140 px de hueco) */
+  .section { padding: 56px 0; }
+  .hero { padding-top: 36px; }
+
+  /* PORTADA: la foto pasa a ir justo debajo del título, alineada a la izquierda,
+     para que el dedo apunte hacia arriba-derecha, al título. Se usa display: contents
+     en .hero__copy para poder reordenar sus hijos sin tocar el HTML. */
+  .hero__split { display: flex; flex-direction: column; align-items: center; gap: 0; margin-bottom: 48px; }
+  .hero__copy { display: contents; }
+  .hero__copy .tag { order: 1; }
+  .hero__copy .hero__title { order: 2; margin-bottom: 4px; }
+  .hero__person, .hero__person:has(img) { order: 3; align-self: flex-start; width: 84%; max-width: 320px; margin: 0 0 6px; }
+  .hero__copy .hero__lead { order: 4; }
+  .hero__copy .hero__cta { order: 5; margin-top: 10px; flex-direction: column; align-items: stretch; width: min(100%, 320px); }
+  .cutout--baked::after { display: none; } /* el halo borroso dejaba un rectángulo claro alrededor de la foto */
+
+  /* Objetivos (4 tarjetas): número a la izquierda y menos relleno → la mitad de alto */
+  .cards-4 { grid-template-columns: 1fr; gap: 12px; }   /* 1 columna (el ajuste 2×2 de ≤1120 px no aplica aquí) */
+  .cards-4 .card { display: grid; grid-template-columns: auto 1fr; column-gap: 16px; padding: 18px 20px; }
+  .cards-4 .card__num { grid-row: span 2; margin: 2px 0 0; width: 38px; height: 38px; }
+  .cards-4 .card h3 { margin-bottom: 4px; font-size: 19px; }
+  .cards-4 .card p { font-size: 15px; }
+
+  /* Clases gratis: mismo formato compacto (ícono a la izquierda) */
+  .free { gap: 12px; }
+  .free-card { display: grid; grid-template-columns: auto 1fr; column-gap: 16px; row-gap: 6px; padding: 18px 20px; }
+  .free-card__play { grid-row: span 3; width: 44px; height: 44px; border-radius: 14px; }
+  .free-card .badge { justify-self: start; }
+
+  /* Tarjetas con mucho relleno: más ancho útil para el texto */
+  .why__block, .levels-panel, .spec, .testi-form, .testi { padding: 22px 20px; }
+  .level { gap: 10px; padding: 10px 12px; }
+  .level__num { width: 64px; }
+
+  /* Profe: foto más contenida */
+  .profe__photo { max-width: 240px; }
+
+  /* WhatsApp flotante: más pequeño y sin tapar el pie de página */
+  .wa-float { width: 52px; height: 52px; right: 14px; bottom: 14px; }
+  .wa-float svg { width: 24px; height: 24px; }
+  .footer { padding-bottom: 84px; }
+  .footer__inner { flex-direction: column; align-items: flex-start; }
+}

@@ -111,7 +111,7 @@
       }
       form.reset();
       $("#tNombre").value = A.nombre();
-      say("¡Gracias! Tu testimonio aparecerá en la página principal cuando el profe lo verifique.", "ok");
+      say("¡Gracias! Tu testimonio aparecerá en la página principal cuando el profe lo revise.", "ok");
     } catch (err) {
       console.warn("No se pudo enviar el testimonio:", err);
       say("No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", "err");

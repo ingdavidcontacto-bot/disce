@@ -264,7 +264,7 @@
         <article class="testi">
           <p class="testi__line"><strong>${esc(t.nombre)}</strong> · ${esc(t.curso)}</p>
           <p>“${esc(t.mensaje)}”</p>
-          <p class="testi__rating">Valoración: <span class="testi__stars" role="img" aria-label="${t.calificacion} de 5 estrellas">${stars(t.calificacion)}</span> <span class="testi__num">${t.calificacion} ${t.calificacion === 1 ? "estrella" : "estrellas"}</span></p>
+          <p class="testi__rating">Calificación: <span class="testi__stars" role="img" aria-label="${t.calificacion} de 5 estrellas">${stars(t.calificacion)}</span> <span class="testi__num">${t.calificacion} ${t.calificacion === 1 ? "estrella" : "estrellas"}</span></p>
         </article>`).join("");
       stats.testimonios = rows.length;
       if (rows.length) {

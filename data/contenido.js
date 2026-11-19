@@ -47,10 +47,10 @@ window.DISCE = {
   curso2d: { video: "" },
 
   carrusel: [
-    { imagen: "", logo: "assets/img/Unity-logo.png",   captura: "assets/img/unity.jpg",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Donde se construyen los juegos 2D del curso: escenas, físicas, animaciones y más." },
-    { imagen: "", logo: "assets/img/blender_logo.png", captura: "assets/img/blender.jpg", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para crear personajes y objetos en 3D cuando demos el salto al siguiente nivel." },
+    { imagen: "", logo: "assets/img/Unity-logo.png",   captura: "assets/img/unity.jpg",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Aquí construyes los juegos del curso: escenas, físicas, animaciones y más." },
+    { imagen: "", logo: "assets/img/blender_logo.png", captura: "assets/img/blender.jpg", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para modelar personajes y objetos cuando des el salto al 3D." },
     { imagen: "", icono: "pixel",  color: "celeste", kicker: "Arte para juegos", titulo: "Pixel art",       texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
-    { imagen: "", icono: "mando",  color: "lavanda", kicker: "Hecho en clase",  titulo: "Juegos de alumnos", texto: "Muy pronto: capturas reales de los juegos creados por los estudiantes." }
+    { imagen: "", icono: "mando",  color: "lavanda", kicker: "Hecho en clase",  titulo: "Juegos de alumnos", texto: "Muy pronto: capturas de los juegos creados por los estudiantes." }
   ],
 
   /* ---------- Ruta de niveles del curso 2D ----------
@@ -69,8 +69,8 @@ window.DISCE = {
   /* ---------- Clases gratis (TikTok) ----------
      Cuando publiques un video, pega su link en "url". */
   clasesGratis: [
-    { titulo: "Introducción básica al Unity 2D",  descripcion: "Conoce la interfaz, crea tu primer proyecto y arma tu primera escena.",        url: "" },
-    { titulo: "Creación de Sprites en 2D y 3D",   descripcion: "Diseña tus propios sprites y aprende a llevarlos a tus juegos en 2D y 3D.", url: "" },
+    { titulo: "Introducción a Unity 2D",  descripcion: "Conoce la interfaz, crea tu primer proyecto y arma tu primera escena.",        url: "" },
+    { titulo: "Creación de sprites",   descripcion: "Diseña tus propios sprites y aprende a llevarlos a tus juegos.", url: "" },
     { titulo: "Bienvenida al mundo 3D",           descripcion: "Tus primeros pasos en 3D: objetos, cámara y luz en una escena sencilla.",    url: "" }
   ],
 
@@ -82,7 +82,7 @@ window.DISCE = {
       alumno: "Nombre del alumno",
       genero: "Puzle",
       temas: ["Tilemaps", "UI", "Sonido"],
-      descripcion: "Una o dos frases sobre de qué trata el juego y cómo se juega.",
+      descripcion: "Una o dos frases sobre qué trata el juego y cómo se juega.",
       aprendizaje: "Lo que el alumno cuenta que aprendió, en sus propias palabras.",
       imagen: "",       // Portada:       "assets/img/juego1-portada.jpg"
       antes: "",        // Primer avance: "assets/img/juego1-antes.jpg"
@@ -96,7 +96,7 @@ window.DISCE = {
       alumno: "Nombre del alumno",
       genero: "Exploración",
       temas: ["Físicas y colisiones", "Animator"],
-      descripcion: "Una o dos frases sobre de qué trata el juego y cómo se juega.",
+      descripcion: "Una o dos frases sobre qué trata el juego y cómo se juega.",
       aprendizaje: "Lo que el alumno cuenta que aprendió, en sus propias palabras.",
       imagen: "", antes: "", despues: "", video: "", jugar: ""
     }
@@ -116,10 +116,10 @@ window.DISCE = {
 
   /* ---------- Preguntas frecuentes ---------- */
   faq: [
-    { p: "¿Necesito saber programar?", r: "No. El curso empieza desde lo básico y cada nivel suma una habilidad nueva sobre tu propio juego." },
-    { p: "¿El curso es presencial o virtual?", r: "El curso de Videojuegos 2D con Unity es virtual." },
-    { p: "¿Hay cupos disponibles?", r: "En este momento no hay cupos. Escríbenos y te avisamos cuando se abra el próximo grupo." },
-    { p: "¿Qué computador necesito?", r: "Uno que pueda ejecutar Unity. Puedes revisar los requisitos mínimos en la página oficial de Unity." },
-    { p: "¿Las clases gratis tienen algún costo?", r: "No. Son videos cortos que publicamos en TikTok para que pruebes cómo enseñamos." }
+    { p: "¿Necesito saber programar?", r: "No. El curso empieza desde cero y cada nivel suma una habilidad nueva a tu propio juego." },
+    { p: "¿El curso es presencial o virtual?", r: "El curso Videojuegos 2D con Unity es virtual." },
+    { p: "¿Hay cupos disponibles?", r: "En este momento no hay cupos. Escríbenos por WhatsApp y te avisamos cuando se abra el próximo grupo." },
+    { p: "¿Qué computador necesito?", r: "Uno que pueda ejecutar Unity. Revisa los requisitos mínimos en la página oficial de Unity." },
+    { p: "¿Cómo funcionan las clases gratis?", r: "Son videos cortos y sin costo que publicamos en TikTok para que conozcas cómo enseñamos." }
   ]
 };

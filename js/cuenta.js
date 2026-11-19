@@ -121,7 +121,7 @@
     const { error } = await auth.resetPasswordForEmail(correo, { redirectTo: urlRetorno });
     ocupado(form, false);
     if (error) return say(form, A.traducir(error), "err");
-    say(form, "Listo. Si ese correo tiene cuenta, te llegará un enlace en unos minutos (revisa spam).", "ok");
+    say(form, "Listo. Si ese correo tiene una cuenta, te llegará un enlace en unos minutos. Revisa también la carpeta de spam.", "ok");
   });
 
   /* ---------- Nueva contraseña ---------- */
