@@ -575,7 +575,9 @@ a.free-card:hover { transform: translateY(-4px); box-shadow: var(--glow-fuerte);
 @media (max-width: 440px) { .header .header__cta { display: none; } }
 
 /* ---------- Fotos reales (nov 2026) ---------- */
-.hero__person:has(img) { max-width: 520px; }
-.hero__person:has(img)::before { left: 36%; }
+.hero__person:has(img) { max-width: 580px; }
+/* El fondo (círculo o recuadro) viene dentro de la foto */
+.cutout--baked:has(img)::before { display: none; }
+.cutout--baked img { filter: none; -webkit-mask-image: none; mask-image: none; }
 .profe__photo:has(img) { border: none; padding-top: 28px; background: radial-gradient(70% 60% at 30% 20%, rgba(255,204,242,.45), transparent 60%), linear-gradient(160deg, #977DFF 0%, #0033FF 60%, #0600AB 100%); }
-@media (max-width: 900px) { .hero__person:has(img) { max-width: 340px; } }
+@media (max-width: 900px) { .hero__person:has(img) { max-width: 380px; } }
