@@ -18,6 +18,10 @@ window.DISCE = {
   /* ---------- Contacto y redes ---------- */
   contacto: {
     whatsapp: "573123771399",  // Solo números con código de país, ej: "573001234567"
+    // Enlace de invitación a la comunidad/grupo de WhatsApp de disce (lista de espera).
+    // Cuando lo tengas, pégalo aquí, ej: "https://chat.whatsapp.com/XXXXXXXX".
+    // Mientras esté vacío, los botones abren tu chat con un mensaje listo.
+    comunidad: "",
     email: "",     // ej: "tucorreo@gmail.com"
     tiktok: ""     // ej: "https://www.tiktok.com/@disce"
   },
@@ -118,8 +122,8 @@ window.DISCE = {
   faq: [
     { p: "¿Necesito saber programar?", r: "No. El curso empieza desde cero y cada nivel suma una habilidad nueva a tu propio juego." },
     { p: "¿El curso es presencial o virtual?", r: "El curso Videojuegos 2D con Unity es virtual." },
-    { p: "¿Hay cupos disponibles?", r: "En este momento no hay cupos. Escríbenos por WhatsApp y te avisamos cuando se abra el próximo grupo." },
+    { p: "¿Hay cupos disponibles?", r: "En este momento no hay cupos. Únete a la lista de espera en WhatsApp y te avisamos cuando se abra el próximo grupo." },
     { p: "¿Qué computador necesito?", r: "Uno que pueda ejecutar Unity. Revisa los requisitos mínimos en la página oficial de Unity." },
-    { p: "¿Cómo funcionan las clases gratis?", r: "Son videos cortos y sin costo que publicamos en TikTok para que conozcas cómo enseñamos." }
+    { p: "¿Cómo funcionan las clases gratis?", r: "Muy pronto publicaremos videos cortos y sin costo en nuestras redes para que conozcas cómo enseñamos. Además, si estudias en la Universidad Simón Bolívar, sede Cúcuta, tu primera clase es gratis." }
   ]
 };

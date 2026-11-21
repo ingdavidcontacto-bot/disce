@@ -683,3 +683,12 @@ a.project { text-decoration: none; }
   .footer { padding-bottom: 84px; }
   .footer__inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- Encabezado: botón "lista de espera" ---------- */
+.nav a, .header__actions .btn { white-space: nowrap; }
+.header__cta .cta-short { display: none; }
+@media (min-width: 1121px) {
+  .header__cta .cta-full { display: none; }
+  .header__cta .cta-short { display: inline; }
+  .nav a { padding: 10px 9px; }
+}

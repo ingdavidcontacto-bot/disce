@@ -121,7 +121,12 @@
   });
 
   /* ---------- WhatsApp, menú, año ---------- */
-  const wa = contacto.whatsapp ? "https://wa.me/" + String(contacto.whatsapp).replace(/\D/g, "") : "";
+  // Lista de espera: comunidad de WhatsApp si existe; si no, chat con mensaje listo
+  const msgEspera = encodeURIComponent("Hola, quiero unirme a la lista de espera de disce.");
+  const wa = contacto.comunidad
+    ? contacto.comunidad
+    : (contacto.whatsapp ? "https://wa.me/" + String(contacto.whatsapp).replace(/\D/g, "") + "?text=" + msgEspera : "");
+  if (wa) document.querySelectorAll("[data-lista-espera]").forEach((a) => { a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
   if (wa) { $("#waFloat").href = wa; $("#waFloat").hidden = false; }
 
   const toggle = $("#menuToggle"), nav = $("#nav");
