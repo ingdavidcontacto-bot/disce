@@ -1,12 +1,15 @@
 /* =========================================================
-   disce · página del curso 2D (curso-2d.html)
+   disce · páginas de curso (curso-2d.html y curso-3d.html)
+   Cada página indica su curso con <body data-curso="2d|3d">.
    El contenido se cambia en data/contenido.js
    ========================================================= */
 
 (function () {
   const D = window.DISCE || {};
   const contacto = D.contacto || {};
-  const curso = D.curso2d || {};
+  const clave = document.body.dataset.curso === "3d" ? "3d" : "2d";
+  const curso = D["curso" + clave] || {};
+  const nombreCurso = clave === "3d" ? "Videojuegos en 3D con Unity" : "Videojuegos 2D con Unity";
   const bitacora = D.bitacora || [];
   const $ = (s) => document.querySelector(s);
   const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -30,18 +33,29 @@
   }
   const src = embedUrl(curso.video);
   if (src) {
-    $("#introVideo").innerHTML = `<iframe src="${esc(src)}" title="Video introductorio del curso Videojuegos 2D con Unity" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+    $("#introVideo").innerHTML = `<iframe src="${esc(src)}" title="Video introductorio del curso ${esc(nombreCurso)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
   }
 
-  /* ---------- Ruta de niveles ---------- */
-  const niveles = D.niveles || [];
-  const actual = Math.max(0, Math.min(Number(D.progresoClase) || 0, niveles.length));
+  /* ---------- Ruta de niveles (cada nivel se despliega) ---------- */
+  const niveles = (curso.niveles || []).map((n) => (typeof n === "string" ? { titulo: n } : n));
+  const actual = clave === "2d" ? Math.max(0, Math.min(Number(D.progresoClase) || 0, niveles.length)) : 0;
   $("#levels").innerHTML = niveles.map((n, i) => {
     const num = i + 1;
     const cls = actual && num < actual ? "level--done" : actual === num ? "level--now" : "";
     const estado = actual && num < actual ? "Superado" : actual === num ? "En curso" : "";
-    return `<li class="level ${cls}"><span class="level__num">NIVEL ${num}</span><span class="level__name">${esc(n)}</span>${estado ? `<span class="level__state">${estado}</span>` : ""}</li>`;
+    const aprendes = (n.aprendes || []).map((x) => `<li>${esc(x)}</li>`).join("");
+    const cuerpo = aprendes || n.construyes
+      ? `<div class="level__body">
+           ${aprendes ? `<p class="level__sub">Lo que aprendes</p><ul>${aprendes}</ul>` : ""}
+           ${n.construyes ? `<p class="level__build"><strong>En tu juego:</strong> ${esc(n.construyes)}</p>` : ""}
+         </div>`
+      : "";
+    return `<li><details class="level ${cls}"${num === 1 ? " open" : ""}>
+      <summary><span class="level__num">NIVEL ${num}</span><span class="level__name">${esc(n.titulo)}</span>${estado ? `<span class="level__state">${estado}</span>` : ""}${cuerpo ? '<span class="level__chev" aria-hidden="true"></span>' : ""}</summary>
+      ${cuerpo}
+    </details></li>`;
   }).join("");
+  document.querySelectorAll(".levels__count").forEach((el) => { el.textContent = niveles.length + " niveles"; });
   if (actual > 0 && niveles.length) {
     const pct = Math.round(((actual - 1) / niveles.length) * 100);
     $("#xp").hidden = false;
@@ -67,6 +81,7 @@
   /* ---------- Formulario de testimonio (solo con cuenta) ---------- */
   const A = window.disceAuth;
   const form = $("#testiForm");
+  if (form) {
   const gate = $("#testiGate");
   const msg = $("#tMsg");
   const say = (text, type) => { msg.textContent = text; msg.className = "form-msg " + (type || ""); };
@@ -119,6 +134,8 @@
       btn.disabled = false;
     }
   });
+
+  } // fin del formulario de testimonio
 
   /* ---------- WhatsApp, menú, año ---------- */
   // Lista de espera: comunidad de WhatsApp si existe; si no, chat con mensaje listo

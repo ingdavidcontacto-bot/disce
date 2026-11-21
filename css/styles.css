@@ -796,3 +796,20 @@ html[data-theme="dark"] .slide__logo[src*="Unity"] { filter: invert(1) brightnes
 .slide__bar i:nth-child(1) { background: #FF5F57; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.18); }
 .slide__bar i:nth-child(2) { background: #FEBC2E; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.18); }
 .slide__bar i:nth-child(3) { background: #28C840; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.18); }
+
+/* ---------- Niveles desplegables (páginas de curso) ---------- */
+.levels > li { list-style: none; }
+details.level { display: block; padding: 0; }
+.level > summary { display: flex; align-items: center; gap: 14px; padding: 12px 14px; cursor: pointer; list-style: none; border-radius: 14px; }
+.level > summary::-webkit-details-marker { display: none; }
+.level > summary:focus-visible { outline: 3px solid var(--azul-hondo); outline-offset: 2px; }
+.level[open] { border-color: var(--azul); }
+.level__chev { flex: none; width: 10px; height: 10px; margin: 0 6px 4px 0; border-right: 2px solid var(--azul); border-bottom: 2px solid var(--azul); transform: rotate(45deg); transition: transform .2s; }
+.level[open] .level__chev { transform: rotate(-135deg); margin: 4px 6px 0 0; }
+.level__body { padding: 0 18px 16px 98px; font-size: 15.5px; color: var(--gris); }
+.level__sub { margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--azul-hondo); }
+.level__body ul { margin: 0 0 12px; padding-left: 18px; display: grid; gap: 4px; }
+.level__build { margin: 0; padding: 10px 14px; border-radius: 12px; background: var(--azul-tinte); color: var(--texto); }
+@media (max-width: 640px) { .level__body { padding: 0 14px 14px; } }
+html[data-theme="dark"] .level__sub { color: #8EA3FF; }
+html[data-theme="dark"] .level__chev { border-color: #8EA3FF; }

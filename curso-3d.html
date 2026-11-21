@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Videojuegos en 3D con Unity · disce</title>
+<meta name="description" content="Curso Videojuegos en 3D con Unity de disce: modela en Blender, lleva tus modelos a Unity y crea tu primer juego 3D. Próximamente.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<meta name="color-scheme" content="light dark">
+<script>/* Tema antes de pintar, para evitar parpadeo */try{var t=localStorage.getItem("disce-tema");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-curso="3d">
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="brand" aria-label="disce, ir al inicio">
+      <svg class="brand__cube" viewBox="0 0 80 92" aria-hidden="true">
+        <polygon points="40,4 76,24 40,44 4,24" fill="#C6F432" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="4,24 40,44 40,88 4,68" fill="#16161A" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="40,44 76,24 76,68 40,88" fill="none" stroke="#16161A" stroke-width="6" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">d<span class="i">ı<span class="px"></span></span>sce</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="index.html#quienes">Nosotros</a>
+      <a href="index.html#ruta">Cursos</a>
+      <a href="index.html#gratis">Clase gratis</a>
+      <a href="index.html#faq">Preguntas</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--ghost btn--sm auth-link" href="cuenta.html" data-auth-link>Ingresar</a>
+      <a class="btn btn--lime btn--sm header__cta" href="index.html#contacto" data-lista-espera><span class="cta-full">Únete a la lista de espera</span><span class="cta-short">Lista de espera</span></a>
+      <div class="settings">
+        <button class="settings__btn" id="ajustesBtn" type="button" aria-label="Ajustes" aria-expanded="false" aria-controls="ajustesPanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94a7.07 7.07 0 0 0 .06-.94 7.07 7.07 0 0 0-.06-.94l2.03-1.58a.48.48 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54A.48.48 0 0 0 13.93 2h-3.86a.48.48 0 0 0-.48.41l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.71 8.47a.48.48 0 0 0 .12.61l2.03 1.58a7.4 7.4 0 0 0 0 1.88l-2.03 1.58a.48.48 0 0 0-.12.61l1.92 3.32c.12.21.37.3.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.25.41.48.41h3.86c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47-.01.59-.22l1.92-3.32a.48.48 0 0 0-.12-.61l-2.03-1.58ZM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2Z"/></svg>
+        </button>
+        <div class="settings__panel" id="ajustesPanel" role="dialog" aria-label="Ajustes" hidden>
+          <p class="settings__label" id="lblTema">Tema</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lblTema">
+            <button type="button" role="radio" data-tema="light" aria-checked="true"><span aria-hidden="true">☀</span> Claro</button>
+            <button type="button" role="radio" data-tema="dark" aria-checked="false"><span aria-hidden="true">☾</span> Oscuro</button>
+          </div>
+          <p class="settings__label" id="lblIdioma">Idioma</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lblIdioma">
+            <button type="button" role="radio" aria-checked="true">Español</button>
+            <button type="button" role="radio" aria-checked="false" disabled>English <small>Próximamente</small></button>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ================= PORTADA DEL CURSO ================= -->
+  <section class="section sec course-hero">
+    <div class="wrap">
+      <a class="back-link" href="index.html#ruta">← Volver a los cursos</a>
+      <p class="eyebrow">Curso 3D</p>
+      <h1>Videojuegos en 3D con <span class="hl">Unity</span></h1>
+      <p class="lead">El siguiente mundo: modelas en Blender, llevas tus modelos a Unity y construyes tu primer juego en tres dimensiones, nivel por nivel.</p>
+      <div class="course-hero__tags">
+        <span class="badge">Próximamente</span>
+        <span class="badge">Virtual</span>
+        <span class="badge">7 niveles</span>
+        <span class="badge">Unity + Blender</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIDEO INTRODUCTORIO ================= -->
+  <section class="section sec sec--tint" id="video">
+    <div class="wrap">
+      <p class="eyebrow">Video introductorio</p>
+      <h2>Antes de empezar</h2>
+      <div class="video-frame" id="introVideo">
+        <div class="video-frame__empty">
+          <span class="free-card__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="#16161A"/></svg></span>
+          <p>El video introductorio estará disponible muy pronto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RUTA Y FICHA TÉCNICA ================= -->
+  <section class="section sec" id="ruta-curso">
+    <div class="wrap">
+      <p class="eyebrow">Ruta del curso · propuesta</p>
+      <h2>Lo que vas a aprender</h2>
+      <div class="course-layout">
+        <div class="levels-panel">
+          <div class="course__head">
+            <h3 class="levels__count">7 niveles</h3>
+            <span class="badge">Próximamente</span>
+          </div>
+          <div class="xp" id="xp" hidden>
+            <div class="xp__label"><span>Progreso del grupo actual</span><strong id="xpText"></strong></div>
+            <div class="xp__bar" role="progressbar" aria-label="Progreso del grupo actual" aria-valuemin="0" id="xpBar"><span id="xpFill"></span></div>
+          </div>
+          <ol class="levels" id="levels"></ol>
+        </div>
+        <aside class="spec" aria-labelledby="specTitle">
+          <h3 id="specTitle">Ficha técnica</h3>
+          <dl class="spec__list">
+            <div><dt>Modalidad</dt><dd>Virtual</dd></div>
+            <div><dt>Estado</dt><dd>Próximamente</dd></div>
+            <div><dt>Duración</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Horario</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Inversión</dt><dd class="off">Por definir</dd></div>
+            <div><dt>Recomendado</dt><dd>Haber hecho el curso 2D o tener bases de Unity</dd></div>
+          </dl>
+          <a class="btn btn--dark btn--block" href="index.html#contacto">Avísame cuando abra</a>
+        </aside>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- ================= LLAMADO ================= -->
+  <section class="section sec-cta" id="avisame">
+    <div class="wrap contact">
+      <div>
+        <h2>¿Quieres dar el salto al 3D?</h2>
+        <p class="lead lead--dark">Únete a la lista de espera y te avisamos apenas abramos el primer grupo del curso 3D.</p>
+      </div>
+      <a class="btn btn--dark" href="index.html#contacto" data-lista-espera>Unirme a la lista de espera</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span class="wordmark wordmark--sm">d<span class="i">ı<span class="px"></span></span>sce</span>
+    <p>© <span id="year"></span> disce · David A. García G.</p>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.6 19z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+</a>
+
+<script src="data/contenido.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
+<script src="js/ajustes.js"></script>
+<script src="js/curso.js"></script>
+</body>
+</html>

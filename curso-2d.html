@@ -13,7 +13,7 @@
 <script>/* Tema antes de pintar, para evitar parpadeo */try{var t=localStorage.getItem("disce-tema");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body data-curso="2d">
 
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
@@ -103,7 +103,7 @@
       <div class="course-layout">
         <div class="levels-panel">
           <div class="course__head">
-            <h3>7 niveles</h3>
+            <h3 class="levels__count">7 niveles</h3>
             <span class="badge badge--off">Sin cupos disponibles</span>
           </div>
           <div class="xp" id="xp" hidden>

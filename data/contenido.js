@@ -48,7 +48,6 @@ window.DISCE = {
      video: pega aquí el enlace del video introductorio (YouTube, por ejemplo
      "https://www.youtube.com/watch?v=XXXX" o "https://youtu.be/XXXX").
      Si lo dejas vacío, se muestra el aviso "muy pronto". */
-  curso2d: { video: "" },
 
   carrusel: [
     { imagen: "", logo: "assets/img/Unity-logo.png",   captura: "assets/img/unity-escena.webp",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Aquí construyes los juegos del curso: escenas, físicas, animaciones y más." },
@@ -57,18 +56,65 @@ window.DISCE = {
     { imagen: "", icono: "mando",  color: "lavanda", kicker: "Hecho en clase",  titulo: "Juegos de alumnos", texto: "Muy pronto: capturas de los juegos creados por los estudiantes." }
   ],
 
-  /* ---------- Ruta de niveles del curso 2D ----------
-     progresoClase: en qué nivel va el grupo actual (0 = no mostrar barra) */
+  /* ---------- Cursos: video introductorio y ruta de niveles ----------
+     video: enlace de YouTube, Vimeo o Google Drive (vacío = "muy pronto").
+     Cada nivel: titulo, aprendes (lista corta) y construyes (lo que queda en tu juego).
+     progresoClase: en qué nivel va el grupo actual del curso 2D (0 = no mostrar barra) */
   progresoClase: 0,
-  niveles: [
-    "Escenas y organización del proyecto",
-    "Sonido y música",
-    "Interfaz de usuario (UI)",
-    "Tilemaps: construir niveles",
-    "Físicas y colisiones",
-    "Animaciones con Animator",
-    "IA sencilla: enemigos que patrullan"
-  ],
+
+  curso2d: {
+    video: "",
+    niveles: [
+      { titulo: "Escenas y organización del proyecto",
+        aprendes: ["Crear un proyecto 2D y moverte por la interfaz de Unity", "Organizar carpetas, escenas y prefabs", "Cambiar de escena con un botón o al llegar a una meta"],
+        construyes: "La estructura de tu juego: menú, primer nivel y pantalla final." },
+      { titulo: "Sonido y música",
+        aprendes: ["Poner música de fondo con Audio Source", "Agregar efectos al saltar, recoger objetos o chocar", "Controlar el volumen de la música y los efectos"],
+        construyes: "Tu juego con música y efectos en las acciones principales." },
+      { titulo: "Interfaz de usuario (UI)",
+        aprendes: ["Canvas, textos, imágenes y botones", "Marcador de puntos, vidas o tiempo", "Menú de inicio y menú de pausa"],
+        construyes: "El menú y el marcador de tu juego." },
+      { titulo: "Tilemaps: construir niveles",
+        aprendes: ["Cortar un tileset con el Sprite Editor", "Pintar el escenario con la Tile Palette", "Separar fondo, suelo y decoración en capas"],
+        construyes: "El primer nivel de tu juego, pintado con tiles." },
+      { titulo: "Físicas y colisiones",
+        aprendes: ["Rigidbody 2D y colliders", "Mover al personaje y hacerlo saltar", "Detectar choques y zonas: recoger objetos, llegar a la meta o caer en un peligro"],
+        construyes: "Un personaje que se mueve, salta e interactúa con el mundo." },
+      { titulo: "Animaciones con Animator",
+        aprendes: ["Animar sprites cuadro a cuadro", "Estados y transiciones: quieto, caminar y saltar", "Cambiar de animación desde el código"],
+        construyes: "Tu personaje con animaciones de quieto, caminar y saltar." },
+      { titulo: "IA sencilla: enemigos que patrullan",
+        aprendes: ["Hacer que un enemigo patrulle entre dos puntos", "Detectar al jugador y reaccionar", "Daño, vidas y reinicio del nivel"],
+        construyes: "Un enemigo que patrulla (o un obstáculo, si tu juego es de puzles) para darle reto a tu juego." }
+    ]
+  },
+
+  curso3d: {
+    video: "",
+    niveles: [
+      { titulo: "Primeros pasos en 3D",
+        aprendes: ["Moverte por una escena 3D: mover, rotar y escalar", "Cámara, luces y cielo (skybox)", "Objetos básicos y prefabs"],
+        construyes: "Tu primera escena 3D iluminada." },
+      { titulo: "Modelado básico en Blender",
+        aprendes: ["La interfaz de Blender y sus atajos esenciales", "Modelar objetos low poly a partir de formas simples", "Ordenar y nombrar tus modelos"],
+        construyes: "Los objetos de tu escenario, modelados por ti." },
+      { titulo: "Materiales y paso a Unity",
+        aprendes: ["Materiales y colores en Blender", "Exportar en FBX con la escala correcta", "Importar los modelos y ajustar sus materiales en Unity"],
+        construyes: "Tus modelos de Blender funcionando dentro de Unity." },
+      { titulo: "Físicas y colisiones en 3D",
+        aprendes: ["Rigidbody y colliders 3D", "Zonas para recoger objetos o llegar a la meta", "Gravedad, fuerzas y rebotes"],
+        construyes: "Un escenario que reacciona: cosas que caen, chocan y se recogen." },
+      { titulo: "Personaje y cámara en tercera persona",
+        aprendes: ["Mover un personaje con Character Controller", "Una cámara que lo sigue en tercera persona", "Saltar y moverse con teclado o control"],
+        construyes: "Un personaje que puedes manejar por tu escenario." },
+      { titulo: "Animaciones 3D",
+        aprendes: ["Importar personajes y animaciones (por ejemplo, desde Mixamo)", "Animator 3D: caminar, correr y saltar", "Mezclar animaciones con Blend Trees"],
+        construyes: "Tu personaje animado en 3D." },
+      { titulo: "Proyecto final: tu juego 3D",
+        aprendes: ["Unir escenario, personaje, sonido e interfaz", "Probar, corregir errores y pulir detalles", "Exportar tu juego para compartirlo"],
+        construyes: "Tu primer juego 3D jugable." }
+    ]
+  },
 
   /* ---------- Clases gratis (TikTok) ----------
      Cuando publiques un video, pega su link en "url". */
