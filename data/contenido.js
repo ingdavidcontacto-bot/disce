@@ -51,9 +51,9 @@ window.DISCE = {
   curso2d: { video: "" },
 
   carrusel: [
-    { imagen: "", logo: "assets/img/Unity-logo.png",   captura: "assets/img/unity.jpg",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Aquí construyes los juegos del curso: escenas, físicas, animaciones y más." },
-    { imagen: "", logo: "assets/img/blender_logo.png", captura: "assets/img/blender.jpg", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para modelar personajes y objetos cuando des el salto al 3D." },
-    { imagen: "", icono: "pixel",  color: "celeste", kicker: "Arte para juegos", titulo: "Pixel art",       texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
+    { imagen: "", logo: "assets/img/Unity-logo.png",   captura: "assets/img/unity-escena.webp",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Aquí construyes los juegos del curso: escenas, físicas, animaciones y más." },
+    { imagen: "", logo: "assets/img/blender_logo.png", captura: "assets/img/blender-disce.webp", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para modelar personajes y objetos cuando des el salto al 3D." },
+    { imagen: "", captura: "assets/img/pixel-disce.webp", icono: "pixel",  color: "celeste", kicker: "Arte para juegos", titulo: "Pixel art",       texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
     { imagen: "", icono: "mando",  color: "lavanda", kicker: "Hecho en clase",  titulo: "Juegos de alumnos", texto: "Muy pronto: capturas de los juegos creados por los estudiantes." }
   ],
 
@@ -122,8 +122,9 @@ window.DISCE = {
   faq: [
     { p: "¿Necesito saber programar?", r: "No. El curso empieza desde cero y cada nivel suma una habilidad nueva a tu propio juego." },
     { p: "¿El curso es presencial o virtual?", r: "El curso Videojuegos 2D con Unity es virtual." },
+    { p: "¿Cuánto cuesta?", r: "El curso Videojuegos 2D con Unity completo (7 niveles) cuesta $150.000 COP y puedes pagarlo en 3 cuotas de $50.000. Si eres estudiante universitario y lo demuestras con tu carné o certificado de estudios vigente, pagas $120.000." },
     { p: "¿Hay cupos disponibles?", r: "En este momento no hay cupos. Únete a la lista de espera en WhatsApp y te avisamos cuando se abra el próximo grupo." },
     { p: "¿Qué computador necesito?", r: "Uno que pueda ejecutar Unity. Revisa los requisitos mínimos en la página oficial de Unity." },
-    { p: "¿Cómo funcionan las clases gratis?", r: "Muy pronto publicaremos videos cortos y sin costo en nuestras redes para que conozcas cómo enseñamos. Además, si estudias en la Universidad Simón Bolívar, sede Cúcuta, tu primera clase es gratis." }
+    { p: "¿Cómo funcionan las clases gratis?", r: "Muy pronto publicaremos videos cortos y sin costo en nuestras redes para que conozcas cómo enseñamos. Además, si eres estudiante universitario y lo demuestras con tu carné o certificado de estudios vigente, tu primera clase es gratis: escríbenos por WhatsApp para agendarla." }
   ]
 };
