@@ -823,3 +823,5 @@ html[data-theme="dark"] .avatar { box-shadow: 0 0 0 2px rgba(16,18,58,.9), var(-
   .auth-link.is-user { padding: 5px; }
   .auth-link.is-user .auth-link__name { display: none; }
 }
+.level__dur { flex: none; font-size: 12.5px; font-weight: 600; color: var(--gris); white-space: nowrap; }
+@media (max-width: 480px) { .level__dur { display: none; } }

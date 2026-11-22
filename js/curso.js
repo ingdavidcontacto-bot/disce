@@ -51,7 +51,7 @@
          </div>`
       : "";
     return `<li><details class="level ${cls}"${num === 1 ? " open" : ""}>
-      <summary><span class="level__num">NIVEL ${num}</span><span class="level__name">${esc(n.titulo)}</span>${estado ? `<span class="level__state">${estado}</span>` : ""}${cuerpo ? '<span class="level__chev" aria-hidden="true"></span>' : ""}</summary>
+      <summary><span class="level__num">NIVEL ${num}</span><span class="level__name">${esc(n.titulo)}</span>${n.duracion ? `<span class="level__dur">${esc(n.duracion)}</span>` : ""}${estado ? `<span class="level__state">${estado}</span>` : ""}${cuerpo ? '<span class="level__chev" aria-hidden="true"></span>' : ""}</summary>
       ${cuerpo}
     </details></li>`;
   }).join("");
