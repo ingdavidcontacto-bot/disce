@@ -32,13 +32,33 @@
     return n || String(u.email || "").split("@")[0];
   };
 
+  // Iniciales para la burbuja: "David García" -> "DG"; si no hay nombre, primera letra del correo
+  function iniciales(u) {
+    const partes = nombreDe(u).split(/\s+/).filter(Boolean);
+    const ini = partes.length > 1 ? partes[0][0] + partes[1][0] : (partes[0] || "?").slice(0, 2);
+    return ini.toUpperCase();
+  }
+
   function pintarHeader() {
     document.querySelectorAll("[data-auth-link]").forEach((a) => {
+      a.textContent = "";
       if (user) {
-        a.textContent = "Mi cuenta";
+        const primerNombre = nombreDe(user).split(/\s+/)[0] || "Mi cuenta";
+        const burbuja = document.createElement("span");
+        burbuja.className = "avatar";
+        burbuja.setAttribute("aria-hidden", "true");
+        burbuja.textContent = iniciales(user);
+        const nombre = document.createElement("span");
+        nombre.className = "auth-link__name";
+        nombre.textContent = primerNombre;
+        a.append(burbuja, nombre);
+        a.classList.add("is-user");
+        a.setAttribute("aria-label", "Mi cuenta: " + primerNombre);
         a.title = user.email || "";
       } else {
         a.textContent = "Ingresar";
+        a.classList.remove("is-user");
+        a.removeAttribute("aria-label");
         a.removeAttribute("title");
       }
       a.href = "cuenta.html";

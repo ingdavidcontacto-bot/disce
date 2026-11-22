@@ -813,3 +813,13 @@ details.level { display: block; padding: 0; }
 @media (max-width: 640px) { .level__body { padding: 0 14px 14px; } }
 html[data-theme="dark"] .level__sub { color: #8EA3FF; }
 html[data-theme="dark"] .level__chev { border-color: #8EA3FF; }
+
+/* ---------- Sesión iniciada: burbuja con iniciales en el encabezado ---------- */
+.auth-link.is-user { display: inline-flex; align-items: center; gap: 8px; padding-left: 5px; }
+.avatar { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--grad); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .02em; box-shadow: 0 0 0 2px rgba(255,255,255,.8), var(--glow); }
+.auth-link__name { max-width: 110px; overflow: hidden; text-overflow: ellipsis; }
+html[data-theme="dark"] .avatar { box-shadow: 0 0 0 2px rgba(16,18,58,.9), var(--glow); }
+@media (max-width: 600px) {
+  .auth-link.is-user { padding: 5px; }
+  .auth-link.is-user .auth-link__name { display: none; }
+}
