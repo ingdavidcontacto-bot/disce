@@ -138,14 +138,14 @@
   } // fin del formulario de testimonio
 
   /* ---------- WhatsApp, menú, año ---------- */
-  // Lista de espera -> canal de WhatsApp (si existe); botón flotante -> chat directo
+  // Lista de espera y botón flotante -> canal de WhatsApp; mientras no exista, chat directo
   const numero = contacto.whatsapp ? String(contacto.whatsapp).replace(/\D/g, "") : "";
   const chat = (texto) => (numero ? "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto) : "");
   const canal = contacto.canal || contacto.comunidad || "";
   const wa = canal || chat("Hola, quiero unirme a la lista de espera de disce.");
   const chatDirecto = chat("Hola, tengo una pregunta sobre los cursos de disce.");
   if (wa) document.querySelectorAll("[data-lista-espera]").forEach((a) => { a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
-  if (wa) { $("#waFloat").href = chatDirecto || wa; $("#waFloat").hidden = false; }
+  if (wa) { $("#waFloat").href = canal || chatDirecto || wa; $("#waFloat").hidden = false; }
 
   const toggle = $("#menuToggle"), nav = $("#nav");
   if (toggle && nav) {

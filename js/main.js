@@ -293,7 +293,7 @@
 
   $("#faqList").innerHTML = (D.faq || []).map((q) => `<details><summary>${esc(q.p)}</summary><p>${esc(q.r)}</p></details>`).join("");
 
-  // Lista de espera -> canal de WhatsApp (si existe); botón flotante -> chat directo
+  // Lista de espera y botón flotante -> canal de WhatsApp; mientras no exista, chat directo
   const numero = contacto.whatsapp ? String(contacto.whatsapp).replace(/\D/g, "") : "";
   const chat = (texto) => (numero ? "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto) : "");
   const canal = contacto.canal || contacto.comunidad || "";
@@ -302,7 +302,7 @@
   if (wa) document.querySelectorAll("[data-lista-espera]").forEach((a) => { a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
   if (wa) {
     $("#linkWhatsapp").href = wa; $("#linkWhatsapp").hidden = false;
-    $("#waFloat").href = chatDirecto || wa; $("#waFloat").hidden = false;
+    $("#waFloat").href = canal || chatDirecto || wa; $("#waFloat").hidden = false;
   }
   if (contacto.email) {
     $("#linkEmail").href = "mailto:" + contacto.email; $("#linkEmail").hidden = false;
