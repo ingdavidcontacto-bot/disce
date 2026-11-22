@@ -284,12 +284,15 @@
   /* =======================================================
      PROFE, FAQ, CONTACTO, MENÚ
      ======================================================= */
-  if (D.fotoPortada) {
-    $("#heroPerson").innerHTML = `<img src="${esc(D.fotoPortada)}" alt="Estudiante señalando el título de la página">`;
-  }
-  if (D.fotoProfe) {
-    $("#profePhoto").innerHTML = `<img src="${esc(D.fotoProfe)}" alt="David A. García G., profe de disce">`;
-  }
+  // Las fotos ya vienen en el HTML; solo se cambian si data/contenido.js indica otra
+  const ponerFoto = (sel, src, alt) => {
+    if (!src) return;
+    const img = $(sel + " img");
+    if (img) { if (img.getAttribute("src") !== src) img.src = src; }
+    else $(sel).innerHTML = `<img src="${esc(src)}" alt="${esc(alt)}">`;
+  };
+  ponerFoto("#heroPerson", D.fotoPortada, "Estudiante señalando el título de la página");
+  ponerFoto("#profePhoto", D.fotoProfe, "David A. García G., profe de disce");
 
   $("#faqList").innerHTML = (D.faq || []).map((q) => `<details><summary>${esc(q.p)}</summary><p>${esc(q.r)}</p></details>`).join("");
 
