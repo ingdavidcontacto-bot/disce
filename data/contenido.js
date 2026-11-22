@@ -18,10 +18,11 @@ window.DISCE = {
   /* ---------- Contacto y redes ---------- */
   contacto: {
     whatsapp: "573123771399",  // Solo números con código de país, ej: "573001234567"
-    // Enlace de invitación a la comunidad/grupo de WhatsApp de disce (lista de espera).
-    // Cuando lo tengas, pégalo aquí, ej: "https://chat.whatsapp.com/XXXXXXXX".
-    // Mientras esté vacío, los botones abren tu chat con un mensaje listo.
-    comunidad: "",
+    // Enlace del CANAL de WhatsApp de disce (lista de espera y anuncios).
+    // Cuando lo tengas, pégalo aquí, ej: "https://whatsapp.com/channel/XXXXXXXX".
+    // Mientras esté vacío, "Lista de espera" abre tu chat con un mensaje listo.
+    // El botón flotante de WhatsApp siempre abre el chat directo (preguntas e inscripciones).
+    canal: "",
     email: "",     // ej: "tucorreo@gmail.com"
     tiktok: ""     // ej: "https://www.tiktok.com/@disce"
   },

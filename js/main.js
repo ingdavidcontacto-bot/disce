@@ -293,15 +293,16 @@
 
   $("#faqList").innerHTML = (D.faq || []).map((q) => `<details><summary>${esc(q.p)}</summary><p>${esc(q.r)}</p></details>`).join("");
 
-  // Lista de espera: comunidad de WhatsApp si existe; si no, chat con mensaje listo
-  const msgEspera = encodeURIComponent("Hola, quiero unirme a la lista de espera de disce.");
-  const wa = contacto.comunidad
-    ? contacto.comunidad
-    : (contacto.whatsapp ? "https://wa.me/" + String(contacto.whatsapp).replace(/\D/g, "") + "?text=" + msgEspera : "");
+  // Lista de espera -> canal de WhatsApp (si existe); botón flotante -> chat directo
+  const numero = contacto.whatsapp ? String(contacto.whatsapp).replace(/\D/g, "") : "";
+  const chat = (texto) => (numero ? "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto) : "");
+  const canal = contacto.canal || contacto.comunidad || "";
+  const wa = canal || chat("Hola, quiero unirme a la lista de espera de disce.");
+  const chatDirecto = chat("Hola, tengo una pregunta sobre los cursos de disce.");
   if (wa) document.querySelectorAll("[data-lista-espera]").forEach((a) => { a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
   if (wa) {
     $("#linkWhatsapp").href = wa; $("#linkWhatsapp").hidden = false;
-    $("#waFloat").href = wa; $("#waFloat").hidden = false;
+    $("#waFloat").href = chatDirecto || wa; $("#waFloat").hidden = false;
   }
   if (contacto.email) {
     $("#linkEmail").href = "mailto:" + contacto.email; $("#linkEmail").hidden = false;
