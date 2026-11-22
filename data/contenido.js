@@ -22,7 +22,7 @@ window.DISCE = {
     // Cuando lo tengas, pégalo aquí, ej: "https://whatsapp.com/channel/XXXXXXXX".
     // Mientras esté vacío, "Lista de espera" abre tu chat con un mensaje listo.
     // El botón flotante de WhatsApp también lleva al canal.
-    canal: "",
+    canal: "https://whatsapp.com/channel/0029VbEWshW4NVisSrwOcd1M",
     email: "",     // ej: "tucorreo@gmail.com"
     tiktok: ""     // ej: "https://www.tiktok.com/@disce"
   },
