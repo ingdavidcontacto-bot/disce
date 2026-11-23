@@ -23,7 +23,7 @@ window.DISCE = {
     // Mientras esté vacío, "Lista de espera" abre tu chat con un mensaje listo.
     // El botón flotante de WhatsApp también lleva al canal.
     canal: "https://whatsapp.com/channel/0029VbEWshW4NVisSrwOcd1M",
-    email: "",     // ej: "tucorreo@gmail.com"
+    email: "disce.academia@gmail.com",
     tiktok: ""     // ej: "https://www.tiktok.com/@disce"
   },
 
