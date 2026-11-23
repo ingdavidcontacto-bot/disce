@@ -26,7 +26,7 @@ window.DISCE = {
     email: "disce.academia@gmail.com",
     // Redes sociales: pega el enlace completo del perfil (https://...).
     // Mientras esté vacío, la tarjeta sale como "Muy pronto".
-    instagram: "", // ej: "https://www.instagram.com/disce"
+    instagram: "https://www.instagram.com/disce.academy/",
     tiktok: ""     // ej: "https://www.tiktok.com/@disce"
   },
 
