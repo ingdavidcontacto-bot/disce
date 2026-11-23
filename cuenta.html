@@ -108,9 +108,9 @@
             <input id="reNombre" name="nombre" type="text" maxlength="60" required autocomplete="name">
             <label for="reCorreo">Correo</label>
             <input id="reCorreo" name="correo" type="email" required autocomplete="email" inputmode="email">
-            <label for="reClave">Contraseña <span class="muted small">(mínimo 8 caracteres)</span></label>
+            <label for="reClave">Contraseña <span class="muted small">(mínimo 10, con letras y números)</span></label>
             <div class="pass">
-              <input id="reClave" name="clave" type="password" minlength="8" required autocomplete="new-password">
+              <input id="reClave" name="clave" type="password" minlength="10" required autocomplete="new-password">
               <button type="button" class="pass__ver" data-ver="reClave" aria-label="Mostrar contraseña">Ver</button>
             </div>
             <label class="auth-check"><input type="checkbox" name="acepto" required> <span>Acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de tratamiento de datos</a> y autorizo a disce a guardar mi nombre y mi correo para gestionar mi cuenta y mis testimonios.</span></label>
@@ -133,9 +133,9 @@
         <!-- ===== Nueva contraseña (desde el enlace del correo) ===== -->
         <form class="testi-form" id="formNueva" novalidate hidden>
           <h2 class="h3">Crea tu nueva contraseña</h2>
-          <label for="nuClave">Nueva contraseña <span class="muted small">(mínimo 8 caracteres)</span></label>
+          <label for="nuClave">Nueva contraseña <span class="muted small">(mínimo 10, con letras y números)</span></label>
           <div class="pass">
-            <input id="nuClave" name="clave" type="password" minlength="8" required autocomplete="new-password">
+            <input id="nuClave" name="clave" type="password" minlength="10" required autocomplete="new-password">
             <button type="button" class="pass__ver" data-ver="nuClave" aria-label="Mostrar contraseña">Ver</button>
           </div>
           <button class="btn btn--lime btn--block" type="submit">Guardar contraseña</button>

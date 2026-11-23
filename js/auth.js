@@ -90,7 +90,7 @@
     if (code === "invalid_credentials" || msg.includes("invalid login")) return "Correo o contraseña incorrectos.";
     if (code === "email_not_confirmed" || msg.includes("not confirmed")) return "Aún no has confirmado tu correo. Abre el enlace que te enviamos y revisa también la carpeta de spam.";
     if (code === "user_already_exists" || msg.includes("already registered")) return "Ya existe una cuenta con ese correo. Ingresa o recupera tu contraseña.";
-    if (code === "weak_password" || msg.includes("password should")) return "La contraseña es muy débil. Usa al menos 8 caracteres.";
+    if (code === "weak_password" || msg.includes("password should")) return "La contraseña es muy débil. Usa al menos 10 caracteres, con letras y números.";
     if (code === "same_password") return "La nueva contraseña debe ser distinta de la anterior.";
     if (code === "email_address_invalid" || msg.includes("invalid format") || msg.includes("unable to validate email")) return "Ese correo no es válido.";
     if (code === "email_address_not_authorized") return "Por ahora no podemos enviar correos a esa dirección. Escríbenos por WhatsApp.";

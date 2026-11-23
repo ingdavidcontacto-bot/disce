@@ -61,7 +61,7 @@ Configuración en Supabase (una sola vez):
 1. **Authentication → Sign In / Providers → Email**: activado, con *Confirm email* activado.
 2. **Authentication → URL Configuration**:
    - *Site URL*: `https://disce-two.vercel.app`
-   - *Redirect URLs*: `https://disce-two.vercel.app/**` (y `http://127.0.0.1:5500/**` para probar con Live Server)
+   - *Redirect URLs*: `https://disce-two.vercel.app/**`
 3. **Authentication → Emails → SMTP Settings**: activa *custom SMTP* (por ejemplo Gmail con
    contraseña de aplicación: host `smtp.gmail.com`, puerto `587`). Sin esto, Supabase solo envía
    correos a los miembros de tu equipo y máximo 2 por hora.

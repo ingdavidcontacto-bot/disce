@@ -4,6 +4,13 @@
    ========================================================= */
 
 (function () {
+  // Misma regla que Supabase: mínimo 10 caracteres, con letras y números.
+  function revisarClave(clave) {
+    if (clave.length < 10) return "La contraseña debe tener al menos 10 caracteres.";
+    if (!/[a-zA-Z]/.test(clave) || !/[0-9]/.test(clave)) return "La contraseña debe combinar letras y números.";
+    return "";
+  }
+
   const A = window.disceAuth;
   const $ = (s) => document.querySelector(s);
   const params = new URLSearchParams(location.search);
@@ -94,7 +101,8 @@
     if (nombre.length < 2) return say(form, "Escribe tu nombre.", "err");
     if (nombre.length > 60) return say(form, "Tu nombre puede tener máximo 60 caracteres.", "err");
     if (!correoOk(correo)) return say(form, "Escribe un correo válido.", "err");
-    if (clave.length < 8) return say(form, "La contraseña debe tener al menos 8 caracteres.", "err");
+    const errClave = revisarClave(clave);
+    if (errClave) return say(form, errClave, "err");
     if (!form.acepto.checked) return say(form, "Debes aceptar la política de tratamiento de datos para crear la cuenta.", "err");
     ocupado(form, true); say(form, "Creando tu cuenta…");
     const { data, error } = await auth.signUp({
@@ -136,7 +144,8 @@
     e.preventDefault();
     const form = e.currentTarget;
     const clave = form.clave.value;
-    if (clave.length < 8) return say(form, "La contraseña debe tener al menos 8 caracteres.", "err");
+    const errClave = revisarClave(clave);
+    if (errClave) return say(form, errClave, "err");
     ocupado(form, true); say(form, "Guardando…");
     const { error } = await auth.updateUser({ password: clave });
     ocupado(form, false);
