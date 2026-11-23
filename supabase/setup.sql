@@ -52,3 +52,12 @@ create policy "registrados envian sin aprobar"
 revoke all on public.testimonios from anon, authenticated;
 grant select (id, nombre, curso, calificacion, mensaje, creado) on public.testimonios to anon, authenticated;
 grant insert (nombre, curso, calificacion, mensaje) on public.testimonios to authenticated;
+
+-- ---------------------------------------------------------
+-- ADMINISTRADOR: para moderar los testimonios desde la web
+-- (admin.html), ejecuta DESPUÉS de este archivo supabase/admin.sql.
+-- Ese archivo agrega la tabla de administradores, la función es_admin()
+-- y los permisos de aprobar, ocultar y borrar (solo para administradores).
+-- Si vuelves a ejecutar este setup.sql, vuelve a ejecutar también admin.sql,
+-- porque el "revoke all" de arriba quita los permisos que admin.sql agrega.
+-- ---------------------------------------------------------

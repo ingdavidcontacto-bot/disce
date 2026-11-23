@@ -146,6 +146,26 @@
     aviso("Cerraste sesión.", "ok");
   });
 
+  /* ---------- Enlace al panel (solo administradores) ----------
+     Solo muestra u oculta el enlace; la seguridad está en Supabase. */
+  let adminRevisado = "";
+  async function revisarAdmin(user) {
+    const enlace = $("#cuAdmin");
+    if (!user) { enlace.hidden = true; adminRevisado = ""; return; }
+    if (adminRevisado === user.id) return;
+    adminRevisado = user.id;
+    enlace.hidden = true;
+    try {
+      const { data, error } = await A.client.rpc("es_admin");
+      if (adminRevisado !== user.id) return;   // cambió la sesión mientras esperaba
+      enlace.hidden = !(!error && data === true);
+      if (error) adminRevisado = "";           // reintentar en el próximo cambio de sesión
+    } catch (e) {
+      enlace.hidden = true;                    // si falla, no se muestra
+      adminRevisado = "";
+    }
+  }
+
   /* ---------- Estado de la sesión ---------- */
   function pintar(user) {
     if (user && recuperando) { mostrar("#formNueva"); $("#nuClave").focus(); return; }
@@ -182,6 +202,7 @@
       return;
     }
     pintar(user);
+    revisarAdmin(user);
   });
 
 })();

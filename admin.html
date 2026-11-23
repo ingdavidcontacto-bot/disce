@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administración · disce</title>
+<meta name="description" content="Panel de administración de disce.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<meta name="color-scheme" content="light dark">
+<script>/* Tema antes de pintar, para evitar parpadeo */try{var t=localStorage.getItem("disce-tema");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="brand" aria-label="disce, ir al inicio">
+      <svg class="brand__cube" viewBox="0 0 80 92" aria-hidden="true">
+        <polygon points="40,4 76,24 40,44 4,24" fill="#C6F432" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="4,24 40,44 40,88 4,68" fill="#16161A" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="40,44 76,24 76,68 40,88" fill="none" stroke="#16161A" stroke-width="6" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">d<span class="i">ı<span class="px"></span></span>sce</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="index.html#quienes">Nosotros</a>
+      <a href="index.html#ruta">Cursos</a>
+      <a href="index.html#gratis">Clase gratis</a>
+      <a href="index.html#faq">Preguntas</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--lime btn--sm header__cta" href="index.html#contacto" data-lista-espera><span class="cta-full">Únete a la lista de espera</span><span class="cta-short">Lista de espera</span></a>
+      <div class="settings">
+        <button class="settings__btn" id="ajustesBtn" type="button" aria-label="Ajustes" aria-expanded="false" aria-controls="ajustesPanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94a7.07 7.07 0 0 0 .06-.94 7.07 7.07 0 0 0-.06-.94l2.03-1.58a.48.48 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54A.48.48 0 0 0 13.93 2h-3.86a.48.48 0 0 0-.48.41l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.71 8.47a.48.48 0 0 0 .12.61l2.03 1.58a7.4 7.4 0 0 0 0 1.88l-2.03 1.58a.48.48 0 0 0-.12.61l1.92 3.32c.12.21.37.3.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.25.41.48.41h3.86c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47-.01.59-.22l1.92-3.32a.48.48 0 0 0-.12-.61l-2.03-1.58ZM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2Z"/></svg>
+        </button>
+        <div class="settings__panel" id="ajustesPanel" role="dialog" aria-label="Ajustes" hidden>
+          <p class="settings__label" id="lblTema">Tema</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lblTema">
+            <button type="button" role="radio" data-tema="light" aria-checked="true"><span aria-hidden="true">☀</span> Claro</button>
+            <button type="button" role="radio" data-tema="dark" aria-checked="false"><span aria-hidden="true">☾</span> Oscuro</button>
+          </div>
+          <p class="settings__label" id="lblIdioma">Idioma</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lblIdioma">
+            <button type="button" role="radio" aria-checked="true">Español</button>
+            <button type="button" role="radio" aria-checked="false" disabled>English <small>Próximamente</small></button>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="section sec sec--tint admin-page">
+    <div class="wrap admin">
+
+      <div class="admin__head">
+        <div>
+          <p class="eyebrow">Panel de administración</p>
+          <h1>Modera los <span class="hl">testimonios</span></h1>
+          <p class="lead">Aprueba lo que se publica en la página, oculta lo que ya no quieras mostrar o elimínalo.</p>
+        </div>
+        <div class="admin__tools" id="adminTools" hidden>
+          <p class="admin__who">Administrador: <strong id="adCorreo"></strong></p>
+          <button class="btn btn--ghost btn--sm" type="button" id="adActualizar">Actualizar</button>
+        </div>
+      </div>
+
+      <p class="form-msg admin__aviso" id="adAviso" role="status" aria-live="polite"></p>
+
+      <!-- ===== Cargando ===== -->
+      <div class="testi-form admin-gate" id="vistaCargando">
+        <p class="muted" id="adCargandoTxt">Revisando tu sesión…</p>
+        <button class="btn btn--ghost btn--sm" type="button" id="adReintentar" hidden>Reintentar</button>
+      </div>
+
+      <!-- ===== Sin sesión ===== -->
+      <div class="testi-form admin-gate" id="vistaSinSesion" hidden>
+        <h2 class="h3">Ingresa para continuar</h2>
+        <p class="muted">Esta sección es solo para administradores de disce. Ingresa con tu cuenta.</p>
+        <a class="btn btn--lime" href="cuenta.html?next=admin.html">Ingresar</a>
+      </div>
+
+      <!-- ===== Sin permiso ===== -->
+      <div class="testi-form admin-gate" id="vistaSinAcceso" hidden>
+        <h2 class="h3">No tienes acceso a esta sección</h2>
+        <p class="muted">Ingresaste con <strong id="adCorreoNo"></strong>, que no es una cuenta de administrador.</p>
+        <a class="btn btn--ghost" href="index.html">Ir al inicio</a>
+        <p class="auth-alt"><button type="button" class="link-btn" id="adSalir">Cerrar sesión y entrar con otra cuenta</button></p>
+      </div>
+
+      <!-- ===== Panel ===== -->
+      <div id="vistaPanel" hidden>
+        <section class="admin-group" aria-labelledby="tPendientes">
+          <div class="admin-group__head">
+            <h2 class="h3" id="tPendientes">Pendientes</h2>
+            <span class="badge" id="cPendientes">0</span>
+          </div>
+          <p class="empty admin-empty" id="vPendientes" hidden>No hay testimonios pendientes. ¡Todo al día!</p>
+          <div class="admin-list" id="lPendientes"></div>
+        </section>
+
+        <section class="admin-group" aria-labelledby="tPublicados">
+          <div class="admin-group__head">
+            <h2 class="h3" id="tPublicados">Publicados</h2>
+            <span class="badge badge--lime" id="cPublicados">0</span>
+          </div>
+          <p class="empty admin-empty" id="vPublicados" hidden>Aún no hay testimonios publicados.</p>
+          <div class="admin-list" id="lPublicados"></div>
+        </section>
+      </div>
+
+      <noscript><p class="form-msg err">Activa JavaScript para usar el panel.</p></noscript>
+    </div>
+  </section>
+</main>
+
+<!-- Confirmación de borrado -->
+<dialog class="modal admin-dialog" id="dlgBorrar" aria-labelledby="dlgTitulo" aria-describedby="dlgTexto">
+  <form class="modal__box" method="dialog">
+    <h2 class="h3" id="dlgTitulo">¿Eliminar este testimonio?</h2>
+    <p class="muted" id="dlgTexto">Se borra para siempre y no se puede recuperar.</p>
+    <blockquote class="admin-dialog__quote" id="dlgCita"></blockquote>
+    <div class="admin-dialog__actions">
+      <button class="btn btn--ghost btn--sm" value="cancelar" type="submit" autofocus>Cancelar</button>
+      <button class="btn btn--sm admin-btn--danger" value="eliminar" type="submit">Sí, eliminar</button>
+    </div>
+  </form>
+</dialog>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span class="wordmark wordmark--sm">d<span class="i">ı<span class="px"></span></span>sce</span>
+    <p>© <span id="year"></span> disce · David A. García G.</p>
+  </div>
+</footer>
+
+<script src="data/contenido.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
+<script src="js/ajustes.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
