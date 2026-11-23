@@ -927,3 +927,41 @@ html[data-theme="dark"] .auth-check a { color: #8EA3FF; }
 .legal__toc { columns: 2; column-gap: 32px; }
 @media (max-width: 640px) { .legal__toc { columns: 1; } }
 html[data-theme="dark"] .legal a { color: #8EA3FF; }
+
+/* ---------- Redes sociales ---------- */
+.redes__intro { max-width: 380px; margin: 0; }
+.redes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.red {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: 1fr auto; column-gap: 16px; row-gap: 14px;
+  padding: 22px; color: inherit; text-decoration: none;
+  background: rgba(255,255,255,.88); border: 1px solid var(--linea); border-radius: var(--radio);
+  box-shadow: var(--glow); backdrop-filter: blur(8px);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+a.red:hover, a.red:focus-visible { transform: translateY(-4px); box-shadow: var(--glow-fuerte); border-color: var(--lila); }
+.red__ico { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; color: #fff; background: var(--grad); box-shadow: 0 10px 22px -12px rgba(0, 51, 255, .7); }
+.red__ico svg { width: 26px; height: 26px; }
+.red__ico--instagram { background: linear-gradient(135deg, #FFCCF2 0%, #977DFF 45%, #0033FF 100%); }
+.red__ico--tiktok { background: linear-gradient(135deg, #0600AB 0%, #00033D 100%); }
+.red__ico--canal { background: linear-gradient(135deg, #977DFF 0%, #0600AB 100%); }
+.red__txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.red__txt strong { font-size: 18px; color: var(--azul-noche); }
+.red__user { font-size: 14px; font-weight: 600; color: var(--azul); overflow-wrap: anywhere; }
+.red__desc { font-size: 15px; color: var(--gris); }
+.red__go, .red .badge { grid-column: 1 / -1; justify-self: start; }
+.red__go { font-weight: 700; color: var(--azul); }
+.red--soon .red__ico { filter: saturate(.55); opacity: .85; }
+html[data-theme="dark"] .red { background: var(--vidrio); }
+html[data-theme="dark"] .red__user, html[data-theme="dark"] .red__go { color: #B9A8FF; }
+.footer__redes { display: flex; gap: 10px; }
+.footer__redes:empty { display: none; }
+.footer__redes a { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); transition: background .2s, transform .2s; }
+.footer__redes a:hover, .footer__redes a:focus-visible { background: rgba(151, 125, 255, .35); transform: translateY(-2px); }
+.footer__redes svg { width: 20px; height: 20px; }
+@media (max-width: 900px) {
+  .redes { grid-template-columns: 1fr; gap: 14px; }
+  .red { padding: 18px; grid-template-rows: auto; }
+  .red__go, .red .badge { grid-column: 2; }
+}
+@media (min-width: 901px) { .footer__redes { margin-right: 76px; } }  /* deja espacio al botón flotante de WhatsApp */
+html[data-theme="dark"] .red__ico--tiktok { background: linear-gradient(135deg, #2A2FB8 0%, #0600AB 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }

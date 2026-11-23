@@ -24,6 +24,9 @@ window.DISCE = {
     // El botón flotante de WhatsApp también lleva al canal.
     canal: "https://whatsapp.com/channel/0029VbEWshW4NVisSrwOcd1M",
     email: "disce.academia@gmail.com",
+    // Redes sociales: pega el enlace completo del perfil (https://...).
+    // Mientras esté vacío, la tarjeta sale como "Muy pronto".
+    instagram: "", // ej: "https://www.instagram.com/disce"
     tiktok: ""     // ej: "https://www.tiktok.com/@disce"
   },
 

@@ -200,6 +200,43 @@
   }
 
   /* =======================================================
+     REDES SOCIALES (Instagram, TikTok, canal de WhatsApp)
+     ======================================================= */
+  function renderRedes() {
+    const ico = {
+      instagram: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg>`,
+      tiktok: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M14 3c.4 2.9 2.3 4.8 5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+      canal: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.6 19z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`
+    };
+    // Saca "@usuario" del enlace del perfil para mostrarlo en la tarjeta.
+    const usuario = (url) => {
+      const m = /(?:instagram\.com|tiktok\.com)\/@?([\w.]+)/i.exec(url);
+      return m ? "@" + m[1] : "";
+    };
+    const segura = (v) => (/^https:\/\//i.test(urlSegura(v)) ? urlSegura(v) : "");
+    const redes = [
+      { id: "instagram", nombre: "Instagram", url: segura(contacto.instagram), texto: "Capturas, avances de los proyectos y la vida del curso." },
+      { id: "tiktok", nombre: "TikTok", url: segura(contacto.tiktok), texto: "Clases cortas y gratis para que veas cómo enseñamos." },
+      { id: "canal", nombre: "Canal de WhatsApp", url: segura(contacto.canal), texto: "Avisos de cupos, fechas y la lista de espera." }
+    ];
+    $("#redesLista").innerHTML = redes.map((r) => {
+      const arroba = r.id === "canal" ? "disce" : usuario(r.url);
+      const cuerpo = `
+        <span class="red__ico red__ico--${r.id}">${ico[r.id]}</span>
+        <span class="red__txt">
+          <strong>${esc(r.nombre)}</strong>
+          ${arroba && r.url ? `<span class="red__user">${esc(arroba)}</span>` : ""}
+          <span class="red__desc">${esc(r.texto)}</span>
+        </span>`;
+      return r.url
+        ? `<a class="red" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${cuerpo}<span class="red__go">Seguir <span aria-hidden="true">→</span></span></a>`
+        : `<div class="red red--soon">${cuerpo}<span class="badge badge--off">Muy pronto</span></div>`;
+    }).join("");
+    $("#footerRedes").innerHTML = redes.filter((r) => r.url).map((r) =>
+      `<a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="disce en ${esc(r.nombre)}">${ico[r.id]}</a>`).join("");
+  }
+
+  /* =======================================================
      PROYECTOS + FILTROS + MODAL
      ======================================================= */
   let filtro = "Todos";
@@ -365,6 +402,7 @@
   renderCounters();
   if ($("#levels")) renderLevels();
   renderFree();
+  if ($("#redesLista")) renderRedes();
   renderFilters();
   renderProjects();
   if ($("#timeline")) renderTimeline();
