@@ -232,8 +232,6 @@
         ? `<a class="red" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${cuerpo}<span class="red__go">Seguir <span aria-hidden="true">→</span></span></a>`
         : `<div class="red red--soon">${cuerpo}<span class="badge badge--off">Muy pronto</span></div>`;
     }).join("");
-    $("#footerRedes").innerHTML = redes.filter((r) => r.url).map((r) =>
-      `<a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer" aria-label="disce en ${esc(r.nombre)}">${ico[r.id]}</a>`).join("");
   }
 
   /* =======================================================
