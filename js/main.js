@@ -14,6 +14,32 @@
   // Escapa texto para que nunca se interprete como HTML
   const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  /* Seguridad: solo se aceptan enlaces https:// o rutas internas de la página
+     (assets/..., archivo.html). Así un enlace mal pegado en data/contenido.js
+     (p. ej. "javascript:..." o "data:...") nunca llega a un href o src. */
+  const urlSegura = (v) => {
+    const u = String(v ?? "").trim();
+    if (!u) return "";
+    if (/^https:\/\//i.test(u)) return u;
+    if (/^(?![a-z][a-z0-9+.-]*:)(?!\/\/)[\w\-./#?=&%]+$/i.test(u)) return u;   // ruta relativa sin esquema
+    return "";
+  };
+  // Valida el correo de contacto antes de armar el enlace mailto:
+  const correoSeguro = (v) => (/^[^\s@<>"']+@[^\s@<>"']+\.[a-z]{2,}$/i.test(String(v || "").trim()) ? String(v).trim() : "");
+
+  /* Videos: solo YouTube (sin cookies), Vimeo y Google Drive, convertidos a su
+     dirección de inserción. Cualquier otra dirección se ignora. */
+  const embedUrl = (url) => {
+    const u = String(url || "").trim();
+    let m = u.match(/^https:\/\/(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,20})/);
+    if (m) return "https://www.youtube-nocookie.com/embed/" + m[1];
+    m = u.match(/^https:\/\/(?:www\.|player\.)?vimeo\.com\/(?:video\/)?(\d+)/);
+    if (m) return "https://player.vimeo.com/video/" + m[1];
+    m = u.match(/^https:\/\/drive\.google\.com\/file\/d\/([\w-]+)/);
+    if (m) return "https://drive.google.com/file/d/" + m[1] + "/preview";
+    return "";
+  };
+
   const formatDate = (s) => {
     if (!/^\d{4}-\d{2}-\d{2}/.test(s || "")) return esc(s);
     const d = new Date(String(s).slice(0, 10) + "T12:00:00");
@@ -22,7 +48,7 @@
 
   const img = (src, alt, cls) =>
     src
-      ? `<img class="${cls}" src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`
+      ? `<img class="${cls}" src="${esc(urlSegura(src))}" alt="${esc(alt)}" loading="lazy">`
       : `<div class="placeholder" role="img" aria-label="Sin captura todavía">CAPTURA DEL JUEGO</div>`;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -39,13 +65,10 @@
     }</svg>`,
     mando: `<svg class="slide__icon" viewBox="0 0 120 80" aria-hidden="true"><rect x="4" y="10" width="112" height="62" rx="28" fill="#FFFFFF" stroke="#16161A" stroke-width="4"/><rect x="26" y="34" width="26" height="9" fill="#16161A"/><rect x="34.5" y="25.5" width="9" height="26" fill="#16161A"/><circle cx="84" cy="32" r="7" fill="#5E86BF" stroke="#16161A" stroke-width="3"/><circle cx="96" cy="44" r="7" fill="#16161A"/></svg>`
   };
-  const COLORES = {
-    lavanda: "linear-gradient(135deg, #EEF3FB 0%, #FFFFFF 60%)",
-    menta: "linear-gradient(135deg, #E6EEF9 0%, #FFFFFF 60%)",
-    durazno: "linear-gradient(135deg, #F2F6FC 0%, #E3ECF8 100%)",
-    celeste: "linear-gradient(135deg, #FFFFFF 0%, #E3ECF8 100%)",
-    lima: "linear-gradient(135deg, #E3ECF8 0%, #FFFFFF 70%)"
-  };
+  // Los degradados están en css/styles.css (.slide__art--lavanda, etc.).
+  // Antes iban en style="..." dentro del HTML, lo que obligaba a permitir estilos en línea en la CSP.
+  const COLORES = ["lavanda", "menta", "durazno", "celeste", "lima"];
+  const colorDe = (c) => "slide__art--" + (COLORES.includes(c) ? c : "lavanda");
 
   function initCarousel() {
     const slides = D.carrusel || [];
@@ -56,19 +79,19 @@
     track.innerHTML = slides.map((s, i) => `
       <div class="slide" role="group" aria-roledescription="diapositiva" aria-label="${i + 1} de ${slides.length}: ${esc(s.titulo)}" ${i ? 'aria-hidden="true"' : ""}>
         ${s.imagen
-          ? `<img src="${esc(s.imagen)}" alt="${esc(s.titulo)}" loading="lazy">${s.titulo ? `<span class="slide__caption">${esc(s.titulo)}</span>` : ""}`
+          ? `<img src="${esc(urlSegura(s.imagen))}" alt="${esc(s.titulo)}" loading="lazy">${s.titulo ? `<span class="slide__caption">${esc(s.titulo)}</span>` : ""}`
           : s.captura
-          ? `<div class="slide__art slide__art--shot" style="background:${COLORES[s.color] || COLORES.lavanda}">
+          ? `<div class="slide__art slide__art--shot ${colorDe(s.color)}">
                <div class="slide__copy">
-                 ${s.logo ? `<img class="slide__logo" src="${esc(s.logo)}" alt="Logo de ${esc(s.titulo)}">` : ""}
+                 ${s.logo ? `<img class="slide__logo" src="${esc(urlSegura(s.logo))}" alt="Logo de ${esc(s.titulo)}">` : ""}
                  <p class="slide__kicker">${esc(s.kicker)}</p>
                  <p class="slide__title${s.logo ? " sr-only" : ""}">${esc(s.titulo)}</p>
                  <p class="slide__text">${esc(s.texto)}</p>
                </div>
-               <figure class="slide__shot"><span class="slide__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="${esc(s.captura)}" alt="Captura de pantalla de ${esc(s.titulo)}" loading="lazy"></figure>
+               <figure class="slide__shot"><span class="slide__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="${esc(urlSegura(s.captura))}" alt="Captura de pantalla de ${esc(s.titulo)}" loading="lazy"></figure>
              </div>`
-          : `<div class="slide__art" style="background:${COLORES[s.color] || COLORES.lavanda}">
-               ${s.logo ? `<img class="slide__logo" src="${esc(s.logo)}" alt="Logo de ${esc(s.titulo)}">` : (ICONOS[s.icono] || ICONOS.cubo)}
+          : `<div class="slide__art ${colorDe(s.color)}">
+               ${s.logo ? `<img class="slide__logo" src="${esc(urlSegura(s.logo))}" alt="Logo de ${esc(s.titulo)}">` : (ICONOS[s.icono] || ICONOS.cubo)}
                <div>
                  <p class="slide__kicker">${esc(s.kicker)}</p>
                  <p class="slide__title${s.logo ? " sr-only" : ""}">${esc(s.titulo)}</p>
@@ -161,8 +184,8 @@
   function renderFree() {
     const clases = D.clasesGratis || [];
     const play = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="#16161A"/></svg>`;
-    $("#freeClasses").innerHTML = clases.map((c) => c.url
-      ? `<a class="free-card" href="${esc(c.url)}" target="_blank" rel="noopener">
+    $("#freeClasses").innerHTML = clases.map((c) => urlSegura(c.url)
+      ? `<a class="free-card" href="${esc(urlSegura(c.url))}" target="_blank" rel="noopener noreferrer">
            <span class="free-card__play">${play}</span>
            <h3>${esc(c.titulo)}</h3><p>${esc(c.descripcion)}</p>
            <span class="badge badge--lime">Ver clase gratis</span>
@@ -172,7 +195,8 @@
            <h3>${esc(c.titulo)}</h3><p>${esc(c.descripcion)}</p>
            <span class="badge badge--off">Próximamente</span>
          </div>`).join("");
-    if (contacto.tiktok) { const t = $("#linkTiktok"); t.href = contacto.tiktok; t.hidden = false; }
+    const tiktok = urlSegura(contacto.tiktok);
+    if (/^https:/.test(tiktok)) { const t = $("#linkTiktok"); t.href = tiktok; t.hidden = false; }
   }
 
   /* =======================================================
@@ -211,8 +235,9 @@
            <figure>${img(p.antes, "Primer avance", "")}<figcaption>Antes · primer avance</figcaption></figure>
            <figure>${img(p.despues, "Resultado final", "")}<figcaption>Después · resultado final</figcaption></figure>
          </div>` : "";
-    const media = p.video
-      ? `<div class="detail__media"><iframe src="${esc(p.video)}" title="Video de ${esc(p.titulo)}" allowfullscreen loading="lazy"></iframe></div>`
+    const video = embedUrl(p.video);   // solo YouTube / Vimeo / Drive
+    const media = video
+      ? `<div class="detail__media"><iframe src="${esc(video)}" title="Video de ${esc(p.titulo)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>`
       : `<div class="detail__media">${img(p.imagen, "Captura de " + p.titulo, "")}</div>`;
     $("#modalBody").innerHTML = `
       ${p.ejemplo ? '<span class="ejemplo">EJEMPLO</span>' : ""}
@@ -223,7 +248,7 @@
       ${p.aprendizaje ? `<blockquote class="quote">“${esc(p.aprendizaje)}”<br><small>— ${esc(p.alumno)}</small></blockquote>` : ""}
       ${compare}
       <div class="project__tags">${(p.temas || []).map((t) => `<span class="badge">${esc(t)}</span>`).join("")}</div>
-      ${p.jugar ? `<div class="detail__links"><a class="btn btn--lime" href="${esc(p.jugar)}" target="_blank" rel="noopener">Jugar ahora</a></div>` : ""}`;
+      ${urlSegura(p.jugar) ? `<div class="detail__links"><a class="btn btn--lime" href="${esc(urlSegura(p.jugar))}" target="_blank" rel="noopener noreferrer">Jugar ahora</a></div>` : ""}`;
     $("#projectModal").showModal();
   }
   $("#projects").addEventListener("click", (e) => { const c = e.target.closest(".project"); if (c) openProject(Number(c.dataset.i)); });
@@ -239,8 +264,8 @@
         <p class="entry__date">${formatDate(b.fecha)}</p>
         <h3>${esc(b.titulo)}</h3>
         <p>${esc(b.descripcion)}</p>
-        ${(b.fotos || []).length ? `<div class="entry__gallery">${b.fotos.map((f) => `<img src="${esc(f)}" alt="Evidencia: ${esc(b.titulo)}" loading="lazy">`).join("")}</div>` : ""}
-        ${(b.constancias || []).length ? `<div class="entry__docs">${b.constancias.map((c) => `<a class="doc-link" href="${esc(c.url)}" target="_blank" rel="noopener">Ver ${esc(c.nombre)}</a>`).join("")}</div>` : ""}
+        ${(b.fotos || []).length ? `<div class="entry__gallery">${b.fotos.map((f) => `<img src="${esc(urlSegura(f))}" alt="Evidencia: ${esc(b.titulo)}" loading="lazy">`).join("")}</div>` : ""}
+        ${(b.constancias || []).length ? `<div class="entry__docs">${b.constancias.map((c) => `<a class="doc-link" href="${esc(urlSegura(c.url))}" target="_blank" rel="noopener noreferrer">Ver ${esc(c.nombre)}</a>`).join("")}</div>` : ""}
       </div></li>`).join("");
   }
 
@@ -258,7 +283,9 @@
     try {
       const res = await fetch(`${sb.url}/rest/v1/testimonios?select=nombre,curso,calificacion,mensaje,creado&order=creado.desc&limit=50`, { headers: sbHeaders });
       if (!res.ok) throw new Error(res.status);
-      const rows = await res.json();
+      // Seguridad: los datos de la base se tratan como no confiables.
+      // calificacion se fuerza a número entero 1..5 antes de usarla en el HTML.
+      const rows = (await res.json()).map((t) => ({ ...t, calificacion: Math.max(1, Math.min(5, Math.round(Number(t.calificacion)) || 1)) }));
       $("#testiEmpty").hidden = rows.length > 0;
       $("#testimonials").innerHTML = rows.map((t) => `
         <article class="testi">
@@ -288,8 +315,8 @@
   const ponerFoto = (sel, src, alt) => {
     if (!src) return;
     const img = $(sel + " img");
-    if (img) { if (img.getAttribute("src") !== src) img.src = src; }
-    else $(sel).innerHTML = `<img src="${esc(src)}" alt="${esc(alt)}">`;
+    if (img) { if (img.getAttribute("src") !== src && urlSegura(src)) img.src = urlSegura(src); }
+    else if (urlSegura(src)) $(sel).innerHTML = `<img src="${esc(urlSegura(src))}" alt="${esc(alt)}">`;
   };
   ponerFoto("#heroPerson", D.fotoPortada, "Estudiante señalando el título de la página");
   ponerFoto("#profePhoto", D.fotoProfe, "David A. García G., profe de disce");
@@ -299,7 +326,9 @@
   // Lista de espera y botón flotante -> canal de WhatsApp; mientras no exista, chat directo
   const numero = contacto.whatsapp ? String(contacto.whatsapp).replace(/\D/g, "") : "";
   const chat = (texto) => (numero ? "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto) : "");
-  const canal = contacto.canal || contacto.comunidad || "";
+  // Solo enlaces https:// (p. ej. https://whatsapp.com/channel/...)
+  const canalRaw = String(contacto.canal || contacto.comunidad || "").trim();
+  const canal = /^https:\/\//i.test(canalRaw) ? canalRaw : "";
   const wa = canal || chat("Hola, quiero unirme a la lista de espera de disce.");
   const chatDirecto = chat("Hola, tengo una pregunta sobre los cursos de disce.");
   if (wa) document.querySelectorAll("[data-lista-espera]").forEach((a) => { a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
@@ -307,11 +336,12 @@
     $("#linkWhatsapp").href = wa; $("#linkWhatsapp").hidden = false;
     $("#waFloat").href = canal || chatDirecto || wa; $("#waFloat").hidden = false;
   }
-  if (contacto.email) {
-    $("#linkEmail").href = "mailto:" + contacto.email; $("#linkEmail").hidden = false;
-    $("#contactText").textContent = contacto.email;
+  const correo = correoSeguro(contacto.email);
+  if (correo) {
+    $("#linkEmail").href = "mailto:" + correo; $("#linkEmail").hidden = false;
+    $("#contactText").textContent = correo;
   }
-  if (!wa && !contacto.email) $("#contactText").textContent = "Muy pronto publicaremos nuestros canales de contacto.";
+  if (!wa && !correo) $("#contactText").textContent = "Muy pronto publicaremos nuestros canales de contacto.";
 
   document.querySelectorAll("[data-open]").forEach((b) => {
     b.addEventListener("click", () => { const d = document.getElementById(b.dataset.open); if (d) d.showModal(); });

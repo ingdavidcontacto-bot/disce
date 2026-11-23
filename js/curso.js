@@ -19,21 +19,24 @@
     return d.toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" });
   };
 
-  /* ---------- Video introductorio ---------- */
+  /* ---------- Video introductorio ----------
+     Seguridad: solo se insertan videos de YouTube (sin cookies), Vimeo y Google Drive.
+     Antes cualquier dirección https:// terminaba dentro de un <iframe>; ahora se ignora
+     (y la CSP de vercel.json tampoco dejaría cargar otros sitios en un iframe). */
   function embedUrl(url) {
     const u = String(url || "").trim();
     if (!u) return "";
-    let m = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+    let m = u.match(/^https:\/\/(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,20})/);
     if (m) return "https://www.youtube-nocookie.com/embed/" + m[1];
-    m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    m = u.match(/^https:\/\/(?:www\.|player\.)?vimeo\.com\/(?:video\/)?(\d+)/);
     if (m) return "https://player.vimeo.com/video/" + m[1];
-    m = u.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+    m = u.match(/^https:\/\/drive\.google\.com\/file\/d\/([\w-]+)/);
     if (m) return "https://drive.google.com/file/d/" + m[1] + "/preview";
-    return /^https:\/\//.test(u) ? u : "";
+    return "";
   }
   const src = embedUrl(curso.video);
   if (src) {
-    $("#introVideo").innerHTML = `<iframe src="${esc(src)}" title="Video introductorio del curso ${esc(nombreCurso)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+    $("#introVideo").innerHTML = `<iframe src="${esc(src)}" title="Video introductorio del curso ${esc(nombreCurso)}" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>`;
   }
 
   /* ---------- Ruta de niveles (cada nivel se despliega) ---------- */
@@ -114,6 +117,10 @@
     if (nombre.length < 2) return say("Escribe tu nombre.", "err");
     if (!calificacion) return say("Elige una calificación de 1 a 5 estrellas.", "err");
     if (mensaje.length < 10) return say("Cuéntanos un poco más (mínimo 10 caracteres).", "err");
+    // Mismos límites que la base de datos (setup.sql): evita enviar algo que igual sería rechazado
+    if (nombre.length > 60) return say("Tu nombre puede tener máximo 60 caracteres.", "err");
+    if (mensaje.length > 600) return say("Tu testimonio puede tener máximo 600 caracteres.", "err");
+    if (!(calificacion >= 1 && calificacion <= 5)) return say("Elige una calificación de 1 a 5 estrellas.", "err");
 
     const btn = $("#tSubmit");
     btn.disabled = true; say("Enviando…", "");
@@ -141,7 +148,9 @@
   // Lista de espera y botón flotante -> canal de WhatsApp; mientras no exista, chat directo
   const numero = contacto.whatsapp ? String(contacto.whatsapp).replace(/\D/g, "") : "";
   const chat = (texto) => (numero ? "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto) : "");
-  const canal = contacto.canal || contacto.comunidad || "";
+  // Solo enlaces https:// (p. ej. https://whatsapp.com/channel/...)
+  const canalRaw = String(contacto.canal || contacto.comunidad || "").trim();
+  const canal = /^https:\/\//i.test(canalRaw) ? canalRaw : "";
   const wa = canal || chat("Hola, quiero unirme a la lista de espera de disce.");
   const chatDirecto = chat("Hola, tengo una pregunta sobre los cursos de disce.");
   if (wa) document.querySelectorAll("[data-lista-espera]").forEach((a) => { a.href = wa; a.target = "_blank"; a.rel = "noopener"; });

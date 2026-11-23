@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de tratamiento de datos · disce</title>
+<meta name="description" content="Política de tratamiento de datos personales de disce (Ley 1581 de 2012 y Decreto 1377 de 2013): qué datos guardamos, para qué y cómo ejercer tus derechos.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<meta name="color-scheme" content="light dark">
+<script src="js/tema.js"></script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="brand" aria-label="disce, ir al inicio">
+      <svg class="brand__cube" viewBox="0 0 80 92" aria-hidden="true">
+        <polygon points="40,4 76,24 40,44 4,24" fill="#C6F432" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="4,24 40,44 40,88 4,68" fill="#16161A" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="40,44 76,24 76,68 40,88" fill="none" stroke="#16161A" stroke-width="6" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">d<span class="i">ı<span class="px"></span></span>sce</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="index.html#quienes">Nosotros</a>
+      <a href="index.html#ruta">Cursos</a>
+      <a href="index.html#gratis">Clase gratis</a>
+      <a href="index.html#faq">Preguntas</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--ghost btn--sm auth-link" href="cuenta.html" data-auth-link>Ingresar</a>
+      <a class="btn btn--lime btn--sm header__cta" href="index.html#contacto" data-lista-espera><span class="cta-full">Únete a la lista de espera</span><span class="cta-short">Lista de espera</span></a>
+      <div class="settings">
+        <button class="settings__btn" id="ajustesBtn" type="button" aria-label="Ajustes" aria-expanded="false" aria-controls="ajustesPanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94a7.07 7.07 0 0 0 .06-.94 7.07 7.07 0 0 0-.06-.94l2.03-1.58a.48.48 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54A.48.48 0 0 0 13.93 2h-3.86a.48.48 0 0 0-.48.41l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.71 8.47a.48.48 0 0 0 .12.61l2.03 1.58a7.4 7.4 0 0 0 0 1.88l-2.03 1.58a.48.48 0 0 0-.12.61l1.92 3.32c.12.21.37.3.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.25.41.48.41h3.86c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47-.01.59-.22l1.92-3.32a.48.48 0 0 0-.12-.61l-2.03-1.58ZM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2Z"/></svg>
+        </button>
+        <div class="settings__panel" id="ajustesPanel" role="dialog" aria-label="Ajustes" hidden>
+          <p class="settings__label" id="lblTema">Tema</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lblTema">
+            <button type="button" role="radio" data-tema="light" aria-checked="true"><span aria-hidden="true">☀</span> Claro</button>
+            <button type="button" role="radio" data-tema="dark" aria-checked="false"><span aria-hidden="true">☾</span> Oscuro</button>
+          </div>
+          <p class="settings__label" id="lblIdioma">Idioma</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lblIdioma">
+            <button type="button" role="radio" aria-checked="true">Español</button>
+            <button type="button" role="radio" aria-checked="false" disabled>English <small>Próximamente</small></button>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="section sec legal">
+    <div class="wrap narrow">
+      <p class="eyebrow">Tus datos</p>
+      <h1>Política de tratamiento de <span class="hl">datos personales</span></h1>
+      <div class="legal__meta">
+        <span class="badge">Versión 2026-11-23</span>
+        <span class="badge">Vigente desde el 23 de noviembre de 2026</span>
+      </div>
+      <p>En disce cuidamos la información que nos compartes. Esta política explica, en palabras sencillas, qué datos personales recogemos en esta página, para qué los usamos, con quién los compartimos y cómo puedes conocerlos, actualizarlos, rectificarlos, suprimirlos o revocar tu autorización, conforme a la <strong>Ley Estatutaria 1581 de 2012</strong> y al <strong>Decreto 1377 de 2013</strong> (hoy incorporado en el Decreto 1074 de 2015) de Colombia.</p>
+
+      <nav class="legal__box" aria-label="Contenido de la política">
+        <ol class="legal__toc">
+          <li><a href="#responsable">Responsable</a></li>
+          <li><a href="#datos">Datos que recogemos</a></li>
+          <li><a href="#finalidades">Para qué los usamos</a></li>
+          <li><a href="#tratamiento">Cómo los tratamos</a></li>
+          <li><a href="#derechos">Tus derechos</a></li>
+          <li><a href="#procedimiento">Consultas y reclamos</a></li>
+          <li><a href="#encargados">Encargados y transferencias</a></li>
+          <li><a href="#seguridad">Seguridad</a></li>
+          <li><a href="#conservacion">Conservación</a></li>
+          <li><a href="#almacenamiento">Almacenamiento en tu navegador</a></li>
+          <li><a href="#menores">Menores de edad</a></li>
+          <li><a href="#cambios">Cambios y vigencia</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="responsable">1. Responsable del tratamiento</h2>
+      <ul>
+        <li><strong>Responsable:</strong> David A. García G. — disce (proyecto personal de formación en desarrollo de videojuegos).</li>
+        <li><strong>Domicilio y dirección:</strong> Cúcuta, Norte de Santander, Colombia.</li>
+        <li><strong>Correo electrónico:</strong> <a href="mailto:disce.academia@gmail.com">disce.academia@gmail.com</a></li>
+        <li><strong>Teléfono / WhatsApp:</strong> +57 312 377 1399</li>
+        <li><strong>Sitio web:</strong> <a href="https://disce-two.vercel.app">https://disce-two.vercel.app</a></li>
+      </ul>
+      <p>La persona encargada de atender peticiones, consultas y reclamos sobre datos personales es <strong>David A. García G.</strong>, en el correo <a href="mailto:disce.academia@gmail.com">disce.academia@gmail.com</a>.</p>
+
+      <h2 id="datos">2. Datos que recogemos</h2>
+      <h3>Cuando creas tu cuenta</h3>
+      <ul>
+        <li>Tu <strong>nombre</strong> y tu <strong>correo electrónico</strong>.</li>
+        <li>Tu <strong>contraseña</strong>: la guarda cifrada nuestro proveedor de cuentas (Supabase). disce nunca la ve ni la puede leer.</li>
+        <li>La fecha en que creaste la cuenta, la fecha de tu último ingreso y la versión de esta política que aceptaste, con su fecha (prueba de tu autorización).</li>
+      </ul>
+      <h3>Cuando dejas un testimonio</h3>
+      <ul>
+        <li>El nombre que quieres mostrar, el curso, tu calificación (1 a 5 estrellas), tu mensaje y la fecha.</li>
+        <li>Un identificador interno que relaciona el testimonio con tu cuenta. <strong>Nunca se muestra en la página.</strong></li>
+      </ul>
+      <h3>Cuando nos escribes o te unes a la lista de espera</h3>
+      <ul>
+        <li>Si nos escribes por correo o por WhatsApp, o te unes al canal de WhatsApp de la lista de espera, recibimos los datos que tú envías (por ejemplo, tu nombre, tu número o tu correo y tu mensaje). El canal y el chat de WhatsApp los presta Meta (WhatsApp) bajo sus propias condiciones y política de privacidad.</li>
+      </ul>
+      <h3>Datos técnicos</h3>
+      <ul>
+        <li>Los proveedores que alojan la página y la base de datos registran datos técnicos de cada visita, como la dirección IP, el navegador y la hora, para prestar el servicio y protegerlo de abusos.</li>
+      </ul>
+      <p><strong>No pedimos datos sensibles</strong> (salud, origen étnico, creencias, datos biométricos, etc.) ni datos de pago. Por favor no los incluyas en tus testimonios ni en tus mensajes.</p>
+
+      <h2 id="finalidades">3. Para qué usamos tus datos</h2>
+      <ol>
+        <li><strong>Gestionar tu cuenta:</strong> crearla, confirmar tu correo, dejarte ingresar, recuperar tu contraseña y cerrar tu sesión.</li>
+        <li><strong>Testimonios moderados:</strong> recibir tu testimonio, revisarlo antes de publicarlo y, si se aprueba, mostrar en la página principal tu nombre, el curso, tu calificación y tu mensaje. Tu correo <strong>nunca</strong> se publica. Solo se permite un testimonio por cuenta y por curso.</li>
+        <li><strong>Lista de espera y contacto:</strong> avisarte cuando se abran cupos, responder tus preguntas y agendar tu clase gratis.</li>
+        <li><strong>Seguridad:</strong> evitar cuentas falsas, spam y usos indebidos de la página.</li>
+        <li><strong>Obligaciones legales:</strong> atender tus solicitudes como titular y los requerimientos de las autoridades.</li>
+      </ol>
+      <p>No vendemos ni alquilamos tus datos, no los usamos para publicidad de terceros y no te enviaremos correos comerciales sin tu autorización.</p>
+
+      <h2 id="tratamiento">4. Cómo tratamos tus datos</h2>
+      <p>Tratar tus datos significa recogerlos, guardarlos, usarlos para las finalidades anteriores, compartirlos solo con los encargados del punto 7 y suprimirlos cuando ya no se necesiten o cuando tú lo pidas. Lo hacemos con tu <strong>autorización previa, expresa e informada</strong>, que das al marcar la casilla “Acepto la política de tratamiento de datos” al crear tu cuenta, o al escribirnos por tu propia iniciativa.</p>
+
+      <h2 id="derechos">5. Tus derechos como titular</h2>
+      <p>De acuerdo con el artículo 8 de la Ley 1581 de 2012, tienes derecho a:</p>
+      <ul>
+        <li><strong>Conocer</strong> los datos personales que tenemos sobre ti y acceder a ellos gratis.</li>
+        <li><strong>Actualizar</strong> y <strong>rectificar</strong> tus datos si están incompletos, son inexactos o inducen a error.</li>
+        <li><strong>Pedir prueba</strong> de la autorización que nos diste.</li>
+        <li>Ser <strong>informado</strong>, si lo pides, sobre el uso que les hemos dado.</li>
+        <li><strong>Revocar</strong> tu autorización y/o pedir la <strong>supresión</strong> de tus datos (por ejemplo, borrar tu cuenta y tus testimonios), cuando no exista un deber legal o contractual de conservarlos.</li>
+        <li>Presentar <strong>quejas ante la Superintendencia de Industria y Comercio (SIC)</strong>, después de haber hecho tu consulta o reclamo ante disce.</li>
+      </ul>
+
+      <h2 id="procedimiento">6. Cómo hacer consultas y reclamos</h2>
+      <p>Escribe a <a href="mailto:disce.academia@gmail.com">disce.academia@gmail.com</a> desde el correo de tu cuenta (o indica cuál es) con este contenido:</p>
+      <ul>
+        <li>Tu nombre y el correo con el que te registraste.</li>
+        <li>Qué quieres: conocer tus datos, actualizarlos, rectificarlos, suprimirlos o revocar tu autorización, y una descripción de los hechos.</li>
+        <li>El correo o la dirección donde quieres recibir la respuesta y, si aplica, los documentos que quieras hacer valer.</li>
+      </ul>
+      <p>Si actúas en nombre de otra persona, adjunta el documento que demuestre que la representas.</p>
+      <h3>Consultas (para conocer tus datos)</h3>
+      <p>Las respondemos en un máximo de <strong>diez (10) días hábiles</strong> desde que las recibimos. Si no es posible, te diremos por qué y te daremos una nueva fecha, que no superará <strong>cinco (5) días hábiles</strong> adicionales.</p>
+      <h3>Reclamos (para corregir, actualizar o suprimir datos, o si crees que no cumplimos esta política)</h3>
+      <ul>
+        <li>Si tu reclamo está incompleto, te pediremos lo que falte dentro de los <strong>cinco (5) días</strong> siguientes. Si pasan <strong>dos (2) meses</strong> sin que lo completes, se entenderá que desististe.</li>
+        <li>Cuando el reclamo esté completo, marcaremos tus datos con la leyenda <strong>“reclamo en trámite”</strong> en un máximo de <strong>dos (2) días hábiles</strong>, hasta resolverlo.</li>
+        <li>Lo resolveremos en un máximo de <strong>quince (15) días hábiles</strong> desde el día siguiente a recibirlo completo. Si no es posible, te explicaremos por qué y te daremos una nueva fecha, que no superará <strong>ocho (8) días hábiles</strong> adicionales.</li>
+      </ul>
+      <p>También puedes cerrar tu sesión en cualquier momento desde <a href="cuenta.html">tu cuenta</a>. Para borrar la cuenta por completo, escríbenos: la eliminamos junto con tus testimonios.</p>
+
+      <h2 id="encargados">7. Encargados y transferencia internacional</h2>
+      <p>Para que la página funcione usamos proveedores que tratan datos <strong>por cuenta de disce</strong> y solo para prestar su servicio:</p>
+      <ul>
+        <li><strong>Supabase</strong> (Supabase Inc.): base de datos de testimonios y sistema de cuentas (nombre, correo, contraseña cifrada, testimonios). Servidores en la región de São Paulo, Brasil.</li>
+        <li><strong>Vercel</strong> (Vercel Inc., Estados Unidos): alojamiento de la página; registra datos técnicos de las visitas.</li>
+        <li><strong>Google</strong> (Google LLC, Estados Unidos): Gmail, para enviar los correos de confirmación y recuperación de contraseña y para recibir tus solicitudes; y Google Fonts, que entrega el tipo de letra de la página (recibe tu dirección IP al cargarla).</li>
+        <li><strong>jsDelivr</strong> (red de distribución de contenidos): entrega la librería de Supabase que usa la página (recibe tu dirección IP al cargarla).</li>
+      </ul>
+      <p>Como estos proveedores tienen servidores fuera de Colombia, tus datos pueden almacenarse o procesarse en otros países, como Brasil y Estados Unidos. Al aceptar esta política <strong>autorizas de forma expresa esa transferencia o transmisión internacional</strong>, en los términos del artículo 26 de la Ley 1581 de 2012. Cada proveedor aplica sus propias medidas de seguridad y políticas de privacidad.</p>
+
+      <h2 id="seguridad">8. Seguridad</h2>
+      <p>Usamos conexión cifrada (HTTPS), contraseñas cifradas, confirmación del correo, reglas en la base de datos para que cada persona solo pueda enviar testimonios a su nombre y para que solo el administrador vea los testimonios pendientes, y encabezados de seguridad en la página. Ningún sistema es 100 % seguro: si detectamos un incidente que afecte tus datos, te avisaremos y lo informaremos a la SIC cuando corresponda.</p>
+
+      <h2 id="conservacion">9. Cuánto tiempo guardamos tus datos</h2>
+      <ul>
+        <li><strong>Cuenta:</strong> mientras la tengas activa, hasta que pidas eliminarla o, como máximo, dos (2) años después de tu último ingreso.</li>
+        <li><strong>Testimonios:</strong> mientras estén publicados o en revisión, hasta que pidas suprimirlos o se elimine tu cuenta.</li>
+        <li><strong>Mensajes de contacto y lista de espera:</strong> mientras sean necesarios para responderte o avisarte de nuevos cupos.</li>
+      </ul>
+      <p>La base de datos de disce estará vigente mientras disce funcione. Cumplida la finalidad, suprimimos los datos, salvo que una norma nos obligue a conservarlos.</p>
+
+      <h2 id="almacenamiento">10. Almacenamiento en tu navegador</h2>
+      <p>La página no usa cookies de publicidad ni de analítica. Guarda en el almacenamiento local de tu navegador (<em>localStorage</em>) solo dos cosas: tu preferencia de tema claro u oscuro y, si ingresas, tu sesión de la cuenta. Se borran al cerrar sesión o al limpiar los datos del navegador.</p>
+
+      <h2 id="menores">11. Menores de edad</h2>
+      <p>disce está pensado para estudiantes universitarios. Si eres menor de 18 años, crea tu cuenta solo con la autorización de tu madre, padre o representante legal, quien puede ejercer tus derechos en tu nombre. Respetaremos siempre tu interés superior y tus derechos fundamentales.</p>
+
+      <h2 id="cambios">12. Cambios a esta política y vigencia</h2>
+      <p>Si hacemos cambios importantes (por ejemplo, en las finalidades o en los encargados), los publicaremos en esta página y te avisaremos por correo antes de aplicarlos; si hace falta, te pediremos una nueva autorización.</p>
+      <div class="legal__box">
+        <p><strong>Fecha de entrada en vigencia:</strong> 23 de noviembre de 2026. <strong>Versión:</strong> 2026-11-23.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span class="wordmark wordmark--sm">d<span class="i">ı<span class="px"></span></span>sce</span>
+    <p>© <span id="year"></span> disce · David A. García G. · <a href="privacidad.html" aria-current="page">Política de tratamiento de datos</a></p>
+  </div>
+</footer>
+
+<script src="data/contenido.js"></script>
+<!-- supabase-js con versión fija (antes "@2" flotante). Al actualizar, cambia el número aquí en todas las páginas.
+     Pendiente: agregar integrity="sha384-..." crossorigin="anonymous" (ver informe de seguridad). -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119"></script>
+<script src="js/auth.js"></script>
+<script src="js/ajustes.js"></script>
+<script src="js/privacidad.js"></script>
+</body>
+</html>

@@ -897,3 +897,33 @@ html[data-theme="dark"] .admin-card__stars svg path { stroke: #B9A8FF; }
 html[data-theme="dark"] .admin-btn--danger-ghost { color: #FF9C94; border-color: rgba(255,156,148,.4); }
 html[data-theme="dark"] .admin-btn--danger-ghost:hover { border-color: #FF9C94; }
 html[data-theme="dark"] .admin-dialog__quote { background: rgba(151,125,255,.08); }
+
+/* ---------- Seguridad / privacidad ---------- */
+/* Carrusel: el fondo de cada diapositiva ahora se pone con clases (antes era style="..."),
+   para que la Content-Security-Policy no necesite 'unsafe-inline' en estilos. */
+.slide__art--lavanda { background: linear-gradient(135deg, #EEF3FB 0%, #FFFFFF 60%); }
+.slide__art--menta   { background: linear-gradient(135deg, #E6EEF9 0%, #FFFFFF 60%); }
+.slide__art--durazno { background: linear-gradient(135deg, #F2F6FC 0%, #E3ECF8 100%); }
+.slide__art--celeste { background: linear-gradient(135deg, #FFFFFF 0%, #E3ECF8 100%); }
+.slide__art--lima    { background: linear-gradient(135deg, #E3ECF8 0%, #FFFFFF 70%); }
+
+/* Enlace a la política de datos en el pie de página */
+.footer p a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.footer p a:hover, .footer p a:focus-visible { color: var(--blanco); }
+.auth-check a { color: var(--azul-hondo); font-weight: 700; }
+html[data-theme="dark"] .auth-check a { color: #8EA3FF; }
+
+/* Página de política de tratamiento de datos (privacidad.html) */
+.legal h1 { font-size: clamp(32px, 4.6vw, 52px); }
+.legal h2 { font-size: clamp(22px, 2.6vw, 28px); margin: 40px 0 12px; }
+.legal h3 { font-size: 18px; margin: 22px 0 8px; }
+.legal p, .legal li { font-size: 17px; color: var(--gris); line-height: 1.65; }
+.legal strong { color: var(--negro); }
+.legal ul, .legal ol { padding-left: 22px; display: grid; gap: 6px; }
+.legal a { color: var(--azul-hondo); font-weight: 600; overflow-wrap: anywhere; }
+.legal__meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 24px; }
+.legal__box { padding: 18px 22px; border-radius: var(--radio); border: 1px solid var(--linea); background: var(--azul-tinte); margin: 18px 0; }
+.legal__box p { margin: 0; }
+.legal__toc { columns: 2; column-gap: 32px; }
+@media (max-width: 640px) { .legal__toc { columns: 1; } }
+html[data-theme="dark"] .legal a { color: #8EA3FF; }

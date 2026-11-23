@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
 <meta name="color-scheme" content="light dark">
-<script>/* Tema antes de pintar, para evitar parpadeo */try{var t=localStorage.getItem("disce-tema");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<script src="js/tema.js"></script>
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -113,7 +113,7 @@
               <input id="reClave" name="clave" type="password" minlength="8" required autocomplete="new-password">
               <button type="button" class="pass__ver" data-ver="reClave" aria-label="Mostrar contraseña">Ver</button>
             </div>
-            <label class="auth-check"><input type="checkbox" name="acepto" required> Acepto que disce guarde mi nombre y mi correo para gestionar mi cuenta y mis testimonios.</label>
+            <label class="auth-check"><input type="checkbox" name="acepto" required> <span>Acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de tratamiento de datos</a> y autorizo a disce a guardar mi nombre y mi correo para gestionar mi cuenta y mis testimonios.</span></label>
             <button class="btn btn--lime btn--block" type="submit">Crear mi cuenta</button>
             <p class="form-msg" role="status" aria-live="polite"></p>
           </form>
@@ -147,6 +147,7 @@
           <h2 class="h3">Revisa tu correo</h2>
           <p>Te enviamos un enlace a <strong id="correoEnviado"></strong>. Ábrelo para confirmar tu cuenta y vuelve aquí.</p>
           <p class="muted small">¿No llega? Revisa la carpeta de spam o promociones. El enlace vence en 1 hora.</p>
+          <p class="muted small">Si ya tenías una cuenta con ese correo, no se crea otra: ingresa o recupera tu contraseña.</p>
           <p class="auth-alt"><button type="button" class="link-btn" data-volver>← Volver a ingresar</button></p>
         </div>
 
@@ -170,12 +171,14 @@
 <footer class="footer">
   <div class="wrap footer__inner">
     <span class="wordmark wordmark--sm">d<span class="i">ı<span class="px"></span></span>sce</span>
-    <p>© <span id="year"></span> disce · David A. García G.</p>
+    <p>© <span id="year"></span> disce · David A. García G. · <a href="privacidad.html">Política de tratamiento de datos</a></p>
   </div>
 </footer>
 
 <script src="data/contenido.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- supabase-js con versión fija (antes "@2" flotante). Al actualizar, cambia el número aquí en todas las páginas.
+     Pendiente: agregar integrity="sha384-..." crossorigin="anonymous" (ver informe de seguridad). -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119"></script>
 <script src="js/auth.js"></script>
 <script src="js/ajustes.js"></script>
 <script src="js/cuenta.js"></script>

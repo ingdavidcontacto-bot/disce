@@ -7,6 +7,9 @@
   const A = window.disceAuth;
   const $ = (s) => document.querySelector(s);
   const params = new URLSearchParams(location.search);
+  // Versión de privacidad.html que acepta la persona al crear su cuenta.
+  // Si cambias la política de forma importante, cambia también esta fecha.
+  const POLITICA_VERSION = "2026-11-23";
 
   // A dónde volver después de ingresar (solo páginas de disce)
   const nextRaw = params.get("next") || "";
@@ -89,23 +92,26 @@
     const correo = form.correo.value.trim().toLowerCase();
     const clave = form.clave.value;
     if (nombre.length < 2) return say(form, "Escribe tu nombre.", "err");
+    if (nombre.length > 60) return say(form, "Tu nombre puede tener máximo 60 caracteres.", "err");
     if (!correoOk(correo)) return say(form, "Escribe un correo válido.", "err");
     if (clave.length < 8) return say(form, "La contraseña debe tener al menos 8 caracteres.", "err");
-    if (!form.acepto.checked) return say(form, "Debes aceptar el uso de tus datos para crear la cuenta.", "err");
+    if (!form.acepto.checked) return say(form, "Debes aceptar la política de tratamiento de datos para crear la cuenta.", "err");
     ocupado(form, true); say(form, "Creando tu cuenta…");
     const { data, error } = await auth.signUp({
       email: correo,
       password: clave,
-      options: { data: { nombre }, emailRedirectTo: urlRetorno }
+      // Prueba de la autorización (Ley 1581 de 2012 / Decreto 1377 de 2013): qué versión
+      // de la política aceptó y cuándo. Queda en Authentication → Users → user_metadata.
+      options: { data: { nombre, politica_datos: POLITICA_VERSION, politica_aceptada_en: new Date().toISOString() }, emailRedirectTo: urlRetorno }
     });
     ocupado(form, false);
     if (error) return say(form, A.traducir(error), "err");
-    // Si el correo ya existía, Supabase responde sin error pero sin identidades
-    if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
-      return say(form, "Ya existe una cuenta con ese correo. Ingresa o recupera tu contraseña.", "err");
-    }
+    // Seguridad (enumeración de cuentas): si el correo ya existía, Supabase responde
+    // sin error y sin identidades. Antes la página decía "Ya existe una cuenta con ese
+    // correo", lo que permitía averiguar qué correos están registrados. Ahora se muestra
+    // la misma pantalla neutra de "Revisa tu correo" en los dos casos.
     say(form, "");
-    if (!data.session) {           // Confirmación por correo activada
+    if (!data || !data.session) {  // Confirmación por correo activada (o el correo ya existía)
       $("#correoEnviado").textContent = correo;
       mostrar("#vistaCorreo");
     }                               // Si no, onChange muestra la cuenta

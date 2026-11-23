@@ -58,6 +58,7 @@ grant insert (nombre, curso, calificacion, mensaje) on public.testimonios to aut
 -- (admin.html), ejecuta DESPUÉS de este archivo supabase/admin.sql.
 -- Ese archivo agrega la tabla de administradores, la función es_admin()
 -- y los permisos de aprobar, ocultar y borrar (solo para administradores).
--- Si vuelves a ejecutar este setup.sql, vuelve a ejecutar también admin.sql,
--- porque el "revoke all" de arriba quita los permisos que admin.sql agrega.
+-- Si vuelves a ejecutar este setup.sql, vuelve a ejecutar también admin.sql
+-- y seguridad.sql, porque el "revoke all" de arriba quita los permisos que
+-- admin.sql agrega (seguridad.sql también los re-aplica).
 -- ---------------------------------------------------------
