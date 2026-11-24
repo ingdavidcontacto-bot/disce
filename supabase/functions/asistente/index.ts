@@ -1,12 +1,13 @@
 // disce · asistente de IA (Supabase Edge Function)
 // Solo responde a personas con sesión iniciada, con límite diario por persona.
 // Secreto necesario (Supabase → Edge Functions → Secrets):
-//   ANTHROPIC_API_KEY  → la clave de la API de Claude
+//   GROQ_API_KEY  → clave gratis de https://console.groq.com (plan gratuito, sin tarjeta)
 // SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY ya los pone Supabase solos.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const MODELO = "claude-haiku-5-5";
-const LIMITE_DIARIO = 20;          // mensajes por persona y día
+// Revisa el nombre vigente en https://console.groq.com/docs/models si algún día deja de funcionar
+const MODELO = "llama-3.3-70b-versatile";
+const LIMITE_DIARIO = 3;           // mensajes por persona y día
 const MAX_CARACTERES = 500;        // por mensaje
 const MAX_MENSAJES = 10;           // historial que se envía a Claude
 const SITIO = "https://disce-two.vercel.app";
@@ -86,23 +87,30 @@ Deno.serve(async (req) => {
   if (errLimite) { console.error("limite", errLimite.message); return responder({ error: "El asistente no está disponible ahora." }, 500); }
   if (!dentro) return responder({ error: `Llegaste al límite de ${LIMITE_DIARIO} mensajes de hoy. Vuelve mañana o escríbenos por WhatsApp.` }, 429);
 
-  // 4) Preguntarle a Claude
+  // 4) Preguntarle a la IA (Groq, plan gratuito)
   try {
-    const r = await fetch("https://api.anthropic.com/v1/messages", {
+    const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "x-api-key": Deno.env.get("ANTHROPIC_API_KEY") || "",
-        "anthropic-version": "2023-06-01",
+        "authorization": `Bearer ${Deno.env.get("GROQ_API_KEY") || ""}`,
       },
-      body: JSON.stringify({ model: MODELO, max_tokens: 500, system: instrucciones(await contenido()), messages: mensajes }),
+      body: JSON.stringify({
+        model: MODELO,
+        max_tokens: 500,
+        temperature: 0.4,
+        messages: [{ role: "system", content: instrucciones(await contenido()) }, ...mensajes],
+      }),
     });
+    if (r.status === 429) {
+      return responder({ error: "El asistente está muy concurrido ahora mismo. Intenta en unos minutos o escríbenos por WhatsApp." }, 503);
+    }
     if (!r.ok) {
-      console.error("anthropic", r.status, (await r.text()).slice(0, 300));
+      console.error("groq", r.status, (await r.text()).slice(0, 300));
       return responder({ error: "El asistente no está disponible ahora. Intenta en un momento." }, 502);
     }
     const j = await r.json();
-    const texto = (j.content || []).filter((b: any) => b.type === "text").map((b: any) => b.text).join("\n").trim();
+    const texto = String(j?.choices?.[0]?.message?.content || "").trim();
     return responder({ reply: texto || "No pude responder eso. ¿Me lo preguntas de otra forma?" });
   } catch (e) {
     console.error("fallo", String(e));
