@@ -2,7 +2,7 @@
 
 disce es la academia de videojuegos de David A. García G. (Cúcuta): cursos de
 videojuegos 2D con Unity y 3D con Blender + Unity, para universitarios de 18 a 21 años.
-Sitio publicado en https://disce-two.vercel.app (repo `ingdavidcontacto-bot/disce`).
+Sitio publicado en https://disce-two.vercel.app (repo `davidgarciagomez/disce`).
 
 ## Cómo trabajar con David
 - Habla siempre en español, claro y sin tecnicismos innecesarios.
