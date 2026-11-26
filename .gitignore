@@ -1,0 +1,4 @@
+# Cosas locales de cada computador
+.claude/settings.local.json
+.claude/launch.json
+graphify-out/

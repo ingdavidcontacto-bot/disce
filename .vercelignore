@@ -2,3 +2,11 @@ CLAUDE.md
 .claude
 README.md
 supabase
+AGENTS.md
+.cursor
+.codex
+.agents
+.shared
+graphify-out
+.graphifyignore
+skills-lock.json
