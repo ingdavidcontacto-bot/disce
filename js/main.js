@@ -56,47 +56,24 @@
   /* =======================================================
      CARRUSEL
      ======================================================= */
-  const ICONOS = {
-    cubo: `<svg class="slide__icon" viewBox="0 0 80 92" aria-hidden="true"><polygon points="40,4 76,24 40,44 4,24" fill="#5E86BF" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/><polygon points="4,24 40,44 40,88 4,68" fill="#16161A" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/><polygon points="40,44 76,24 76,68 40,88" fill="#FFFFFF" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/></svg>`,
-    esfera: `<svg class="slide__icon" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="#FFFFFF" stroke="#16161A" stroke-width="4"/><ellipse cx="50" cy="50" rx="44" ry="15" fill="none" stroke="#16161A" stroke-width="3"/><ellipse cx="50" cy="50" rx="17" ry="44" fill="none" stroke="#16161A" stroke-width="3"/><circle cx="34" cy="32" r="8" fill="#5E86BF" stroke="#16161A" stroke-width="3"/></svg>`,
-    pixel: `<svg class="slide__icon" viewBox="0 0 70 70" aria-hidden="true">${
-      ["0110110","1111111","1111111","1111111","0111110","0011100","0001000"]
-        .map((row, y) => [...row].map((c, x) => c === "1" ? `<rect x="${x * 10}" y="${y * 10}" width="10" height="10" fill="${(x + y) % 5 === 0 ? "#5E86BF" : "#16161A"}" stroke="#FFFFFF" stroke-width="1"/>` : "").join("")).join("")
-    }</svg>`,
-    mando: `<svg class="slide__icon" viewBox="0 0 120 80" aria-hidden="true"><rect x="4" y="10" width="112" height="62" rx="28" fill="#FFFFFF" stroke="#16161A" stroke-width="4"/><rect x="26" y="34" width="26" height="9" fill="#16161A"/><rect x="34.5" y="25.5" width="9" height="26" fill="#16161A"/><circle cx="84" cy="32" r="7" fill="#5E86BF" stroke="#16161A" stroke-width="3"/><circle cx="96" cy="44" r="7" fill="#16161A"/></svg>`
-  };
-  // Los degradados están en css/styles.css (.slide__art--lavanda, etc.).
-  // Antes iban en style="..." dentro del HTML, lo que obligaba a permitir estilos en línea en la CSP.
-  const COLORES = ["lavanda", "menta", "durazno", "celeste", "lima"];
-  const colorDe = (c) => "slide__art--" + (COLORES.includes(c) ? c : "lavanda");
-
   function initCarousel() {
     const slides = D.carrusel || [];
     const track = $("#carouselTrack");
     const dots = $("#carouselDots");
     if (!slides.length) { $("#carousel").hidden = true; return; }
 
+    // "imagen": foto a toda la diapositiva. "arte": ilustración al lado del texto.
     track.innerHTML = slides.map((s, i) => `
       <div class="slide" role="group" aria-roledescription="diapositiva" aria-label="${i + 1} de ${slides.length}: ${esc(s.titulo)}" ${i ? 'aria-hidden="true"' : ""}>
         ${s.imagen
-          ? `<img src="${esc(urlSegura(s.imagen))}" alt="${esc(s.titulo)}" loading="lazy">${s.titulo ? `<span class="slide__caption">${esc(s.titulo)}</span>` : ""}`
-          : s.captura
-          ? `<div class="slide__art slide__art--shot ${colorDe(s.color)}">
+          ? `<img class="slide__foto" src="${esc(urlSegura(s.imagen))}" alt="${esc(s.titulo)}" loading="lazy">${s.titulo ? `<span class="slide__caption">${esc(s.titulo)}</span>` : ""}`
+          : `<div class="slide__art">
                <div class="slide__copy">
-                 ${s.logo ? `<img class="slide__logo" src="${esc(urlSegura(s.logo))}" alt="Logo de ${esc(s.titulo)}">` : ""}
-                 <p class="slide__kicker">${esc(s.kicker)}</p>
-                 <p class="slide__title${s.logo ? " sr-only" : ""}">${esc(s.titulo)}</p>
+                 <p class="slide__kicker">${s.logo ? `<img class="slide__logo" src="${esc(urlSegura(s.logo))}" alt="">` : ""}<span>${esc(s.kicker)}</span></p>
+                 <p class="slide__title">${esc(s.titulo)}</p>
                  <p class="slide__text">${esc(s.texto)}</p>
                </div>
-               <figure class="slide__shot"><span class="slide__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="${esc(urlSegura(s.captura))}" alt="Captura de pantalla de ${esc(s.titulo)}" loading="lazy"></figure>
-             </div>`
-          : `<div class="slide__art ${colorDe(s.color)}">
-               ${s.logo ? `<img class="slide__logo" src="${esc(urlSegura(s.logo))}" alt="Logo de ${esc(s.titulo)}">` : (ICONOS[s.icono] || ICONOS.cubo)}
-               <div>
-                 <p class="slide__kicker">${esc(s.kicker)}</p>
-                 <p class="slide__title${s.logo ? " sr-only" : ""}">${esc(s.titulo)}</p>
-                 <p class="slide__text">${esc(s.texto)}</p>
-               </div>
+               ${s.arte ? `<img class="slide__render${s.pixelado ? " slide__render--pixel" : ""}" src="${esc(urlSegura(s.arte))}" alt="${esc(s.alt || "")}" width="1100" height="880"${i ? ' loading="lazy"' : ""}>` : ""}
              </div>`}
       </div>`).join("");
 

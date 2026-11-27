@@ -45,19 +45,20 @@ window.DISCE = {
   /* ---------- Foto del profe ---------- */
   fotoProfe: "assets/img/profe-david.webp",
 
-  /* ---------- Carrusel de la portada ----------
-     "imagen": foto que ocupa toda la diapositiva.
-     "logo":   logo que se muestra al lado del texto (en vez del ícono). */
   /* ---------- Página del curso 2D (curso-2d.html) ----------
      video: pega aquí el enlace del video introductorio (YouTube, por ejemplo
      "https://www.youtube.com/watch?v=XXXX" o "https://youtu.be/XXXX").
      Si lo dejas vacío, se muestra el aviso "muy pronto". */
 
+  /* ---------- Carrusel de la portada ----------
+     "arte": ilustración al lado del texto (con "alt" que la describa).
+     "logo": logo pequeño junto al subtítulo.
+     "imagen": si la pones, la foto ocupa toda la diapositiva. */
   carrusel: [
-    { imagen: "", logo: "assets/img/Unity-logo.png",   captura: "assets/img/unity-escena.webp",   icono: "cubo",   color: "menta",   kicker: "Motor de juegos", titulo: "Unity",            texto: "Aquí construyes los juegos del curso: escenas, físicas, animaciones y más." },
-    { imagen: "", logo: "assets/img/blender_logo.png", captura: "assets/img/blender-disce.webp", icono: "esfera", color: "durazno", kicker: "Modelado 3D",     titulo: "Blender",          texto: "Para modelar personajes y objetos cuando des el salto al 3D." },
-    { imagen: "", captura: "assets/img/pixel-disce.webp", icono: "pixel",  color: "celeste", kicker: "Arte para juegos", titulo: "Pixel art",       texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
-    { imagen: "", icono: "mando",  color: "lavanda", kicker: "Hecho en clase",  titulo: "Juegos de alumnos", texto: "Muy pronto: capturas de los juegos creados por los estudiantes." }
+    { arte: "assets/img/carrusel-nivel.webp",   alt: "Nivel de videojuego en 3D con un personaje, monedas y una meta", logo: "assets/img/Unity-logo.png",  kicker: "Motor de juegos",  titulo: "Unity",             texto: "Aquí construyes los juegos del curso: escenas, físicas, animaciones y más." },
+    { arte: "assets/img/carrusel-modelos.webp", alt: "Figuras 3D modeladas en Blender sobre una base iluminada",       logo: "assets/img/blender_logo.png", kicker: "Modelado 3D",      titulo: "Blender",           texto: "Para modelar personajes y objetos cuando des el salto al 3D." },
+    { arte: "assets/img/carrusel-pixel.svg",    alt: "Escena de plataformas en pixel art",                             pixelado: true,                    kicker: "Arte para juegos", titulo: "Pixel art",         texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
+    { arte: "assets/img/carrusel-control.webp", alt: "Control de videojuegos en 3D",                                                                      kicker: "Hecho en clase",   titulo: "Juegos de alumnos", texto: "Muy pronto: capturas de los juegos creados por los estudiantes." }
   ],
 
   /* ---------- Cursos: video introductorio y ruta de niveles ----------
