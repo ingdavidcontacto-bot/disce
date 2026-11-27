@@ -191,7 +191,7 @@ window.DISCE = {
     { pregunta: "¿Las clases son virtuales?", detonantes: ["virtual", "presencial", "online", "en linea", "internet", "ciudad", "cucuta", "donde son"],
       respuesta: "Sí, el curso Videojuegos 2D con Unity es virtual." },
     { pregunta: "¿Cuánto dura?", detonantes: ["dura", "duracion", "tiempo", "sesion", "semana", "mes", "horario", "hora"],
-      respuesta: "El curso 2D tiene 7 niveles (14 sesiones) y el 3D, 7 niveles (20 sesiones). Los horarios se confirman al inscribirte.", enlace: "#ruta", enlaceTexto: "Ver cursos" },
+      respuesta: "Curso 2D: 8 semanas, 16 sesiones de 2 horas, sábados de 9:00 a. m. a 1:00 p. m. Curso 3D: 10 semanas, 20 sesiones, sábados de 2:00 a 6:00 p. m. (hora de Colombia).", enlace: "#ruta", enlaceTexto: "Ver cursos" },
     { pregunta: "¿Hay clase gratis?", detonantes: ["gratis", "prueba", "clase gratis", "sin costo", "muestra", "universitario"],
       respuesta: "Si eres estudiante universitario y lo demuestras con carné o certificado de estudios vigente, tu primera clase es gratis. Escríbenos para agendarla.", enlace: "whatsapp", enlaceTexto: "Agendar por WhatsApp" },
     { pregunta: "¿Entregan certificado?", detonantes: ["certificado del curso", "certificado", "diploma", "constancia"],
