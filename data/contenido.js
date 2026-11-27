@@ -51,14 +51,16 @@ window.DISCE = {
      Si lo dejas vacío, se muestra el aviso "muy pronto". */
 
   /* ---------- Carrusel de la portada ----------
-     "arte": ilustración al lado del texto (con "alt" que la describa).
+     "escena": ilustración con piezas que se pueden agarrar: "nivel", "modelos",
+               "pixel" o "control" (se crean con los scripts de herramientas/).
+     "alt": descripción de la ilustración.
      "logo": logo pequeño junto al subtítulo.
      "imagen": si la pones, la foto ocupa toda la diapositiva. */
   carrusel: [
-    { arte: "assets/img/carrusel-nivel.webp",   alt: "Nivel de videojuego en 3D con un personaje, monedas y una meta", logo: "assets/img/Unity-logo.png",  kicker: "Motor de juegos",  titulo: "Unity",             texto: "Aquí construyes los juegos del curso: escenas, físicas, animaciones y más." },
-    { arte: "assets/img/carrusel-modelos.webp", alt: "Figuras 3D modeladas en Blender sobre una base iluminada",       logo: "assets/img/blender_logo.png", kicker: "Modelado 3D",      titulo: "Blender",           texto: "Para modelar personajes y objetos cuando des el salto al 3D." },
-    { arte: "assets/img/carrusel-pixel.svg",    alt: "Escena de plataformas en pixel art",                             pixelado: true,                    kicker: "Arte para juegos", titulo: "Pixel art",         texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
-    { arte: "assets/img/carrusel-control.webp", alt: "Control de videojuegos en 3D",                                                                      kicker: "Hecho en clase",   titulo: "Juegos de alumnos", texto: "Muy pronto: capturas de los juegos creados por los estudiantes." }
+    { escena: "nivel",   alt: "Nivel de videojuego en 3D con un personaje, monedas y una meta", logo: "assets/img/Unity-logo.png",  kicker: "Motor de juegos",  titulo: "Unity",             texto: "Aquí construyes los juegos del curso: escenas, físicas, animaciones y más." },
+    { escena: "modelos", alt: "Figuras 3D modeladas en Blender sobre una base iluminada",       logo: "assets/img/blender_logo.png", kicker: "Modelado 3D",      titulo: "Blender",           texto: "Para modelar personajes y objetos cuando des el salto al 3D." },
+    { escena: "pixel",   alt: "Escena de plataformas en pixel art",                             pixelado: true,                    kicker: "Arte para juegos", titulo: "Pixel art",         texto: "Personajes, escenarios y objetos dibujados píxel a píxel." },
+    { escena: "control", alt: "Control de videojuegos en 3D",                                                                      kicker: "Hecho en clase",   titulo: "Juegos de alumnos", texto: "Muy pronto: capturas de los juegos creados por los estudiantes." }
   ],
 
   /* ---------- Cursos: video introductorio y ruta de niveles ----------

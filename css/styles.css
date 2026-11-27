@@ -976,13 +976,17 @@ html[data-theme="dark"] .asist-input { background: rgba(151,125,255,.1); }
 .slide__logo { width: auto; height: 34px; max-width: 120px; object-fit: contain; padding: 5px 10px; box-sizing: content-box; border-radius: 12px; background: rgba(255,255,255,.94); }
 .slide__title { margin: 0 0 12px; font-size: clamp(32px, 5vw, 62px); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: #fff; }
 .slide__text { margin: 0; max-width: 440px; font-size: clamp(16px, 1.6vw, 19px); color: #DDD8F6; }
-.slide__render { position: relative; z-index: 1; width: 100%; height: 100%; min-height: 0; max-height: 430px; object-fit: contain; filter: drop-shadow(0 24px 30px rgba(0,3,61,.55)); animation: levitar 7s ease-in-out infinite; }
-.slide__render--pixel { image-rendering: pixelated; }
-.slide[aria-hidden="true"] .slide__render { animation-play-state: paused; }
-@keyframes levitar { 0%, 100% { transform: translateY(-5px); } 50% { transform: translateY(7px); } }
-@media (prefers-reduced-motion: reduce) { .slide__render { animation: none; } }
+/* Zona invisible donde las piezas se pueden mover */
+.slide__stage { position: relative; z-index: 1; width: 100%; max-width: 520px; aspect-ratio: 5 / 4; justify-self: center; }
+.slide__stage img { position: absolute; display: block; max-width: none; user-select: none; -webkit-user-select: none; }
+.slide__fondo { inset: 0; width: 100%; height: 100%; pointer-events: none; filter: drop-shadow(0 22px 28px rgba(0,3,61,.5)); }
+.pieza { height: auto; cursor: grab; touch-action: none; will-change: transform; filter: drop-shadow(0 12px 16px rgba(0,3,61,.45)); }
+.pieza.is-agarrada { cursor: grabbing; filter: drop-shadow(0 24px 24px rgba(0,3,61,.55)) brightness(1.08); }
+.slide__stage--pixel img { image-rendering: pixelated; }
+.slide__pista { margin: 18px 0 0; font-size: 13px; color: #B9B0EE; }
 @media (max-width: 860px) {
   .slide { aspect-ratio: auto; }
   .slide__art { grid-template-columns: 1fr; grid-template-rows: auto auto; align-content: start; gap: 8px; padding: 26px 22px 18px; }
-  .slide__render { height: auto; max-width: 420px; justify-self: center; aspect-ratio: 5 / 4; }
+  .slide__stage { max-width: 420px; }
+  .slide__pista { margin-top: 10px; }
 }

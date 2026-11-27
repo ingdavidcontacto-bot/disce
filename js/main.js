@@ -62,7 +62,17 @@
     const dots = $("#carouselDots");
     if (!slides.length) { $("#carousel").hidden = true; return; }
 
-    // "imagen": foto a toda la diapositiva. "arte": ilustración al lado del texto.
+    // "imagen": foto a toda la diapositiva. "escena": ilustración con piezas que se pueden agarrar.
+    const ARTE = window.DISCE_ARTE || {};
+    const img = (src, clase, extra) => `<img class="${clase}" src="${esc(urlSegura(src))}" alt="" draggable="false"${extra || ""}>`;
+    const escena = (s) => {
+      const a = ARTE[s.escena];
+      if (!a) return "";
+      return `<div class="slide__stage${s.pixelado ? " slide__stage--pixel" : ""}" role="img" aria-label="${esc(s.alt || "")}">
+        ${a.fondo ? img(a.fondo, "slide__fondo") : ""}
+        ${a.piezas.map((p) => img(p.src, "pieza", ` data-x="${Number(p.x)}" data-y="${Number(p.y)}" data-w="${Number(p.w)}" data-h="${Number(p.h)}"`)).join("")}
+      </div>`;
+    };
     track.innerHTML = slides.map((s, i) => `
       <div class="slide" role="group" aria-roledescription="diapositiva" aria-label="${i + 1} de ${slides.length}: ${esc(s.titulo)}" ${i ? 'aria-hidden="true"' : ""}>
         ${s.imagen
@@ -72,8 +82,9 @@
                  <p class="slide__kicker">${s.logo ? `<img class="slide__logo" src="${esc(urlSegura(s.logo))}" alt="">` : ""}<span>${esc(s.kicker)}</span></p>
                  <p class="slide__title">${esc(s.titulo)}</p>
                  <p class="slide__text">${esc(s.texto)}</p>
+                 ${ARTE[s.escena] ? '<p class="slide__pista">Arrastra las piezas: puedes moverlas y lanzarlas.</p>' : ""}
                </div>
-               ${s.arte ? `<img class="slide__render${s.pixelado ? " slide__render--pixel" : ""}" src="${esc(urlSegura(s.arte))}" alt="${esc(s.alt || "")}" width="1100" height="880"${i ? ' loading="lazy"' : ""}>` : ""}
+               ${escena(s)}
              </div>`}
       </div>`).join("");
 
@@ -102,13 +113,17 @@
 
     // Deslizar con el dedo en celular
     let x0 = null;
-    box.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+    box.addEventListener("touchstart", (e) => {
+      stop();
+      x0 = e.target.closest(".pieza") ? null : e.touches[0].clientX; // agarrar una pieza no cambia de diapositiva
+    }, { passive: true });
     box.addEventListener("touchend", (e) => {
       if (x0 === null) return;
       const dx = e.changedTouches[0].clientX - x0;
       if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
       x0 = null; start();
     });
+    if (window.disceEscenas) window.disceEscenas.iniciar(box, { alAgarrar: stop, alSoltar: () => { if (!(window.matchMedia("(hover: hover)").matches && box.matches(":hover"))) start(); } });
     start();
   }
 
