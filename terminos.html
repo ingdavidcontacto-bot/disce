@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Términos y condiciones · disce</title>
+<meta name="description" content="Términos y condiciones de disce: cursos, pagos, derecho de retracto, reembolsos y aplazamientos.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<meta name="color-scheme" content="light dark">
+<script src="js/tema.js"></script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="brand" aria-label="disce, ir al inicio">
+      <svg class="brand__cube" viewBox="0 0 80 92" aria-hidden="true">
+        <polygon points="40,4 76,24 40,44 4,24" fill="#C6F432" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="4,24 40,44 40,88 4,68" fill="#16161A" stroke="#16161A" stroke-width="4" stroke-linejoin="round"/>
+        <polygon points="40,44 76,24 76,68 40,88" fill="none" stroke="#16161A" stroke-width="6" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">d<span class="i">ı<span class="px"></span></span>sce</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="index.html#quienes">Nosotros</a>
+      <a href="index.html#ruta">Cursos</a>
+      <a href="index.html#gratis">Clase gratis</a>
+      <a href="index.html#faq">Preguntas</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--ghost btn--sm auth-link" href="cuenta.html" data-auth-link>Ingresar</a>
+      <a class="btn btn--lime btn--sm header__cta" href="index.html#contacto" data-lista-espera><span class="cta-full">Únete a la lista de espera</span><span class="cta-short">Lista de espera</span></a>
+      <div class="settings">
+        <button class="settings__btn" id="ajustesBtn" type="button" aria-label="Ajustes" aria-expanded="false" aria-controls="ajustesPanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94a7.07 7.07 0 0 0 .06-.94 7.07 7.07 0 0 0-.06-.94l2.03-1.58a.48.48 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54A.48.48 0 0 0 13.93 2h-3.86a.48.48 0 0 0-.48.41l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.71 8.47a.48.48 0 0 0 .12.61l2.03 1.58a7.4 7.4 0 0 0 0 1.88l-2.03 1.58a.48.48 0 0 0-.12.61l1.92 3.32c.12.21.37.3.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.25.41.48.41h3.86c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47-.01.59-.22l1.92-3.32a.48.48 0 0 0-.12-.61l-2.03-1.58ZM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2Z"/></svg>
+        </button>
+        <div class="settings__panel" id="ajustesPanel" role="dialog" aria-label="Ajustes" hidden>
+          <p class="settings__label" id="lblTema">Tema</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lblTema">
+            <button type="button" role="radio" data-tema="light" aria-checked="true"><span aria-hidden="true">☀</span> Claro</button>
+            <button type="button" role="radio" data-tema="dark" aria-checked="false"><span aria-hidden="true">☾</span> Oscuro</button>
+          </div>
+          <p class="settings__label" id="lblIdioma">Idioma</p>
+          <div class="seg" role="radiogroup" aria-labelledby="lblIdioma">
+            <button type="button" role="radio" aria-checked="true">Español</button>
+            <button type="button" role="radio" aria-checked="false" disabled>English <small>Próximamente</small></button>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="section sec legal">
+    <div class="wrap narrow">
+      <p class="eyebrow">Cursos y uso de la página</p>
+      <h1>Términos y <span class="hl">condiciones</span></h1>
+      <div class="legal__meta">
+        <span class="badge">Versión 2026-11-27</span>
+        <span class="badge">Vigentes desde el 27 de noviembre de 2026</span>
+      </div>
+      <p>Estas son, en palabras sencillas, las reglas de disce: cómo funcionan los cursos, los pagos y las devoluciones.</p>
+
+      <nav class="legal__box" aria-label="Contenido de los términos">
+        <ol class="legal__toc">
+          <li><a href="#quienes">Quiénes somos</a></li>
+          <li><a href="#uso">Qué aceptas al usar la página</a></li>
+          <li><a href="#cuenta">Cuenta</a></li>
+          <li><a href="#cursos">Cursos, precios y pagos</a></li>
+          <li><a href="#reembolsos">Derecho de retracto y reembolsos</a></li>
+          <li><a href="#material">Material del curso y proyectos</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#asistente">Asistente de inteligencia artificial</a></li>
+          <li><a href="#reclamos">Preguntas, quejas y reclamos</a></li>
+          <li><a href="#cambios">Cambios y ley aplicable</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="quienes">1. Quiénes somos</h2>
+      <p>disce es un proyecto de formación en desarrollo de videojuegos de David A. García G., en Cúcuta, Norte de Santander, Colombia.<br>Correo: <a href="mailto:disce.academia@gmail.com">disce.academia@gmail.com</a> · WhatsApp: +57 312 377 1399.</p>
+
+      <h2 id="uso">2. Qué aceptas al usar la página</h2>
+      <p>Al usar la página o crear una cuenta aceptas estos términos. El tratamiento de tus datos se explica en la <a href="privacidad.html">política de privacidad</a>.</p>
+
+      <h2 id="cuenta">3. Cuenta</h2>
+      <ul>
+        <li>Los datos que registres deben ser reales y tuyos.</li>
+        <li>Cuida tu contraseña; lo que se haga desde tu cuenta se entiende hecho por ti.</li>
+        <li>Si tienes menos de 18 años, necesitas autorización de tu madre, padre o representante legal.</li>
+        <li>Podemos suspender cuentas usadas para spam, suplantación o para dañar la página.</li>
+      </ul>
+
+      <h2 id="cursos">4. Cursos, precios y pagos</h2>
+      <ul>
+        <li>Los cursos son virtuales. Su contenido y precio vigentes son los publicados en la página al momento de inscribirte.</li>
+        <li>La inscripción y el pago se acuerdan por WhatsApp. La página no cobra en línea ni pide datos de tarjetas.</li>
+        <li>El precio para universitarios exige carné o certificado de estudios vigente.</li>
+        <li>La página no garantiza cupos ni fechas de inicio. Se confirman al inscribirte.</li>
+      </ul>
+
+      <h2 id="reembolsos">5. Derecho de retracto y reembolsos</h2>
+      <ul>
+        <li>Puedes retractarte de tu inscripción dentro de los <strong>cinco (5) días hábiles</strong> siguientes a celebrar el contrato (artículo 47 de la Ley 1480 de 2011).</li>
+        <li>El retracto no aplica si las clases ya comenzaron con tu acuerdo.</li>
+        <li>Para ejercerlo, escribe a <a href="mailto:disce.academia@gmail.com">disce.academia@gmail.com</a> con tu nombre, el curso, la fecha de inscripción y el medio por el que pagaste.</li>
+        <li>Te devolvemos todo lo pagado, sin descuentos, en máximo <strong>quince (15) días calendario</strong>.</li>
+        <li><strong>Si te retiras después de empezar</strong>, te devolvemos el valor de las clases que aún no se hayan dictado cuando nos avises. Se calcula dividiendo el precio que pagas por el curso entre su número total de clases. Las clases ya dictadas no se devuelven, aunque no hayas asistido.</li>
+        <li><strong>Si pagas por cuotas</strong>, pagas solo hasta donde llegaste: las clases dictadas hasta tu aviso. Si has pagado menos que eso, debes la diferencia; si has pagado más, te devolvemos el resto. No debes las cuotas que correspondan a clases no dictadas.</li>
+        <li><strong>Aplazar o cambiar de grupo:</strong> si prefieres no pedir la devolución, puedes pedir una vez pasar a otro grupo. Depende de que haya otro grupo con cupo; disce no garantiza fechas. Si no es posible, siguen aplicando las reglas de devolución.</li>
+        <li>Si disce cancela un curso, te devolvemos el valor de las clases que no se dictaron.</li>
+        <li>Estas condiciones no limitan los demás derechos que te da la ley.</li>
+      </ul>
+
+      <h2 id="material">6. Material del curso y proyectos</h2>
+      <ul>
+        <li>El material de clase es de disce o de sus autores. Puedes usarlo para aprender; no revenderlo ni publicarlo como propio.</li>
+        <li>Los juegos que tú creas son tuyos. Solo los mostraremos en la página con tu autorización.</li>
+        <li>Unity y Blender son marcas de sus respectivos dueños. disce no está afiliado a ellos.</li>
+      </ul>
+
+      <h2 id="testimonios">7. Testimonios</h2>
+      <p>Se revisan antes de publicarse. No publicamos contenido ofensivo, falso, publicitario o con datos de terceros. Puedes pedir que retiremos el tuyo.</p>
+
+      <h2 id="asistente">8. Asistente de inteligencia artificial</h2>
+      <p>Responde dudas de forma automática y puede equivocarse. Lo que diga no cambia precios ni condiciones: la información válida es la publicada y la confirmada por disce.</p>
+
+      <h2 id="reclamos">9. Preguntas, quejas y reclamos</h2>
+      <p>Escribe a <a href="mailto:disce.academia@gmail.com">disce.academia@gmail.com</a>. Respondemos en máximo quince (15) días hábiles. También puedes acudir a la Superintendencia de Industria y Comercio (SIC).</p>
+
+      <h2 id="cambios">10. Cambios y ley aplicable</h2>
+      <p>Los cambios se publican en esta página con su fecha y no afectan inscripciones ya pagadas. Se aplica la ley colombiana.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span class="wordmark wordmark--sm">d<span class="i">ı<span class="px"></span></span>sce</span>
+    <p>© <span id="year"></span> disce · David A. García G. · <a href="privacidad.html">Política de tratamiento de datos</a> · <a href="terminos.html" aria-current="page">Términos y condiciones</a></p>
+  </div>
+</footer>
+
+<script src="data/contenido.js"></script>
+<!-- supabase-js con versión fija (antes "@2" flotante). Al actualizar, cambia el número aquí en todas las páginas.
+     Pendiente: agregar integrity="sha384-..." crossorigin="anonymous" (ver informe de seguridad). -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119"></script>
+<script src="js/auth.js"></script>
+<script src="js/ajustes.js"></script>
+<script src="js/privacidad.js"></script>
+</body>
+</html>
