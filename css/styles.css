@@ -1017,3 +1017,26 @@ html[data-theme="dark"] .termino { color: #8EA3FF; }
 .asist-chip:hover { background: var(--azul-claro); }
 .asist-link { display: block; margin-top: 8px; font-weight: 700; color: var(--azul); }
 html[data-theme="dark"] .asist-chip, html[data-theme="dark"] .asist-link { color: #8EA3FF; }
+
+/* ---------- Portadas ilustradas de los cursos ---------- */
+.course-card .course-card__media img { object-position: center; }
+.course-card__media { background: radial-gradient(60% 80% at 60% 40%, rgba(151,125,255,.6), transparent 70%), var(--grad-hondo); }
+html[data-theme="dark"] .course-card .course-card__media img { filter: none; }
+
+/* ---------- Mini carrusel "Lo que verás en el curso" ---------- */
+.temas { max-width: 960px; margin-top: 28px; }
+.temas__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.temas__head h3 { margin: 0; }
+.temas__botones { display: flex; gap: 8px; flex: none; }
+.temas__btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linea); background: transparent; color: var(--azul); font: 700 22px/1 var(--font); cursor: pointer; transition: background .2s; }
+.temas__btn:hover:not(:disabled) { background: var(--azul-claro); }
+.temas__btn:disabled { opacity: .35; cursor: default; }
+.temas__pista { display: flex; gap: 16px; list-style: none; margin: 0; padding: 4px 2px 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.tema { flex: 0 0 min(290px, 78%); scroll-snap-align: start; padding: 10px 10px 16px; border-radius: 20px; border: 1px solid var(--linea); background: rgba(255,255,255,.75); }
+.tema__arte { aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; background: radial-gradient(60% 80% at 60% 40%, rgba(151,125,255,.6), transparent 70%), var(--grad-hondo); }
+.tema__arte img { width: 100%; height: 100%; object-fit: contain; }
+.tema__num { margin: 12px 6px 2px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--azul); }
+.tema h4 { margin: 0 6px 6px; font-size: 17px; line-height: 1.25; }
+.tema__texto { margin: 0 6px; font-size: 14px; line-height: 1.5; color: var(--gris); }
+html[data-theme="dark"] .tema { background: rgba(16,18,58,.74); }
+html[data-theme="dark"] .tema__num, html[data-theme="dark"] .temas__btn { color: #8EA3FF; }

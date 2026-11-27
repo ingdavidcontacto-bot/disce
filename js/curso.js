@@ -41,6 +41,36 @@
 
   /* ---------- Ruta de niveles (cada nivel se despliega) ---------- */
   const niveles = (curso.niveles || []).map((n) => (typeof n === "string" ? { titulo: n } : n));
+
+  /* ---------- Mini carrusel "Lo que verás" (debajo del video) ----------
+     Ilustraciones: assets/img/nivel-<2d|3d>-<número>.webp (herramientas/arte_cursos.py) */
+  const pista = $("#temasPista");
+  if (pista && niveles.length) {
+    pista.innerHTML = niveles.map((n, i) => `
+      <li class="tema">
+        <div class="tema__arte"><img src="assets/img/nivel-${clave}-${i + 1}.webp" alt="" width="720" height="450" loading="lazy"></div>
+        <p class="tema__num">Nivel ${i + 1}</p>
+        <h4>${esc(n.titulo)}</h4>
+        ${n.construyes ? `<p class="tema__texto">${esc(n.construyes)}</p>` : ""}
+      </li>`).join("");
+    // Si falta una ilustración, queda el fondo azul sin ícono roto
+    pista.querySelectorAll("img").forEach((img) => img.addEventListener("error", () => img.remove()));
+    $("#temas").hidden = false;
+
+    const botones = [...document.querySelectorAll(".temas__btn")];
+    const marcar = () => {
+      botones[0].disabled = pista.scrollLeft < 4;
+      botones[1].disabled = pista.scrollLeft + pista.clientWidth > pista.scrollWidth - 4;
+    };
+    const calma = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    botones.forEach((b) => b.addEventListener("click", () => {
+      const paso = pista.firstElementChild.getBoundingClientRect().width + 16;
+      pista.scrollBy({ left: paso * Number(b.dataset.mover), behavior: calma ? "auto" : "smooth" });
+    }));
+    pista.addEventListener("scroll", marcar, { passive: true });
+    window.addEventListener("resize", marcar);
+    marcar();
+  }
   const actual = clave === "2d" ? Math.max(0, Math.min(Number(D.progresoClase) || 0, niveles.length)) : 0;
   $("#levels").innerHTML = niveles.map((n, i) => {
     const num = i + 1;
