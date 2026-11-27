@@ -1005,3 +1005,7 @@ html[data-theme="dark"] .glosa { background: #10123A; }
 html[data-theme="dark"] .termino { text-decoration-color: #8EA3FF; }
 html[data-theme="dark"] .termino:hover, html[data-theme="dark"] .termino[aria-expanded="true"], html[data-theme="dark"] .glosa a { color: #8EA3FF; }
 @media (prefers-reduced-motion: reduce) { .glosa:popover-open { animation: none; } }
+
+/* Brillos del fondo que acompañan el scroll (js/movimiento.js pone --desliza) */
+.hero::before, .hero::after, .sec--tint::before, .sec--glow::before { translate: 0 var(--desliza, 0px); }
+.hero::after { translate: 0 calc(var(--desliza, 0px) * -0.6); }
