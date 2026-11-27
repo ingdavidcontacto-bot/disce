@@ -22,8 +22,8 @@
   tarjeta.setAttribute("role", "status");
   const titulo = document.createElement("strong");
   const texto = document.createElement("p");
-  const enlace = document.createElement("a");
-  tarjeta.append(titulo, texto, enlace);
+  const enlaces = document.createElement("div");
+  tarjeta.append(titulo, texto, enlaces);
   document.body.append(tarjeta);
 
   let actual = null;
@@ -39,10 +39,15 @@
     cerrar();
     titulo.textContent = g.titulo || boton.textContent;
     texto.textContent = g.texto;
-    const url = /^[a-z0-9-]+\.html(#[a-z0-9-]+)?$/i.test(g.enlace || "") ? g.enlace : "";
-    enlace.hidden = !url;
-    enlace.href = url || "#";
-    enlace.textContent = g.enlaceTexto || "Leer más";
+    // Uno ("enlace") o varios ("enlaces": [[página, texto]]), solo páginas de disce
+    enlaces.textContent = "";
+    (g.enlaces || (g.enlace ? [[g.enlace, g.enlaceTexto]] : [])).forEach(([url, nombre]) => {
+      if (!/^[a-z0-9-]+\.html(#[a-z0-9-]+)?$/i.test(url || "")) return;
+      const a = document.createElement("a");
+      a.href = url;
+      a.textContent = nombre || "Leer más";
+      enlaces.append(a);
+    });
     tarjeta.showPopover();
     actual = boton;
     boton.setAttribute("aria-expanded", "true");

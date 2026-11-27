@@ -171,11 +171,54 @@ window.DISCE = {
     }
   ],
 
+  /* ---------- "Pregúntame": respuestas preparadas ----------
+     "detonantes": palabras que activan la respuesta (sin importar tildes o mayúsculas).
+                   Basta el comienzo: "busc" sirve para buscar y búsqueda.
+     "enlace": "whatsapp", "canal", una página ("curso-2d.html") o una sección ("#ruta"). */
+  respuestas: [
+    { pregunta: "¿Dónde encuentro los cursos?", detonantes: ["curso", "busc", "busqueda", "encontr", "donde veo", "temario", "programa"],
+      respuesta: "En la sección Cursos están Videojuegos 2D con Unity y Videojuegos en 3D con Unity. Entra a cada uno para ver su ruta de niveles.", enlace: "#ruta", enlaceTexto: "Ver cursos" },
+    { pregunta: "¿Cuánto cuesta?", detonantes: ["precio", "cuesta", "cuanto cuesta", "valor", "vale", "pagar", "pago", "cuota", "descuento", "plata"],
+      respuesta: "Curso 2D: $150.000 COP (3 cuotas de $50.000). Universitarios verificados: $120.000. Curso 3D: costará $220.000 COP (4 cuotas de $55.000) y $180.000 para universitarios verificados.", enlace: "whatsapp", enlaceTexto: "Preguntar por WhatsApp" },
+    { pregunta: "¿Cómo me inscribo?", detonantes: ["inscri", "matricul", "entrar", "unirme", "apuntar", "registr", "como me inscribo"],
+      respuesta: "La inscripción se acuerda por WhatsApp. Ahora no hay cupos: únete a la lista de espera y te avisamos cuando se abra un grupo.", enlace: "canal", enlaceTexto: "Lista de espera" },
+    { pregunta: "¿Hay cupos?", detonantes: ["cupo", "disponib", "cuando empieza", "cuando inicia", "fecha", "proximo grupo", "lista de espera"],
+      respuesta: "En este momento no hay cupos. Únete a la lista de espera y te avisamos cuando se abra el próximo grupo.", enlace: "canal", enlaceTexto: "Lista de espera" },
+    { pregunta: "¿Necesito saber programar?", detonantes: ["programa", "programar", "saber", "experiencia", "desde cero", "principiante", "nunca he", "dificil"],
+      respuesta: "No. El curso empieza desde cero y cada nivel suma una habilidad nueva a tu propio juego." },
+    { pregunta: "¿Qué computador necesito?", detonantes: ["computador", "compu", "portatil", "pc", "requisito", "ram", "mac", "windows", "linux", "tablet", "celular"],
+      respuesta: "Un computador de escritorio o portátil (no tablet ni Chromebook) con Windows 10/11, macOS 13 o Ubuntu 22.04/24.04, mínimo 8 GB de RAM y mouse. Para el 3D recomendamos 16 GB." },
+    { pregunta: "¿Las clases son virtuales?", detonantes: ["virtual", "presencial", "online", "en linea", "internet", "ciudad", "cucuta", "donde son"],
+      respuesta: "Sí, el curso Videojuegos 2D con Unity es virtual." },
+    { pregunta: "¿Cuánto dura?", detonantes: ["dura", "duracion", "tiempo", "sesion", "semana", "mes", "horario", "hora"],
+      respuesta: "El curso 2D tiene 7 niveles (14 sesiones) y el 3D, 7 niveles (20 sesiones). Los horarios se confirman al inscribirte.", enlace: "#ruta", enlaceTexto: "Ver cursos" },
+    { pregunta: "¿Hay clase gratis?", detonantes: ["gratis", "prueba", "clase gratis", "sin costo", "muestra", "universitario"],
+      respuesta: "Si eres estudiante universitario y lo demuestras con carné o certificado de estudios vigente, tu primera clase es gratis. Escríbenos para agendarla.", enlace: "whatsapp", enlaceTexto: "Agendar por WhatsApp" },
+    { pregunta: "¿Entregan certificado?", detonantes: ["certificado del curso", "certificado", "diploma", "constancia"],
+      respuesta: "En la página no anunciamos certificado. Si lo necesitas, pregúntanos por WhatsApp antes de inscribirte.", enlace: "whatsapp", enlaceTexto: "Preguntar por WhatsApp" },
+    { pregunta: "¿Qué programas se usan?", detonantes: ["unity", "blender", "herramienta", "software", "que programa", "instalar", "motor"],
+      respuesta: "Unity 6.3 LTS para los juegos y Blender 5.2 LTS para modelar en 3D. Ambos se pueden usar gratis para aprender." },
+    { pregunta: "¿Puedo pedir reembolso?", detonantes: ["reembolso", "devol", "devuelv", "devuelven la plata", "retir", "retract", "cancel", "aplaz", "arrepent"],
+      respuesta: "Puedes retractarte en 5 días hábiles si las clases no han empezado. Si te retiras después, pagas solo hasta donde llegaste.", enlace: "terminos.html#reembolsos", enlaceTexto: "Ver las condiciones" },
+    { pregunta: "¿Cómo los contacto?", detonantes: ["contact", "whatsapp", "correo", "email", "telefono", "numero", "hablar", "instagram", "redes"],
+      respuesta: "Escríbenos por WhatsApp o al correo disce.academia@gmail.com.", enlace: "whatsapp", enlaceTexto: "Escribir por WhatsApp" }
+  ],
+
   /* ---------- Palabras que se despliegan ----------
      "palabras": cómo puede aparecer escrita en la página.
      "titulo" y "texto": lo que se muestra al tocarla.
      "enlace" (opcional): una página de disce, ej: "terminos.html#reembolsos". */
   glosario: [
+    { palabras: ["políticas de disce"], titulo: "Políticas de disce", texto: "Cómo cuidamos tus datos y cuáles son las reglas de los cursos, pagos y devoluciones.", enlaces: [["privacidad.html", "Datos personales"], ["terminos.html", "Términos y reembolsos"]] },
+    { palabras: ["nivel por nivel"], titulo: "Nivel por nivel", texto: "Cada curso es una ruta: en cada nivel aprendes algo y lo agregas a tu propio juego." },
+    { palabras: ["estudiante a estudiante"], titulo: "De estudiante a estudiante", texto: "Quien enseña también está estudiando, así que explica con palabras cercanas lo que aprendió hace poco." },
+    { palabras: ["Unity 2D", "Unity"], titulo: "Unity", texto: "El motor de videojuegos del curso: ahí armas escenas, físicas, animaciones y exportas tu juego." },
+    { palabras: ["Blender"], titulo: "Blender", texto: "Un programa libre y gratuito para modelar y animar objetos y personajes en 3D." },
+    { palabras: ["pixel art"], titulo: "Pixel art", texto: "Dibujo hecho píxel a píxel, el estilo de muchos juegos clásicos e independientes." },
+    { palabras: ["evidencias"], titulo: "Evidencias", texto: "Capturas, videos y resultados que muestran lo que se hizo en cada clase." },
+    { palabras: ["juego propio"], titulo: "Tu juego propio", texto: "Al final del curso tienes un juego hecho por ti, que puedes mostrar." },
+    { palabras: ["ficha técnica"], titulo: "Ficha técnica", texto: "El resumen del curso: modalidad, herramientas, requisitos del computador y precio." },
+    { palabras: ["certificado de estudios"], titulo: "Certificado de estudios", texto: "El documento de tu universidad que demuestra que estás estudiando. También sirve el carné vigente." },
     { palabras: ["Tilemaps", "Tilemap"], titulo: "Tilemap", texto: "Una forma de armar niveles 2D pintando piezas pequeñas sobre una cuadrícula, como un mosaico." },
     { palabras: ["Animator"], titulo: "Animator", texto: "La herramienta de Unity que decide qué animación se ve en cada momento: quieto, caminando o saltando." },
     { palabras: ["Rigidbody 2D", "Rigidbody"], titulo: "Rigidbody", texto: "El componente que hace que un objeto obedezca la física: gravedad, empujes y choques." },

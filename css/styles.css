@@ -992,7 +992,7 @@ html[data-theme="dark"] .asist-input { background: rgba(151,125,255,.1); }
 }
 
 /* ---------- Palabras que se despliegan ---------- */
-.termino { padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: help; text-decoration: underline dotted var(--azul); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.termino { padding: 0; border: 0; background: none; font: inherit; color: var(--azul); cursor: help; text-decoration: underline dotted var(--azul); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .termino:hover, .termino[aria-expanded="true"] { color: var(--azul); }
 .termino:focus-visible { outline: 2px solid var(--azul); outline-offset: 3px; border-radius: 4px; }
 .glosa { position: fixed; inset: auto; margin: 0; width: min(300px, calc(100vw - 24px)); padding: 14px 16px; border-radius: 16px; border: 1px solid var(--linea); background: #fff; color: var(--texto); font-size: 14px; line-height: 1.5; box-shadow: 0 24px 50px -18px rgba(0,3,61,.45); }
@@ -1009,3 +1009,11 @@ html[data-theme="dark"] .termino:hover, html[data-theme="dark"] .termino[aria-ex
 /* Brillos del fondo que acompañan el scroll (js/movimiento.js pone --desliza) */
 .hero::before, .hero::after, .sec--tint::before, .sec--glow::before { translate: 0 var(--desliza, 0px); }
 .hero::after { translate: 0 calc(var(--desliza, 0px) * -0.6); }
+html[data-theme="dark"] .termino { color: #8EA3FF; }
+.sec-cta .termino, .sec-cta .termino:hover { color: #fff; text-decoration-color: #fff; }
+.glosa a { margin-right: 14px; }
+.asist-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.asist-chip { min-height: 40px; padding: 8px 14px; border: 1px solid var(--linea); border-radius: 999px; background: transparent; color: var(--azul); font: 600 13px var(--font); text-align: left; cursor: pointer; }
+.asist-chip:hover { background: var(--azul-claro); }
+.asist-link { display: block; margin-top: 8px; font-weight: 700; color: var(--azul); }
+html[data-theme="dark"] .asist-chip, html[data-theme="dark"] .asist-link { color: #8EA3FF; }

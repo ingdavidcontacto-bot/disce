@@ -220,7 +220,7 @@ def modelos():
 
 # 4) Juegos de alumnos: un control de juego
 def control():
-    escena((2.5, -9, 8), (0, 0, 0), 7.2)
+    escena((2.5, -9, 8), (0, 0, 0), 9.8)
     r = (0, 0, math.radians(-8))
     pieza("mando")
     cubo((0, 0, 0), (3.6, 2.0, 0.75), LILA, bisel=0.36, rot=r)
