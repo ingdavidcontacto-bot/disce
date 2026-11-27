@@ -145,9 +145,9 @@
   };
   function renderCounters() {
     const items = [
-      [stats.proyectos, "proyectos publicados"],
-      [stats.clases, "clases en la bitácora"],
-      [stats.testimonios, "testimonios de estudiantes"]
+      [stats.proyectos, stats.proyectos === 1 ? "proyecto publicado" : "proyectos publicados"],
+      [stats.clases, stats.clases === 1 ? "clase en la bitácora" : "clases en la bitácora"],
+      [stats.testimonios, stats.testimonios === 1 ? "testimonio de estudiantes" : "testimonios de estudiantes"]
     ].filter(([n]) => n > 0);
     $("#counters").hidden = items.length === 0;
     $("#counters").innerHTML = items.map(([n, t]) => `<li><strong>${n}</strong><span>${t}</span></li>`).join("");
