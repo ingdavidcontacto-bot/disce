@@ -57,7 +57,7 @@
   enviar.type = "submit";
   form.append(campo, enviar);
 
-  const nota = el("p", "asist-note", "Es una IA y puede equivocarse. Para inscripción y pagos, escríbenos por WhatsApp.");
+  const nota = el("p", "asist-note", "Es una IA y puede equivocarse; no escribas datos personales. Para inscripción y pagos, usa WhatsApp.");
 
   const login = el("div", "asist-login");
   login.append(

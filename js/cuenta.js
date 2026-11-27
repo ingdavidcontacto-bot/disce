@@ -16,7 +16,7 @@
   const params = new URLSearchParams(location.search);
   // Versión de privacidad.html que acepta la persona al crear su cuenta.
   // Si cambias la política de forma importante, cambia también esta fecha.
-  const POLITICA_VERSION = "2026-11-23";
+  const POLITICA_VERSION = "2026-11-27";
 
   // A dónde volver después de ingresar (solo páginas de disce)
   const nextRaw = params.get("next") || "";
