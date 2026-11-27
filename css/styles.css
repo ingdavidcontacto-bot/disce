@@ -990,3 +990,18 @@ html[data-theme="dark"] .asist-input { background: rgba(151,125,255,.1); }
   .slide__stage { max-width: 420px; }
   .slide__pista { margin-top: 10px; }
 }
+
+/* ---------- Palabras que se despliegan ---------- */
+.termino { padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: help; text-decoration: underline dotted var(--azul); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.termino:hover, .termino[aria-expanded="true"] { color: var(--azul); }
+.termino:focus-visible { outline: 2px solid var(--azul); outline-offset: 3px; border-radius: 4px; }
+.glosa { position: fixed; inset: auto; margin: 0; width: min(300px, calc(100vw - 24px)); padding: 14px 16px; border-radius: 16px; border: 1px solid var(--linea); background: #fff; color: var(--texto); font-size: 14px; line-height: 1.5; box-shadow: 0 24px 50px -18px rgba(0,3,61,.45); }
+.glosa:popover-open { animation: glosa-entra .18s ease-out; }
+.glosa strong { display: block; margin-bottom: 4px; font-size: 15px; }
+.glosa p { margin: 0; color: var(--gris); }
+.glosa a { display: inline-block; margin-top: 8px; padding: 6px 0; font-weight: 700; color: var(--azul); }
+@keyframes glosa-entra { from { opacity: 0; transform: translateY(-4px); } }
+html[data-theme="dark"] .glosa { background: #10123A; }
+html[data-theme="dark"] .termino { text-decoration-color: #8EA3FF; }
+html[data-theme="dark"] .termino:hover, html[data-theme="dark"] .termino[aria-expanded="true"], html[data-theme="dark"] .glosa a { color: #8EA3FF; }
+@media (prefers-reduced-motion: reduce) { .glosa:popover-open { animation: none; } }

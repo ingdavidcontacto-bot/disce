@@ -171,6 +171,25 @@ window.DISCE = {
     }
   ],
 
+  /* ---------- Palabras que se despliegan ----------
+     "palabras": cómo puede aparecer escrita en la página.
+     "titulo" y "texto": lo que se muestra al tocarla.
+     "enlace" (opcional): una página de disce, ej: "terminos.html#reembolsos". */
+  glosario: [
+    { palabras: ["Tilemaps", "Tilemap"], titulo: "Tilemap", texto: "Una forma de armar niveles 2D pintando piezas pequeñas sobre una cuadrícula, como un mosaico." },
+    { palabras: ["Animator"], titulo: "Animator", texto: "La herramienta de Unity que decide qué animación se ve en cada momento: quieto, caminando o saltando." },
+    { palabras: ["Rigidbody 2D", "Rigidbody"], titulo: "Rigidbody", texto: "El componente que hace que un objeto obedezca la física: gravedad, empujes y choques." },
+    { palabras: ["colliders", "collider"], titulo: "Collider", texto: "La forma invisible que usa Unity para saber cuándo dos objetos se tocan." },
+    { palabras: ["prefabs", "prefab"], titulo: "Prefab", texto: "Un objeto guardado como molde para usarlo muchas veces. Si cambias el molde, cambian las copias." },
+    { palabras: ["Sprite Editor"], titulo: "Sprite Editor", texto: "El editor de Unity para recortar una imagen en piezas que puedes usar en tu juego." },
+    { palabras: ["low poly"], titulo: "Low poly", texto: "Modelos 3D con pocas caras. Se ven con un estilo facetado y son ligeros para el computador." },
+    { palabras: ["FBX"], titulo: "FBX", texto: "Un formato de archivo para llevar modelos y animaciones 3D de Blender a Unity." },
+    { palabras: ["Blend Trees"], titulo: "Blend Tree", texto: "Una forma de mezclar animaciones suavemente, por ejemplo entre caminar y correr." },
+    { palabras: ["universitarios verificados", "estudiante universitario"], titulo: "Universitario verificado", texto: "Estudiante que lo demuestra con su carné o certificado de estudios vigente." },
+    { palabras: ["derecho de retracto", "retractarte"], titulo: "Derecho de retracto", texto: "Puedes arrepentirte de la inscripción en los primeros 5 días hábiles, si las clases no han empezado.", enlace: "terminos.html#reembolsos", enlaceTexto: "Ver reembolsos" },
+    { palabras: ["lista de espera"], titulo: "Lista de espera", texto: "El canal de WhatsApp de disce donde avisamos cuando se abra un nuevo grupo." }
+  ],
+
   /* ---------- Preguntas frecuentes ---------- */
   faq: [
     { p: "¿Necesito saber programar?", r: "No. El curso empieza desde cero y cada nivel suma una habilidad nueva a tu propio juego." },
